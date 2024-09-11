@@ -25,7 +25,7 @@
 <div class="carousel-cont w-full h-screen relative sm:h-[50vh]">
 	<div class="swiper carousel w-full h-full">
 		<div class="swiper-wrapper">
-			{#each trendingData.slice(0, 5) as result}
+			{#each trendingData.slice(0, 10) as result}
 				<div class="swiper-slide carousel-item relative">
 					<div
 						class="mask w-full h-[60%] absolute bg-gradient-to-t from-main via-transparent to-transparent left-0 bottom-0 z-[3]"
@@ -132,18 +132,16 @@
 					<div
 						class="small-banner-slider w-[25%] absolute my-[50px] mx-[3%] right-0 bottom-0 z-[5] flex items-center justify-center sm:hidden"
 					>
-						<div class="item">
+						<div class="item w-[170px]">
 							<img
-								class="w-[170px] rounded-lg"
+								class="w-full rounded-lg"
 								src={`https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
-								width={150}
 								alt={''}
-								height={200}
 							/>
-							<p class="active title text-center">
-								{result.media_type === 'movie'
-									? getWordRange(result.title, 2)
-									: getWordRange(result.name, 2)}
+							<p
+								class="active title text-center w-full text-ellipsis overflow-hidden whitespace-nowrap"
+							>
+								{result.media_type === 'movie' ? result.title : result.name}
 							</p>
 						</div>
 					</div>

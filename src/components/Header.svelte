@@ -58,7 +58,7 @@
 >
 	<div class="left-section flex gap-0 items-center">
 		<div class="logo-cont w-auto h-full center-div">
-			<a href="/">
+			<a aria-label="Home" href="/">
 				<svg
 					class="w-[120px] fill-[rgb(var(--color-3))]"
 					xmlns="http://www.w3.org/2000/svg"
