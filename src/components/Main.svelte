@@ -10,6 +10,7 @@
 
 	export let trendingData: any[] = [];
 	export let getWindowSize = () => {
+		console.log(window.innerWidth);
 		return [window.innerWidth, window.innerHeight];
 	};
 	let [width, height] = typeof window !== 'undefined' ? getWindowSize() : [400, 400];
@@ -25,6 +26,10 @@
 				disableOnInteraction: false
 			}
 		});
+		return () => {
+			swiper.destroy();
+			window.removeEventListener('resize', () => ([width, height] = getWindowSize()));
+		};
 	});
 </script>
 
@@ -40,7 +45,7 @@
 						class="filter w-full h-full absolute bg-gradient-to-r from-main via-main/50 to-transparent left-0 bottom-0 z-[3]"
 					></div>
 					<img
-						src={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
+						src={`https://image.tmdb.org/t/p/${width > 1000 ? 'original' + result.backdrop_path : 'w500' + result.backdrop_path}`}
 						alt="Slide"
 						class="w-full h-[120vh] sm:h-full my-0 mx-auto object-cover"
 						{width}
