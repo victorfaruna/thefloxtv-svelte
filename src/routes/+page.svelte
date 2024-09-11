@@ -5,7 +5,4 @@
 	const { trendingData } = data;
 </script>
 
-<svelte:head>
-	<!-- <link rel="stylesheet" href="/css/MainCarousel.css" /> -->
-</svelte:head>
 <Main {trendingData} />

@@ -17,3 +17,11 @@ export const getLetterRange = (text: string, range: number) => {
 	const result = firstXLetters.join('');
 	return result;
 };
+
+export const toSentenceCase = (str: string) => {
+	// Trim the string to remove extra spaces
+	str = str.trim();
+
+	// Convert the first character to uppercase and the rest to lowercase
+	return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+};
