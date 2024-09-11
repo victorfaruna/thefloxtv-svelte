@@ -9,8 +9,14 @@
 	import { onMount } from 'svelte';
 
 	export let trendingData: any[] = [];
-
+	export let getWindowSize = () => {
+		return [window.innerWidth, window.innerHeight];
+	};
+	let [width, height] = typeof window !== 'undefined' ? getWindowSize() : [400, 400];
 	onMount(() => {
+		window.addEventListener('resize', () => {
+			[width, height] = getWindowSize();
+		});
 		const swiper = new Swiper('.swiper', {
 			modules: [Autoplay, Navigation, Pagination],
 			loop: true,
@@ -31,17 +37,16 @@
 						class="mask w-full h-[60%] absolute bg-gradient-to-t from-main via-transparent to-transparent left-0 bottom-0 z-[3]"
 					></div>
 					<div
-						class="filter w-full h-full absolute bg-gradient-to-r from-main via-main/80 to-transparent left-0 bottom-0 z-[3]"
+						class="filter w-full h-full absolute bg-gradient-to-r from-main via-main/50 to-transparent left-0 bottom-0 z-[3]"
 					></div>
 					<img
 						src={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
 						alt="Slide"
-						class="w-full h-[120vh] my-0 mx-auto object-cover"
-						width={900}
-						height={480}
+						class="w-full h-[120vh] sm:h-full my-0 mx-auto object-cover"
+						{width}
 					/>
 					<div
-						class="text w-[60%] h-auto text-[15px] sm:text-[14px] overflow-hidden absolute bottom-0 pb-[70px] pl-[3%] left-0 z-[5] sm:w-full sm:pb-[50px] sm:text-center"
+						class="text w-[60%] h-auto text-sm overflow-hidden absolute bottom-0 pb-[70px] pl-[3%] left-0 z-[5] sm:w-full sm:pb-[50px] sm:text-center"
 					>
 						<MovieLogo
 							movieId={result.id}
@@ -50,7 +55,7 @@
 						/>
 
 						<div
-							class="info flex items-center font-[500] sm:justify-center gap-6 sm:gap-3 mb-2"
+							class="info flex items-center font-[500] sm:justify-center gap-6 sm:gap-3 mb-3"
 							style="text-shadow: 1px 1px 1px black"
 						>
 							<span>
@@ -81,7 +86,7 @@
 								{result.vote_average.toFixed(1)}
 							</span>
 						</div>
-						<p class="desc sm:hidden mr-6 sm:mr-0 mb-10 text-color-1/70">
+						<p class="desc sm:hidden mr-6 sm:mr-0 mb-10 text-color-1/90 leading-6">
 							{result.overview.split(/\s+/).length > 45
 								? getWordRange(result.overview, 45)
 								: result.overview}
