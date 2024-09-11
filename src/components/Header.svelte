@@ -224,7 +224,7 @@
 
 		<nav class="md-nav hidden pr-[3vw] lg:block">
 			<ul class="w-full flex justify-between gap-[25px]">
-				<button on:click={() => (isSearchToggled = true)}>
+				<button aria-label="Search" on:click={() => (isSearchToggled = true)}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -241,7 +241,7 @@
 					</svg>
 				</button>
 
-				<button on:click={() => (isNavToggled = !isNavToggled)}
+				<button aria-label="Menu" on:click={() => (isNavToggled = !isNavToggled)}
 					><svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"

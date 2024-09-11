@@ -41,7 +41,7 @@
 						height={480}
 					/>
 					<div
-						class="text w-[60%] h-auto text-[15px] overflow-hidden absolute bottom-0 pb-[70px] pl-[3%] left-0 z-[5] sm:w-full sm:pb-[50px] sm:text-center"
+						class="text w-[60%] h-auto text-[15px] sm:text-[14px] overflow-hidden absolute bottom-0 pb-[70px] pl-[3%] left-0 z-[5] sm:w-full sm:pb-[50px] sm:text-center"
 					>
 						<MovieLogo
 							movieId={result.id}
