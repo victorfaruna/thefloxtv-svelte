@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { get } from 'svelte/store';
 
 	export let movieId: string;
 	export let mediaType: string;
@@ -23,7 +22,7 @@
 	<img
 		class="movie-logo w-[180px] mb-[40px] sm:w-[120px] sm:my-0 sm:mx-auto sm:mb-[20px]"
 		src={`https://themoviedb.org/t/p/w500/${movieLogoData}`}
-		alt={''}
+		alt="Movie Logo"
 		width={160}
 		height={80}
 	/>

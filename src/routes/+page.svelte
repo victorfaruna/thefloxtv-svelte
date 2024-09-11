@@ -1,7 +1,6 @@
 <script>
 	import Main from '$components/Main.svelte';
-
-	export let data;
+	const { data } = $props();
 	const { trendingData } = data;
 </script>
 

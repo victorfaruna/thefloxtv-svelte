@@ -6,13 +6,14 @@
 	import { getLetterRange, getWordRange } from '$src/lib';
 	import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 	import MovieLogo from '$components/MovieLogo.svelte';
-	import { onMount } from 'svelte';
-	export let trendingData: any[] = [];
-	let width = typeof window !== 'undefined' ? window.innerWidth : 1000;
-	onMount(() => {
+	const { trendingData }: any = $props();
+	let width = $state(1200);
+	$effect(() => {
+		width = window.innerWidth;
 		window.addEventListener('resize', () => {
 			width = window.innerWidth;
 		});
+		console.log(width);
 		const swiper = new Swiper('.swiper', {
 			modules: [Autoplay, Navigation, Pagination],
 			loop: true,
@@ -42,10 +43,9 @@
 					<img
 						src={width > 1000
 							? `https://image.tmdb.org/t/p/original${result.backdrop_path}`
-							: `https://image.tmdb.org/t/p/w1000_and_h450_multi_faces${result.backdrop_path}`}
+							: `https://image.tmdb.org/t/p/w500${result.backdrop_path}`}
 						alt="Slide"
 						class="w-full h-[120vh] sm:h-full my-0 mx-auto object-cover"
-						{width}
 					/>
 					<div
 						class="text w-[60%] h-auto text-sm overflow-hidden absolute bottom-0 pb-[70px] pl-[3%] left-0 z-[5] sm:w-full sm:pb-[50px] sm:text-center"
