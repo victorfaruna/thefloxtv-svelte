@@ -7,7 +7,7 @@
 	import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 	import MovieLogo from '$components/MovieLogo.svelte';
 	const { trendingData }: any = $props();
-	let width = $state(1200);
+	let width = $state(1000);
 	$effect(() => {
 		width = window.innerWidth;
 		window.addEventListener('resize', () => {
