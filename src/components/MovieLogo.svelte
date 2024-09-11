@@ -28,5 +28,7 @@
 		height={80}
 	/>
 {:else}
-	<p class="text-[20px] mb-[40px] sm:w-[120px] sm:my-0 sm:mx-auto sm:mb-[20px]">{movieTitle}</p>
+	<p class="text-[20px] font-bold mb-[40px] sm:w-[120px] sm:my-0 sm:mx-auto sm:mb-[20px]">
+		{movieTitle.toUpperCase()}
+	</p>
 {/if}
