@@ -43,7 +43,7 @@
 					<img
 						src={width > 1000
 							? `https://image.tmdb.org/t/p/original${result.backdrop_path}`
-							: `https://image.tmdb.org/t/p/w780${result.backdrop_path}`}
+							: `https://image.tmdb.org/t/p/w1280${result.backdrop_path}`}
 						alt="Slide"
 						class="w-full h-[120vh] sm:h-full my-0 mx-auto object-cover"
 					/>
