@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import LivesearchResult from '$components/LivesearchResult.svelte';
-	let isNavToggled = false;
-	let isSearchToggled = false;
-	let searchValue: string = '';
+	let isNavToggled = $state(false);
+	let isSearchToggled = $state(false);
+	let searchValue: string = $state('');
 	let timeout: any;
 
 	const search = (e: any) => {
