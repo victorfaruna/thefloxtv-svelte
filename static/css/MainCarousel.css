@@ -1,0 +1,89 @@
+.carousel-item .text p {
+	margin-bottom: 15px;
+}
+
+.carousel-item .text .title {
+	font-size: 18px;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: var(--color-1);
+}
+
+.carousel-item .text .info {
+	font-size: 16px;
+	margin-bottom: 15px;
+}
+
+.carousel-item .text .info span {
+	font-weight: 400;
+	margin-right: 15px;
+	font-size: 15px;
+	color: white;
+	text-shadow: 1px 1px 1px black;
+}
+
+.carousel-item .text .info .certification {
+	padding: 1.5px 5px;
+	font-size: 8px;
+	border: 1px solid rgb(231, 231, 231);
+	border-radius: 1rem;
+}
+
+.carousel-item .text .genre {
+	font-size: 14px;
+	display: inline-block;
+	display: none;
+	word-spacing: 5px;
+	color: white;
+	font-weight: 400;
+	text-shadow: 1px 1px 1px black;
+}
+
+.carousel-item .text .desc {
+	font-size: 14px;
+	line-height: 25px;
+	color: rgb(229, 229, 229);
+	text-shadow: 1px 1px 1px black;
+	margin-bottom: 40px;
+}
+
+.carousel-item .text .buttons {
+	width: 100%;
+	height: auto;
+	margin-top: 15px;
+}
+
+.carousel-item .text .view-btn {
+	width: 155px;
+	height: 43px;
+	border-radius: 1.5rem;
+	font-weight: 500;
+	font-size: 15px;
+	word-spacing: 3px;
+	color: white;
+}
+
+.carousel-item .text .view-btn.watch-now {
+	color: rgb(7, 7, 7);
+	background-color: rgba(var(--color-3));
+	transition: 0.3s;
+}
+
+@media screen and (max-width: 900px) {
+	.carousel-item .text p {
+		margin-bottom: 9px;
+	}
+
+	.carousel-item .text .info {
+		display: block;
+		font-size: 13px;
+		margin-bottom: 9px;
+	}
+	.carousel-item .text .genre {
+		display: block;
+		font-size: 13px;
+	}
+	.carousel-item .text .desc {
+		display: none;
+	}
+}

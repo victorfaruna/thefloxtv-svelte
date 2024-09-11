@@ -4,9 +4,15 @@
 	let isNavToggled = false;
 	let isSearchToggled = false;
 	let searchValue: string = '';
+	let timeout: any;
 
 	const search = (e: any) => {
-		searchValue = e.target.value.toLowerCase();
+		clearTimeout(timeout);
+
+		timeout = setTimeout(() => {
+			// Perform the fetch request or any other operation here
+			searchValue = e.target.value.toLowerCase();
+		}, 500); // 500ms delay after the last keystroke
 	};
 </script>
 
@@ -47,8 +53,8 @@
 </div>
 <header
 	class={`w-full h-[80px] sm:h-[50px] px-[3%] flex items-center justify-between ${
-		$page.url.searchParams?.get('r') == 'home' && 'absolute z-10'
-	} bg-gradient-to-b via-[#13111a3e] from-[rga(var(--bg-color-1))] to-transparent`}
+		$page.url.pathname == '/' && 'absolute z-10'
+	} bg-gradient-to-b via-[#13111a3e] from-main to-transparent`}
 >
 	<div class="left-section flex gap-0 items-center">
 		<div class="logo-cont w-auto h-full center-div">

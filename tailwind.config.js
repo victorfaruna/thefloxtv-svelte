@@ -19,6 +19,7 @@ export default {
 				main: 'rgba(var(--bg-color-1))',
 				sec: 'rgba(var(--bg-color-2))',
 				tet: 'rgba(var(--bg-color-3))',
+				'color-1': 'rgba(var(--color-1))',
 				'color-3': 'rgba(var(--color-3))',
 				'color-4': 'rgba(var(--color-4))'
 			}
