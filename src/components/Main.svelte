@@ -7,16 +7,11 @@
 	import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 	import MovieLogo from '$components/MovieLogo.svelte';
 	import { onMount } from 'svelte';
-
 	export let trendingData: any[] = [];
-	export let getWindowSize = () => {
-		console.log(window.innerWidth);
-		return [window.innerWidth, window.innerHeight];
-	};
-	let [width, height] = typeof window !== 'undefined' ? getWindowSize() : [400, 400];
+	let width = typeof window !== 'undefined' ? window.innerWidth : 1000;
 	onMount(() => {
 		window.addEventListener('resize', () => {
-			[width, height] = getWindowSize();
+			width = window.innerWidth;
 		});
 		const swiper = new Swiper('.swiper', {
 			modules: [Autoplay, Navigation, Pagination],
@@ -28,7 +23,7 @@
 		});
 		return () => {
 			swiper.destroy();
-			window.removeEventListener('resize', () => ([width, height] = getWindowSize()));
+			window.removeEventListener('resize', () => (width = window.innerWidth));
 		};
 	});
 </script>
@@ -45,7 +40,9 @@
 						class="filter w-full h-full absolute bg-gradient-to-r from-main via-main/50 to-transparent left-0 bottom-0 z-[3]"
 					></div>
 					<img
-						src={`https://image.tmdb.org/t/p/${width > 1000 ? 'original' + result.backdrop_path : 'w500' + result.backdrop_path}`}
+						src={width > 1000
+							? `https://image.tmdb.org/t/p/original${result.backdrop_path}`
+							: `https://image.tmdb.org/t/p/w1000_and_h450_multi_faces${result.backdrop_path}`}
 						alt="Slide"
 						class="w-full h-[120vh] sm:h-full my-0 mx-auto object-cover"
 						{width}
