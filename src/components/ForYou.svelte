@@ -77,14 +77,14 @@
 		/>
 	</svg>
 </div>
-<div class="w-full sm:px-3 flex gap-2">
+<div class="w-full sm:px-1 flex gap-2">
 	<div bind:this={swiperComponent} class="swiper w-full h-[220px] sm:h-[185px]">
 		<div class="swiper-wrapper">
 			{#if isLoading}
 				Loading
 			{:else}
 				{#each forYouData.slice(0, 9) as result}
-					<div class="swiper-slide p-2 relative overflow-hidden">
+					<div class="swiper-slide p-[6px] relative overflow-hidden">
 						<a href={result.media_type == 'movie' ? `/movies/${result.id}` : `/tv/${result.id}`}>
 							<div
 								class="a z-40 w-[120px] h-[35px] shadow-md bg-gray-100 absolute top-[0] right-[0] rounded-bl-2xl rounded-tr-xl text-[12px] font-semibold text-slate-700 flex items-center justify-center"
@@ -98,13 +98,13 @@
 								<div
 									class="mask w-[100%] h-full absolute top-0 left-0 bottom-0 right-0 z-20 bg-gradient-to-t from-main via-main/50 to-[transparent]"
 								></div>
-								<div class="absolute bottom-4 left-4 z-30">
-									<p class="text-[20px] font-semibold text-gray-300 uppercase">
-										{result.media_type == 'movie'
-											? getWordRange(result.title, 3)
-											: getWordRange(result.name, 3)}
+								<div class="w-full absolute bottom-4 left-4 z-30">
+									<p
+										class="text-[17px] sm:text-[15px] font-semibold text-gray-300 w-[60%] overflow-hidden text-ellipsis whitespace-nowrap"
+									>
+										{result.media_type == 'movie' ? result.title : result.name}
 									</p>
-									<p class="text-[13px] font-[500] word sm:text-[12px] text-color-3">
+									<p class="text-[13px] word sm:text-[11px] text-color-3 p">
 										{result.media_type == 'movie'
 											? getLetterRange(result.release_date, 4)
 											: getLetterRange(result.first_air_date, 4)}
