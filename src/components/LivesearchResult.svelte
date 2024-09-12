@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { getSearchResult } from '$lib/fetch';
 	import { getLetterRange } from '$lib/index';
-	export let query;
-	let isLoading = true;
-	let data: any;
+	let { query } = $props();
+	let isLoading = $state(true);
+	let data: any = $state([]);
 
 	const fetchMatchingResult = async (q: any) => {
 		isLoading = true;
@@ -11,7 +11,9 @@
 		data = response;
 		isLoading = false;
 	};
-	$: fetchMatchingResult(query);
+	$effect(() => {
+		fetchMatchingResult(query);
+	});
 </script>
 
 {#if isLoading || query == ''}

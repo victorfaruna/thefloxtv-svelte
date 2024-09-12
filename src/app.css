@@ -32,3 +32,15 @@
 	justify-content: center;
 	align-items: center;
 }
+
+.swiper-horizontal > .swiper-pagination-progressbar,
+.swiper-pagination-progressbar.swiper-pagination-horizontal,
+.swiper-vertical > .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
+.swiper-pagination-progressbar.swiper-pagination-vertical.swiper-pagination-progressbar-opposite {
+	bottom: 0 !important;
+	top: unset !important;
+}
+
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+	background-color: rgba(var(--color-3)) !important;
+}

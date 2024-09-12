@@ -6,15 +6,16 @@
 	import { getLetterRange, getWordRange } from '$src/lib';
 	import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 	import MovieLogo from '$components/MovieLogo.svelte';
-	const { trendingData }: any = $props();
+	//
+	let { trendingData }: any = $props();
 	let width = $state(1000);
+	let swiperComponent: any;
 	$effect(() => {
 		width = window.innerWidth;
 		window.addEventListener('resize', () => {
 			width = window.innerWidth;
 		});
-		console.log(width);
-		const swiper = new Swiper('.swiper', {
+		const swiper = new Swiper(swiperComponent, {
 			modules: [Autoplay, Navigation, Pagination],
 			loop: true,
 			autoplay: {
@@ -30,7 +31,7 @@
 </script>
 
 <div class="carousel-cont w-full h-screen relative sm:h-[50vh]">
-	<div class="swiper carousel w-full h-full">
+	<div bind:this={swiperComponent} class="swiper carousel w-full h-full">
 		<div class="swiper-wrapper">
 			{#each trendingData.slice(0, 10) as result}
 				<div class="swiper-slide carousel-item relative">
