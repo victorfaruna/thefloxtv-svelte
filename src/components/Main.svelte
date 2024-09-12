@@ -7,7 +7,7 @@
 	import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 	import MovieLogo from '$components/MovieLogo.svelte';
 	//
-	let { trendingData }: any = $props();
+	let { mainData }: any = $props();
 	let width = $state(1000);
 	let swiperComponent: any;
 	$effect(() => {
@@ -33,7 +33,7 @@
 <div class="carousel-cont w-full h-screen relative sm:h-[50vh]">
 	<div bind:this={swiperComponent} class="swiper carousel w-full h-full">
 		<div class="swiper-wrapper">
-			{#each trendingData.slice(0, 10) as result}
+			{#each mainData.slice(0, 10) as result}
 				<div class="swiper-slide carousel-item relative">
 					<div
 						class="mask w-full h-[60%] absolute bg-gradient-to-t from-main via-transparent to-transparent left-0 bottom-0 z-[3]"

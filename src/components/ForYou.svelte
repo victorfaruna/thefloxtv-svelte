@@ -6,7 +6,7 @@
 	import { getLetterRange, getWordRange } from '$src/lib';
 	import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 	let isLoading = $state(false);
-	let { trendingData }: any = $props();
+	let { forYouData }: any = $props();
 
 	let width = $state(1000);
 	let swiperComponent: any;
@@ -70,7 +70,7 @@
 			d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"
 		/>
 	</svg>
-	<p>For Your</p>
+	<p>For You</p>
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		fill="none"
@@ -97,7 +97,7 @@
 			{#if isLoading}
 				Loading
 			{:else}
-				{#each trendingData.slice(0, 9) as result}
+				{#each forYouData.slice(0, 9) as result}
 					<div class="swiper-slide p-2 relative overflow-hidden">
 						<a href={result.media_type == 'movie' ? `/movies/${result.id}` : `/tv/${result.id}`}>
 							<div

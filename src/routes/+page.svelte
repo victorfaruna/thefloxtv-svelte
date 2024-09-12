@@ -2,10 +2,11 @@
 	import ForYou from '$components/ForYou.svelte';
 	import Main from '$components/Main.svelte';
 	const { data } = $props();
-	const { trendingData } = data;
+	const { mainData } = data;
+	const { forYouData } = data;
 </script>
 
-<Main {trendingData} />
+<Main {mainData} />
 <div class="px-[3%]">
-	<ForYou {trendingData} />
+	<ForYou {forYouData} />
 </div>
