@@ -8,7 +8,7 @@ import { fetchNowPlaying, fetchTrending } from '$src/lib/fetch';
 export const load = (async () => {
 	const [fetch1, fetch2] = await Promise.all([fetchTrending('day'), fetchNowPlaying()]);
 	return {
-		mainData: fetch1,
-		forYouData: fetch2
+		mainData: fetch2,
+		forYouData: fetch1
 	};
 }) satisfies PageLoad;

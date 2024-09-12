@@ -126,7 +126,7 @@
 			id="searchBar"
 		>
 			<div class="hidden sm:block text-white absolute top-5 right-5 text-[15px]">
-				<button aria-label="Cancel" on:click={() => (isSearchToggled = !isSearchToggled)}>
+				<button aria-label="Cancel" onclick={() => (isSearchToggled = !isSearchToggled)}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -170,7 +170,7 @@
 					value={searchValue}
 					name="q"
 					placeholder="Search Movies and Tv Shows"
-					on:input={search}
+					oninput={search}
 					class="w-[92%] h-full bg-transparent border-none outline-none text-white text-[12px] font-normal pl-[10px] text-center"
 				/>
 				<div
@@ -223,8 +223,8 @@
 		</nav>
 
 		<nav class="md-nav hidden pr-[3vw] lg:block">
-			<ul class="w-full flex justify-between gap-[25px]">
-				<button aria-label="Search" on:click={() => (isSearchToggled = true)}>
+			<div class="w-full flex justify-between gap-[25px]">
+				<button aria-label="Search" onclick={() => (isSearchToggled = true)}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -241,7 +241,7 @@
 					</svg>
 				</button>
 
-				<button aria-label="Menu" on:click={() => (isNavToggled = !isNavToggled)}
+				<button aria-label="Menu" onclick={() => (isNavToggled = !isNavToggled)}
 					><svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -261,7 +261,7 @@
 						{/if}
 					</svg>
 				</button>
-			</ul>
+			</div>
 		</nav>
 	</div>
 </header>

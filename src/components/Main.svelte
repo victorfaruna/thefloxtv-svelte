@@ -34,20 +34,25 @@
 	<div bind:this={swiperComponent} class="swiper carousel w-full h-full">
 		<div class="swiper-wrapper">
 			{#each mainData.slice(0, 10) as result}
-				<div class="swiper-slide carousel-item relative">
+				<div
+					class="swiper-slide carousel-item relative"
+					style="background-size:cover; background-image: url({width > 1000
+						? `https://image.tmdb.org/t/p/original${result.backdrop_path}`
+						: `https://image.tmdb.org/t/p/w1280${result.backdrop_path}`});"
+				>
 					<div
-						class="mask w-full h-[60%] absolute bg-gradient-to-t from-main via-transparent to-transparent left-0 bottom-0 z-[3]"
+						class="mask w-full h-[70%] absolute bg-gradient-to-t from-main via-transparent to-transparent left-0 bottom-0 z-[3]"
 					></div>
 					<div
 						class="filter w-full h-full absolute bg-gradient-to-r from-main via-main/50 to-transparent left-0 bottom-0 z-[3]"
 					></div>
-					<img
-						src={width > 1000
-							? `https://image.tmdb.org/t/p/original${result.backdrop_path}`
-							: `https://image.tmdb.org/t/p/w1280${result.backdrop_path}`}
-						alt="Slide"
-						class="w-full h-[120vh] sm:h-full my-0 mx-auto object-cover"
-					/>
+					<!-- <img
+							src={width > 1000
+								? `https://image.tmdb.org/t/p/original${result.backdrop_path}`
+								: `https://image.tmdb.org/t/p/w1280${result.backdrop_path}`}
+							alt="Slide"
+							class="w-full h-[120vh] sm:h-full my-0 mx-auto object-cover"
+						/> -->
 					<div
 						class="text w-[60%] h-auto text-sm overflow-hidden absolute bottom-0 pb-[70px] pl-[3%] left-0 z-[5] sm:w-full sm:pb-[50px] sm:text-center"
 					>

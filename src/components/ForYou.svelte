@@ -19,79 +19,65 @@
 		const swiper = new Swiper(swiperComponent, {
 			modules: [Autoplay, Navigation, Pagination],
 			loop: true,
+			autoplay: {
+				delay: 5000,
+				disableOnInteraction: false
+			},
 			pagination: {
 				el: '.swiper-progress',
 				type: 'progressbar'
 			},
-			spaceBetween: 10,
-			slidesPerView: width < 800 ? 1 : width < 1200 ? 2 : 3,
-			autoplay: {
-				delay: 5000,
-				disableOnInteraction: false
-			}
+
+			breakpoints: {
+				900: {
+					slidesPerView: 3
+				},
+				680: {
+					slidesPerView: 2
+				},
+				200: {
+					slidesPerView: 1
+				}
+			},
+			spaceBetween: 10
 		});
 		return () => {
 			swiper.destroy();
 			window.removeEventListener('resize', () => (width = window.innerWidth));
 		};
 	});
-
-	//   autoplay={{
-	//     delay: 3000,
-	//     disableOnInteraction: false,
-	//   }}
-	//   slidesPerView={screenSize[0] < 800 ? 1 : screenSize[0] < 1200 ? 2 : 3}
-	//   pagination={{
-	//     el: ".swiper-progress",
-	//     type: "progressbar",
-	//   }}
-	//   effect={"autoplay"}
-	//   spaceBetween={10}
-	//   modules={[Autoplay, Pagination]}
+	const swipeNext = () => {
+		swiperComponent.swiper.slideNext();
+	};
+	const swipePrev = () => {
+		swiperComponent.swiper.slidePrev();
+	};
 </script>
 
 <div class="text-center my-5 mb-3 text-[13px] flex gap-2 justify-center items-center">
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
-		fill="none"
-		viewBox="0 0 24 24"
-		stroke-width="1.5"
-		stroke="currentColor"
-		class="size-4"
+		fill="currentColor"
+		class="bi bi-fire size-4"
+		viewBox="0 0 16 16"
 	>
 		<path
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"
-		/>
-		<path
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"
+			d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16m0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15"
 		/>
 	</svg>
 	<p>For You</p>
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
-		fill="none"
-		viewBox="0 0 24 24"
-		stroke-width="1.5"
-		stroke="currentColor"
-		class="size-4"
+		fill="currentColor"
+		class="bi bi-fire size-4"
+		viewBox="0 0 16 16"
 	>
 		<path
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"
-		/>
-		<path
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"
+			d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16m0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15"
 		/>
 	</svg>
 </div>
-<div class="w-full sm:px-3">
+<div class="w-full sm:px-3 flex gap-2">
 	<div bind:this={swiperComponent} class="swiper w-full h-[220px] sm:h-[185px]">
 		<div class="swiper-wrapper">
 			{#if isLoading}
@@ -101,7 +87,7 @@
 					<div class="swiper-slide p-2 relative overflow-hidden">
 						<a href={result.media_type == 'movie' ? `/movies/${result.id}` : `/tv/${result.id}`}>
 							<div
-								class="a z-40 w-[150px] sm:w-[130px] h-[45px] sm:h-[40px] shadow-md bg-gray-100 absolute top-[0] right-[0] rounded-bl-2xl rounded-tr-xl text-[16px] sm:text-[14px] font-semibold text-slate-700 flex items-center justify-center"
+								class="a z-40 w-[120px] h-[35px] shadow-md bg-gray-100 absolute top-[0] right-[0] rounded-bl-2xl rounded-tr-xl text-[12px] font-semibold text-slate-700 flex items-center justify-center"
 							>
 								Trending Today
 							</div>
@@ -133,5 +119,40 @@
 			{/if}
 		</div>
 		<div class="swiper-progress"></div>
+	</div>
+
+	<div class="controls w-[35px] flex flex-col gap-3 text-color-1/60 sm:hidden">
+		<button
+			aria-label="Slide Next"
+			class="w-full h-full rounded-lg center-div bg-color-1/20"
+			onclick={() => swipeNext()}
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="currentColor"
+				class="bi bi-caret-right-fil size-5"
+				viewBox="0 0 16 16"
+			>
+				<path
+					d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+				/>
+			</svg>
+		</button>
+		<button
+			aria-label="Slide Prev"
+			class="w-full h-full rounded-lg center-div bg-color-1/20"
+			onclick={() => swipePrev()}
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="currentColor"
+				class="bi bi-caret-left-fill size-5"
+				viewBox="0 0 16 16"
+			>
+				<path
+					d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
+				/>
+			</svg>
+		</button>
 	</div>
 </div>
