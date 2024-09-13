@@ -40,6 +40,7 @@
 
 		<div class="flex gap-3 sm:gap-1 items-center text-[grey] sm:text-[11px]">
 			<button
+				aria-label="Today"
 				onclick={() => setTrendingPeriod('day')}
 				class={`px-3 py-1 border-[1.5px] rounded-md cursor-pointer active:border-color-3 active:text-color-3 ${
 					period == 'day' ? ' border-color-3 text-color-3' : 'border-color-1/20'
@@ -48,6 +49,7 @@
 				Today
 			</button>
 			<button
+				aria-label="This Week"
 				onclick={() => setTrendingPeriod('week')}
 				class={`px-3 py-1 border-[1.5px] rounded-md cursor-pointer active:border-color-3 active:text-color-3 ${
 					period == 'week' ? ' border-color-3 text-color-3' : 'border-color-1/20'
@@ -70,7 +72,7 @@
 					<a href={result.media_type == 'movie' ? `/movies/${result.id}` : `/tv/${result.id}`}>
 						<div class="group item w-auto h-auto flex relative" style="flex: 0 0 auto">
 							<p
-								class="group-hover:text-color-3/30 list-number w-auto h-auto center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]"
+								class="group-hover:text-color-3/10 list-number w-auto h-auto center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]"
 							>
 								{index + 1}
 							</p>

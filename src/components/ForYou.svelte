@@ -121,7 +121,7 @@
 		<div class="swiper-progress"></div>
 	</div>
 
-	<div class="controls w-[35px] flex flex-col gap-3 text-color-1/60 sm:hidden">
+	<div class="controls w-[40px] flex flex-col gap-3 text-color-1/30 sm:hidden">
 		<button
 			aria-label="Slide Next"
 			class="w-full h-full rounded-lg center-div bg-color-1/20"
@@ -130,7 +130,7 @@
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="currentColor"
-				class="bi bi-caret-right-fil size-5"
+				class="bi bi-caret-right-fil size-8"
 				viewBox="0 0 16 16"
 			>
 				<path
@@ -146,7 +146,7 @@
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="currentColor"
-				class="bi bi-caret-left-fill size-5"
+				class="bi bi-caret-left-fill size-8"
 				viewBox="0 0 16 16"
 			>
 				<path

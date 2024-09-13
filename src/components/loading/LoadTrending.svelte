@@ -5,7 +5,7 @@
 {#each [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as result, index}
 	<div class="group item w-auto h-auto flex relative" style="flex: 0 0 auto">
 		<p
-			class="group-hover:text-color-3/30 list-number w-auto h-auto center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]"
+			class="group-hover:text-color-3/10 list-number w-auto h-auto center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]"
 		>
 			{index + 1}
 		</p>
