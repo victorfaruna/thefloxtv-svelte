@@ -1,14 +1,20 @@
 import axios from 'axios';
 
-export const fetchTrending = async (period: string | undefined) => {
+export const fetchTrending = async (
+	period: string | undefined,
+	type: string | undefined = 'all'
+) => {
 	try {
-		const req = await fetch(`https://api.themoviedb.org/3/trending/all/${period}?language=en-US`, {
-			headers: {
-				Authorization:
-					'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E'
-			},
-			cache: 'no-cache'
-		});
+		const req = await fetch(
+			`https://api.themoviedb.org/3/trending/${type}/${period}?language=en-US`,
+			{
+				headers: {
+					Authorization:
+						'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E'
+				},
+				cache: 'no-cache'
+			}
+		);
 		const data = await req.json();
 		return data.results;
 	} catch (error) {

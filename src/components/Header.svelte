@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import LivesearchResult from '$components/LivesearchResult.svelte';
+	import { fade, fly } from 'svelte/transition';
 	let isNavToggled = $state(false);
 	let isSearchToggled = $state(false);
 	let searchValue: string = $state('');

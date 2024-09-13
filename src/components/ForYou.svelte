@@ -104,7 +104,7 @@
 									>
 										{result.media_type == 'movie' ? result.title : result.name}
 									</p>
-									<p class="text-[13px] word sm:text-[11px] text-color-3 p">
+									<p class="text-[13px] word sm:text-[12px] text-color-3 p">
 										{result.media_type == 'movie'
 											? getLetterRange(result.release_date, 4)
 											: getLetterRange(result.first_air_date, 4)}
