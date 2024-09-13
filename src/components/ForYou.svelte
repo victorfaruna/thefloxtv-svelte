@@ -87,16 +87,16 @@
 					<div class="swiper-slide p-[6px] relative overflow-hidden">
 						<a href={result.media_type == 'movie' ? `/movies/${result.id}` : `/tv/${result.id}`}>
 							<div
-								class="a z-40 w-[120px] h-[35px] shadow-md bg-gray-100 absolute top-[0] right-[0] rounded-bl-2xl rounded-tr-xl text-[12px] font-semibold text-slate-700 flex items-center justify-center"
+								class="a z-40 w-[120px] h-[35px] shadow-md rounded-bl-xl rounded-tr-xl bg-gray-100 absolute top-[0] right-[0] rounded-[inherit] text-[12px] font-semibold text-slate-700 flex items-center justify-center"
 							>
 								Trending Today
 							</div>
 							<div
-								class="inner w-full h-[95%] relative p-0 overflow-hidden rounded-xl"
+								class="inner foryou-inner w-full h-[95%] relative p-0 rounded-xl group"
 								style="background-Image: url(https://image.tmdb.org/t/p/w500{result.backdrop_path}); background-size: cover; "
 							>
 								<div
-									class="mask w-[100%] h-full absolute top-0 left-0 bottom-0 right-0 z-20 bg-gradient-to-t from-main via-main/50 to-[transparent]"
+									class=" w-[100%] h-full absolute rounded-xl top-0 left-0 bottom-0 right-0 z-20 bg-gradient-to-t group-hover:bg-gradient-to-b transition-all duration-[1s] from-main group-hover:from-color-3/40 via-main/50 group-hover:via-color-3/5 to-[transparent] group-hover:to-main"
 								></div>
 								<div class="w-full absolute bottom-4 left-4 z-30">
 									<p
