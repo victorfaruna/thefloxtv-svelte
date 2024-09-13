@@ -13,8 +13,9 @@ export const load = (async () => {
 		fetchTrending('day', 'tv')
 	]);
 	return {
-		mainData: fetch1,
-		forYouData: fetch2,
-		trendingData: { movie: fetch3, tv: fetch4 }
+		isFetchError: fetch1 ? false : true,
+		mainData: fetch1 ?? '',
+		forYouData: fetch2 ?? '',
+		trendingData: { movie: fetch3 ?? '', tv: fetch4 ?? '' }
 	};
 }) satisfies PageLoad;

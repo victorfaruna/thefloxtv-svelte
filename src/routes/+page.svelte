@@ -3,11 +3,15 @@
 	import Main from '$components/Main.svelte';
 	import Trending from '$components/Trending.svelte';
 	const { data } = $props();
-	const { mainData, forYouData, trendingData } = data;
+	const { isFetchError, mainData, forYouData, trendingData } = data;
+	if (isFetchError) {
+		alert('Something went wrong!');
+	}
 </script>
 
 <Main {mainData} />
-<div class="px-5 sm:px-3">
+<div class="px-10 sm:px-3">
 	<ForYou {forYouData} />
-	<Trending {trendingData} />
+	<Trending {trendingData} trendingType="movie" />
+	<Trending {trendingData} trendingType="tv" />
 </div>

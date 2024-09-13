@@ -92,7 +92,7 @@
 								Trending Today
 							</div>
 							<div
-								class="inner w-full h-[95%] relative p-0 rounded-xl"
+								class="inner w-full h-[95%] relative p-0 overflow-hidden rounded-xl"
 								style="background-Image: url(https://image.tmdb.org/t/p/w500{result.backdrop_path}); background-size: cover; "
 							>
 								<div
