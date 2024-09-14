@@ -68,3 +68,26 @@ export const getSearchResult = async (query: string | undefined) => {
 		console.log(error);
 	}
 };
+
+export const getMovieDetails = async (movieId: any) => {
+	try {
+		const request = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}`, {
+			params: {
+				append_to_response: 'credits,videos,images',
+				include_image_language: 'en',
+				language: 'en-US'
+			},
+
+			method: 'GET',
+			headers: {
+				Authorization:
+					'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E'
+			}
+		});
+		const res = request.data;
+		res['media_type'] = 'movie';
+		return res;
+	} catch (error) {
+		console.log(error);
+	}
+};

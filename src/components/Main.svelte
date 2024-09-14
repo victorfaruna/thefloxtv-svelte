@@ -100,7 +100,7 @@
 								: result.overview}
 						</p>
 						<div class="buttons flex gap-5 flex-wrap sm:justify-center font-[500]">
-							<a href={result.media_type === 'movie' ? `/movies/${result.id}` : `/tv/${result.id}`}>
+							<a href={result.media_type === 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}>
 								<button
 									class="view-btn w-[160px] h-[43px] border border-color-3 text-color-3 rounded-[1.5rem] center-div gap-2"
 								>

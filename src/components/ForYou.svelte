@@ -85,7 +85,7 @@
 			{:else}
 				{#each forYouData.slice(0, 9) as result}
 					<div class="swiper-slide p-[6px] relative overflow-hidden">
-						<a href={result.media_type == 'movie' ? `/movies/${result.id}` : `/tv/${result.id}`}>
+						<a href={result.media_type == 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}>
 							<div
 								class="a z-40 w-[120px] h-[35px] shadow-md rounded-bl-xl rounded-tr-xl bg-gray-100 absolute top-[0] right-[0] rounded-[inherit] text-[12px] font-semibold text-slate-700 flex items-center justify-center"
 							>

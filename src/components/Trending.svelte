@@ -7,6 +7,7 @@
 		trendingData,
 		trendingType = 'movie'
 	}: { trendingData: { movie: any; tv: any }; trendingType?: 'movie' | 'tv' } = $props();
+	let trendingDataWeek = $state([]);
 
 	let period = $state('day');
 	let type = trendingType;
@@ -14,11 +15,23 @@
 	let isLoading = $state(false);
 
 	const setTrendingPeriod = async (newPeriod: string) => {
-		isLoading = true;
-		period = newPeriod;
-		const newPeriodData = await fetchTrending(period, type);
-		data = newPeriodData;
-		isLoading = false;
+		if (newPeriod == period) return;
+		if (newPeriod == 'week') {
+			if (trendingDataWeek.length == 0) {
+				isLoading = true;
+				period = newPeriod;
+				const newPeriodData = await fetchTrending(period, type);
+				trendingDataWeek = newPeriodData;
+				data = trendingDataWeek;
+				isLoading = false;
+			} else {
+				period = newPeriod;
+				data = trendingDataWeek;
+			}
+		} else {
+			period = newPeriod;
+			data = type == 'movie' ? trendingData.movie : trendingData.tv;
+		}
 	};
 </script>
 
@@ -69,7 +82,7 @@
 				<LoadTrending />
 			{:else}
 				{#each data as result, index}
-					<a href={result.media_type == 'movie' ? `/movies/${result.id}` : `/tv/${result.id}`}>
+					<a href={result.media_type == 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}>
 						<div class="group item w-auto h-auto flex relative" style="flex: 0 0 auto">
 							<p
 								class="group-hover:text-color-3/10 list-number w-auto h-auto center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]"
