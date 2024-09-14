@@ -19,7 +19,7 @@
 		{:else}
 			<div
 				class="thumbnail w-full h-full relative overflow-hidden bg-cover"
-				style="background-image: url(https://image.tmdb.org/t/p/original{movieData.backdrop_path}); background-size: cover;"
+				style="background-image: url(https://image.tmdb.org/t/p/original{movieData.backdrop_path});"
 			>
 				<div
 					class="mask absolute top-0 left-0 w-full h-[100%] bg-gradient-to-t from-main to-[#26262637] flex items-center justify-center"

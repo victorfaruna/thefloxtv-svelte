@@ -28,7 +28,7 @@
 				</p>
 				<div class="quick-info flex gap-3 items-center text-gray-500">
 					<span
-						class="w-auto px-[8px] py-[0.5px] text-[13px] sm:text-[11px] font-[600] text-gray-500 outline outline-1 outline-[var(--color-3)] rounded-sm"
+						class="w-auto px-[8px] py-[0.5px] text-[13px] sm:text-[11px] font-[600] text-gray-500 outline outline-1 outline-color-3 rounded-sm"
 					>
 						HD
 					</span>
@@ -37,7 +37,7 @@
 							{genre.name} &middot;
 						</span>
 					{/each}
-					<span class="text-[17px] sm:text-[11px] text-[var(--color-3)]">
+					<span class="text-[17px] sm:text-[11px] text-color-3">
 						{getLetterRange(movieData.release_date, 4)}
 					</span>
 				</div>
@@ -52,10 +52,9 @@
 			{' '}
 			<div
 				class="scroll-container no-scrollbar"
-				style="display: 'flex',
-					flex-wrap: nowrap; width: 100%; height: auto; overflow-x: scroll "
+				style="display: flex; flex-wrap: nowrap; width: 100%; height: auto; overflow-x: scroll "
 			>
-				<!-- {#each movieData.credits.cast.slice(0, 7) as cast}
+				{#each movieData.credits.cast.slice(0, 7) as cast}
 					<div
 						class="item w-auto h-auto mr-[10px] flex flex-col items-center relative gap-3 sm:mr-[8px]"
 						style="flex: 0 0 auto"
@@ -72,10 +71,10 @@
 						/>
 						<p class="text-gray-300 text-[14px] sm:text-[12px]">{getWordRange(cast.name, 2)}</p>
 					</div>
-				{/each} -->
+				{/each}
 				<a target="_blank" href={`https://www.themoviedb.org/movie/${movieData.id}/cast`}>
 					<div
-						class="w-[200px] h-[130px] sm:h-[100px] flex gap-2 items-center justify-center text-[var(--color-3)] text-[12px]"
+						class="w-[200px] h-[130px] sm:h-[100px] flex gap-2 items-center justify-center text-color-3 text-[12px]"
 					>
 						<p>View&nbsp;All</p>
 						<i class="fa-regular fa-arrow-right"></i>
