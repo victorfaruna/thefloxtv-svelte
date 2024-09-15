@@ -26,13 +26,13 @@
 				>
 					<button
 						aria-label="Play"
-						class="w-auto h-auto rounded-full flex items-center justify-center cursor-pointer"
+						class="w-auto h-auto rounded-full bg-color-3 flex items-center justify-center cursor-pointer"
 						onclick={() => setHasStartedPlaying(true)}
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
-							class="bi bi-play-circle-fill size-[60px] sm:size-[45px] text-color-3"
+							class="bi bi-play-circle-fill size-[60px] sm:size-[45px] text-main"
 							viewBox="0 0 16 16"
 						>
 							<path

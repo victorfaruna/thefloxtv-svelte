@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fetchTrending } from '$src/lib/fetch';
 	import LoadTrending from './loading/LoadTrending.svelte';
+	import TrendingLabel from './TrendingLabel.svelte';
 
 	//Page props..
 	let {
@@ -111,7 +112,7 @@
 									height={300}
 									alt=""
 								/>
-								<!-- <TrendingLabel id={result.id} {type} /> -->
+								<TrendingLabel id={result.id} {type} />
 							</div>
 						</div>
 					</a>

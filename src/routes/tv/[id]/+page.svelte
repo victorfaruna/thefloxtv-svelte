@@ -29,7 +29,7 @@
 				</p>
 				<div class="quick-info flex gap-3 items-center text-gray-500">
 					<span
-						class="w-auto px-[8px] py-[0.5px] text-[13px] sm:text-[11px] font-[600] text-gray-500 outline outline-1 outline-[var(--color-3)] rounded-sm"
+						class="w-auto px-[8px] py-[0.5px] text-[13px] sm:text-[11px] font-[600] text-gray-500 outline outline-1 outline-color-3 rounded-sm"
 					>
 						HD
 					</span>
@@ -75,7 +75,7 @@
 				{/each}
 				<a target="_blank" href={`https://www.themoviedb.org/tv/${seriesData.id}/cast`}>
 					<div
-						class="w-[200px] h-[130px] sm:h-[100px] flex gap-2 items-center justify-center text-[var(--color-3)] text-[12px]"
+						class="w-[200px] h-[130px] sm:h-[100px] flex gap-2 items-center justify-center text-color-3 text-[12px]"
 					>
 						<p>View&nbsp;All</p>
 						<i class="fa-regular fa-arrow-right"></i>
