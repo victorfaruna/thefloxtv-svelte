@@ -9,12 +9,13 @@
 	let data: any = $state(type == 'movie' ? netflixData.movie : netflixData.tv);
 	let isLoading = $state(false);
 
-	const setNetflixType = async (newType: any) => {
-		type == newType;
+	const setNetflixType = (newType: any) => {
 		if (newType == 'tv') {
 			data = netflixData.tv;
+			type = newType;
 		} else {
 			data = netflixData.movie;
+			type = newType;
 		}
 	};
 </script>
