@@ -3,7 +3,6 @@
 	import '$src/app.css';
 	import { page } from '$app/stores';
 	import { toSentenceCase } from '$src/lib';
-	import { SvelteKitTopLoader } from 'sveltekit-top-loader';
 
 	export let host = toSentenceCase($page.url.hostname.split('.')[0]);
 </script>
@@ -18,6 +17,5 @@
 </svelte:head>
 <Header />
 <div>
-	<SvelteKitTopLoader height={2} color="rgba(var(--color-3))" showSpinner={false} />
 	<slot />
 </div>
