@@ -1,12 +1,10 @@
 <script>
 	import ForYou from '$components/ForYou.svelte';
 	import Main from '$components/Main.svelte';
+	import Netflix from '$components/Netflix.svelte';
 	import Trending from '$components/Trending.svelte';
 	const { data } = $props();
-	const { isFetchError, mainData, forYouData, trendingData } = data;
-	if (isFetchError) {
-		alert('Something went wrong!');
-	}
+	const { mainData, forYouData, trendingData, netflixData } = data;
 </script>
 
 <Main {mainData} />
@@ -14,4 +12,5 @@
 	<ForYou {forYouData} />
 	<Trending {trendingData} trendingType="movie" />
 	<Trending {trendingData} trendingType="tv" />
+	<Netflix {netflixData} />
 </div>

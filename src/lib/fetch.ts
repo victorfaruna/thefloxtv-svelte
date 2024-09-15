@@ -1,12 +1,39 @@
 import axios from 'axios';
 
-export const fetchTrending = async (
-	period: string | undefined,
-	type: string | undefined = 'all'
-) => {
+export const fetchTrending = async (period: string | undefined, type?: string | undefined) => {
+	if (type == undefined) type = 'all';
 	try {
 		const req = await fetch(
 			`https://api.themoviedb.org/3/trending/${type}/${period}?language=en-US`,
+			{
+				headers: {
+					Authorization:
+						'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E'
+				},
+				cache: 'no-store'
+			}
+		);
+		const data = await req.json();
+		let results = data.results;
+		let response: any = [];
+		for (const item of results) {
+			item['media_type'] = type == 'all' ? item.media_type : type;
+			const details =
+				item.media_type == 'movie'
+					? await getMovieDetails(item.id)
+					: await getSeriesDetails(item.id);
+			response.push({ ...details });
+		}
+		return response;
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const fetchNetflix = async (type: string) => {
+	try {
+		const req = await fetch(
+			`https://api.themoviedb.org/3/discover/${type}?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&watch_region=US&with_watch_providers=8`,
 			{
 				headers: {
 					Authorization:
@@ -16,7 +43,17 @@ export const fetchTrending = async (
 			}
 		);
 		const data = await req.json();
-		return data.results;
+		let results = data.results;
+		let response: any = [];
+		for (const item of results) {
+			item['media_type'] = type;
+			const details =
+				item.media_type == 'movie'
+					? await getMovieDetails(item.id)
+					: await getSeriesDetails(item.id);
+			response.push({ ...details });
+		}
+		return response;
 	} catch (error) {
 		console.log(error);
 	}
@@ -35,10 +72,11 @@ export const fetchNowPlaying = async () => {
 			}
 		);
 		const data = await req.json();
+		const results = data.results;
 		data.results.forEach((item: any) => {
 			item['media_type'] = 'movie';
 		});
-		return data.results;
+		return results;
 	} catch (error) {
 		console.log(error);
 	}

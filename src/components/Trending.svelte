@@ -8,8 +8,7 @@
 		trendingData,
 		trendingType = 'movie'
 	}: { trendingData: { movie: any; tv: any }; trendingType?: 'movie' | 'tv' } = $props();
-	let trendingDataWeek = $state([]);
-
+	let trendingDataWeek: any[] = $state([]);
 	let period = $state('day');
 	let type = trendingType;
 	let data: any = $state(type == 'movie' ? trendingData.movie : trendingData.tv);
@@ -21,7 +20,7 @@
 			if (trendingDataWeek.length == 0) {
 				isLoading = true;
 				period = newPeriod;
-				const newPeriodData = await fetchTrending(period, type);
+				const newPeriodData: any = await fetchTrending(period, type);
 				trendingDataWeek = newPeriodData;
 				data = trendingDataWeek;
 				isLoading = false;
@@ -37,7 +36,7 @@
 </script>
 
 <div class="cont my-10">
-	<div class="mb-5 flex sm:flex-col gap-5 sm:gap-3 items-center text-[12px]">
+	<div class="mb-5 justify-center flex sm:flex-col gap-5 sm:gap-3 items-center text-[12px]">
 		<div class="uppercase text-[25px] sm:text-[17px] font-bold text-white flex gap-1 items-center">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +78,7 @@
 			class="scroll-container no-scrollbar"
 			style="display: flex; flex-wrap: nowrap; width: 100%; height: auto; overflow-x: auto;"
 		>
-			{#if isLoading}
+			{#if isLoading || data.length == 0}
 				<LoadTrending />
 			{:else}
 				{#each data as result, index}
@@ -112,9 +111,7 @@
 									height={300}
 									alt=""
 								/>
-								{#key result.id}
-									<TrendingLabel id={result.id} {type} />
-								{/key}
+								<TrendingLabel data={result} {type} />
 							</div>
 						</div>
 					</a>
