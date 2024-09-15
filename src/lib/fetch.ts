@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-export const fetchTrending = async (period: string | undefined, type?: string | undefined) => {
+export const fetchTrending = async (
+	period: string | undefined,
+	type?: string | undefined,
+	appendDetails: boolean = false
+) => {
 	if (type == undefined) type = 'all';
 	try {
 		const req = await fetch(
@@ -15,22 +19,26 @@ export const fetchTrending = async (period: string | undefined, type?: string | 
 		);
 		const data = await req.json();
 		let results = data.results;
-		let response: any = [];
-		for (const item of results) {
-			item['media_type'] = type == 'all' ? item.media_type : type;
-			const details =
-				item.media_type == 'movie'
-					? await getMovieDetails(item.id)
-					: await getSeriesDetails(item.id);
-			response.push({ ...details });
+		if (appendDetails === true) {
+			let response: any = [];
+			for (const item of results) {
+				item['media_type'] = type == 'all' ? item.media_type : type;
+				const details =
+					item.media_type == 'movie'
+						? await getMovieDetails(item.id)
+						: await getSeriesDetails(item.id);
+				response.push({ ...details });
+			}
+			return response;
+		} else {
+			return results;
 		}
-		return response;
 	} catch (error) {
 		console.log(error);
 	}
 };
 
-export const fetchNetflix = async (type: string) => {
+export const fetchNetflix = async (type: string, appendDetails: boolean = false) => {
 	try {
 		const req = await fetch(
 			`https://api.themoviedb.org/3/discover/${type}?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&watch_region=US&with_watch_providers=8`,
@@ -44,16 +52,23 @@ export const fetchNetflix = async (type: string) => {
 		);
 		const data = await req.json();
 		let results = data.results;
-		let response: any = [];
-		for (const item of results) {
-			item['media_type'] = type;
-			const details =
-				item.media_type == 'movie'
-					? await getMovieDetails(item.id)
-					: await getSeriesDetails(item.id);
-			response.push({ ...details });
+		if (appendDetails === true) {
+			let response: any = [];
+			await Promise.all(
+				results.map(async (item: any) => {
+					item['media_type'] = type;
+					const details =
+						item.media_type == 'movie'
+							? await getMovieDetails(item.id)
+							: await getSeriesDetails(item.id);
+					response.push({ ...details });
+				})
+			);
+
+			return response;
+		} else {
+			return results;
 		}
-		return response;
 	} catch (error) {
 		console.log(error);
 	}
@@ -109,20 +124,18 @@ export const getSearchResult = async (query: string | undefined) => {
 
 export const getMovieDetails = async (movieId: any) => {
 	try {
-		const request = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}`, {
-			params: {
-				append_to_response: 'credits,videos,images',
-				include_image_language: 'en',
-				language: 'en-US'
-			},
-
-			method: 'GET',
-			headers: {
-				Authorization:
-					'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E'
+		const request = await fetch(
+			`https://api.themoviedb.org/3/movie/${movieId}?language=en-US&append_to_response=credits,videos,images&include_image_language=en`,
+			{
+				method: 'GET',
+				cache: 'no-cache',
+				headers: {
+					Authorization:
+						'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E'
+				}
 			}
-		});
-		const res = request.data;
+		);
+		const res = await request.json();
 		res['media_type'] = 'movie';
 		return res;
 	} catch (error) {

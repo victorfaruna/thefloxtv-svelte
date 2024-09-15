@@ -6,10 +6,14 @@
 	import { getLetterRange, getWordRange } from '$src/lib';
 	import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 	import MovieLogo from '$components/MovieLogo.svelte';
+	import { onMount } from 'svelte';
 	//
 	let { mainData }: any = $props();
 	let width = $state(1000);
 	let swiperComponent: any;
+	onMount(() => {
+		width = window.innerWidth;
+	});
 	$effect(() => {
 		width = window.innerWidth;
 		window.addEventListener('resize', () => {

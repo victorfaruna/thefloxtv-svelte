@@ -14,7 +14,7 @@
 	</p>
 	<p>
 		{type == 'movie'
-			? data.runtime + ` min`
+			? (data.runtime ?? '?' + ` min`)
 			: `Season ${
 					data.last_episode_to_air?.season_number ? data.last_episode_to_air?.season_number : '?'
 				}`}

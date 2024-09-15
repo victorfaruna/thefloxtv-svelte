@@ -158,7 +158,7 @@
 								<img
 									class="object-cover rounded-md w-full h-auto"
 									src={`https://themoviedb.org/t/p/w500${
-										result.images.backdrops[0]?.file_path ?? result.backdrop_path
+										result?.images?.backdrops[0]?.file_path ?? result.backdrop_path
 									}`}
 									alt=""
 								/>

@@ -16,6 +16,7 @@
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/eslint": "^9.6.0",
+		"@types/nprogress": "^0.2.3",
 		"autoprefixer": "^10.4.20",
 		"daisyui": "^4.12.10",
 		"eslint": "^9.0.0",
@@ -36,6 +37,9 @@
 	"dependencies": {
 		"@splidejs/svelte-splide": "^0.2.9",
 		"axios": "^1.7.7",
+		"my-top-loader": "github:victorfaruna/sveltekit-top-loader#main",
+		"nprogress": "^0.2.0",
+		"nprogress-esm": "^0.2.6",
 		"svelte-swiper": "^1.0.1",
 		"swiper": "^11.1.12"
 	}
