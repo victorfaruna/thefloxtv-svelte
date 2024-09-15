@@ -196,7 +196,7 @@
 			<div
 				id="searchresult"
 				tabIndex={0}
-				class="dropdown-content w-full max-h-[50vh] absolute top-[50px] left-0 overflow-y-auto shadow-2xl overflow-x-hidden bg-main/60 backdrop-blur-[60px] rounded-md px-[5%] py-4 sm:bg-black z-[10] sm:top-[150px] sm:w-[90%] sm:left-[5vw] sm:rounded-2xl sm:max-h-[70vh]"
+				class="dropdown-content w-full max-h-[50vh] absolute top-[40px] left-0 overflow-y-auto shadow-2xl overflow-x-hidden bg-main/60 backdrop-blur-[60px] rounded-md px-[5%] py-4 sm:bg-black z-[10] sm:top-[150px] sm:w-[90%] sm:left-[5vw] sm:rounded-2xl sm:max-h-[70vh]"
 			>
 				{#key searchValue}
 					<LivesearchResult query={searchValue} />

@@ -25,7 +25,8 @@
 				</svg>
 			</div>
 			<div class="object-cover skeleton rounded-md w-full h-[250px] sm:h-[200px] shadow-2xl"></div>
-			<!-- <TrendingLabel id={result.id} {type} /> -->
+			<p class="my-2 h-3 skeleton"></p>
+			<p class="w-[60%] my-2 h-3 skeleton"></p>
 		</div>
 	</div>
 {/each}

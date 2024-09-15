@@ -38,7 +38,7 @@
 	<div class="SearchResult">
 		<div class="wrapper">
 			{#each data as result}
-				<a href={result.media_type == 'movie' ? `/movies/${result.id}` : `/tv/${result.id}`}>
+				<a href={result.media_type == 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}>
 					<div class="item flex gap-[10px] my-[10px]">
 						<img
 							class="w-[40px] h-[50px] rounded-sm object-cover"

@@ -112,7 +112,9 @@
 									height={300}
 									alt=""
 								/>
-								<TrendingLabel id={result.id} {type} />
+								{#key result.id}
+									<TrendingLabel id={result.id} {type} />
+								{/key}
 							</div>
 						</div>
 					</a>
