@@ -54,12 +54,12 @@
 	};
 </script>
 
-<div class="wrapper mt-[-11rem] relative z-[3]">
+<div class="wrapper mt-[-11rem] relative z-[3] md:mt-[-5rem]">
 	<div class="text-center mb-3 text-[13px] flex gap-2 justify-center items-center">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="currentColor"
-			class="bi bi-fire size-4"
+			class="bi bi-fire size-3"
 			viewBox="0 0 16 16"
 		>
 			<path
@@ -70,7 +70,7 @@
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="currentColor"
-			class="bi bi-fire size-4"
+			class="bi bi-fire size-3"
 			viewBox="0 0 16 16"
 		>
 			<path
