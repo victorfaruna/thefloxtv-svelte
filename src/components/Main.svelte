@@ -35,7 +35,7 @@
 </script>
 
 <div class="carousel-cont">
-	<div bind:this={swiperComponent} class="swiper carousel w-full h-[850px] md:h-[500px]">
+	<div bind:this={swiperComponent} class="swiper carousel w-full h-[850px] md:h-[400px]">
 		<div class="swiper-wrapper">
 			{#each mainData.slice(0, 10) as result}
 				<div
@@ -46,7 +46,7 @@
 				>
 					<div class="inner-container w-full h-full flex flex-col justify-end px-5 relative z-[50]">
 						<div
-							class="text w-[60%] h-auto mb-[13rem] md:mb-[7rem] pb-10 sm:pb-5 overflow-hidden sm:w-full sm:text-center"
+							class="text w-[60%] h-auto mb-[16rem] md:mb-[2rem] overflow-hidden sm:w-full sm:text-center"
 						>
 							<MovieLogo
 								movieId={result.id}
@@ -56,6 +56,7 @@
 
 							<div
 								class="info flex items-center font-[500] sm:justify-center gap-6 sm:gap-3 mb-3 text-[1rem]"
+								style="text-shadow: 0 1px 2px #000;"
 							>
 								<span>
 									{result.media_type === 'movie'

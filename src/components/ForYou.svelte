@@ -54,7 +54,7 @@
 	};
 </script>
 
-<div class="wrapper mt-[-11rem] relative z-[3] md:mt-[-5rem]">
+<div class="wrapper mt-[-10rem] relative z-[3] md:mt-[1rem]">
 	<div class="text-center mb-3 text-[13px] flex gap-2 justify-center items-center">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +79,7 @@
 		</svg>
 	</div>
 	<div class="w-full sm:px-1 flex gap-2">
-		<div bind:this={swiperComponent} class="swiper w-full h-[220px] sm:h-[185px]">
+		<div bind:this={swiperComponent} class="swiper w-full h-[15rem] sm:h-[10rem]">
 			<div class="swiper-wrapper">
 				{#if isLoading}
 					Loading
@@ -92,12 +92,14 @@
 							>
 								<div
 									class="inner foryou-inner w-full h-[95%] p-5 rounded-xl flex flex-col justify-end group"
-									style="background-Image: url(https://image.tmdb.org/t/p/w500{result.backdrop_path}); background-size: cover;"
+									style="background-Image: url(https://image.tmdb.org/t/p/w780{result.backdrop_path}); background-size: cover;"
 								>
 									<p
 										class="text-[17px] sm:text-[15px] font-semibold relative z-[2] text-gray-300 w-[60%] overflow-hidden text-ellipsis whitespace-nowrap"
 									>
-										{result.media_type == 'movie' ? result.title : result.name}
+										{result.media_type == 'movie'
+											? result.title.toUpperCase()
+											: result.name.toUpperCase()}
 									</p>
 									<p class="text-[13px] word sm:text-[12px] relative z-[2] text-color-3 p">
 										{result.media_type == 'movie'
