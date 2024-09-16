@@ -42,7 +42,7 @@
 					class="swiper-slide carousel-item relative main-carousel"
 					style="background-size:cover; background-image: url({width > 1000
 						? `https://image.tmdb.org/t/p/original${result.backdrop_path}`
-						: `https://image.tmdb.org/t/p/w780${result.backdrop_path}`});"
+						: `https://image.tmdb.org/t/p/w1280${result.backdrop_path}`});"
 				>
 					<div class="inner-container w-full h-full flex flex-col justify-end px-5 relative z-[50]">
 						<div
