@@ -4,30 +4,12 @@ import { fetchNetflix, fetchNowPlaying, fetchPrimeVideo, fetchTrending } from '$
 export const ssr = true;
 
 export const load = (async () => {
-	const [
-		mainData,
-		forYouData,
-		trendingDataMovie,
-		trendingDataTv,
-		netflixDataMovie,
-		netflixDataTv,
-		primeVideoDataMovie,
-		primeVideoDataTv
-	] = await Promise.all([
+	const [mainData, forYouData] = await Promise.all([
 		fetchNowPlaying(),
-		fetchTrending('day', 'all', false),
-		fetchTrending('day', 'movie', false),
-		fetchTrending('day', 'tv', false),
-		fetchNetflix('movie', true),
-		fetchNetflix('tv', true),
-		fetchPrimeVideo('movie', true),
-		fetchPrimeVideo('tv', true)
+		fetchTrending('day', 'all', false)
 	]);
 	return {
 		mainData,
-		forYouData,
-		trendingData: { movie: trendingDataMovie, tv: trendingDataTv },
-		netflixData: { movie: netflixDataMovie, tv: netflixDataTv },
-		primeVideoData: { movie: primeVideoDataMovie, tv: primeVideoDataTv }
+		forYouData
 	};
 }) satisfies PageServerLoad;

@@ -1,7 +1,3 @@
-<script>
-	let listIterator = 1;
-</script>
-
 {#each [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as result, index}
 	<div class="group item w-auto h-auto flex relative" style="flex: 0 0 auto">
 		<p

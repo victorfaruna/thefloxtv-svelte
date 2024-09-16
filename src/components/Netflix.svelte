@@ -1,13 +1,23 @@
 <script lang="ts">
 	import { fetchNetflix } from '$src/lib/fetch';
-	// import LoadTrending from './loading/LoadTrending.svelte';
-	// import TrendingLabel from './TrendingLabel.svelte';
+	import { onMount } from 'svelte';
+	import LoadNetflix from './loading/LoadNetflix.svelte';
 
 	//Page props..
-	let { netflixData }: { netflixData: { movie: any; tv: any } } = $props();
+	let netflixData: any = $state([]);
 	let type = $state('movie');
-	let data: any = $state(type == 'movie' ? netflixData.movie : netflixData.tv);
-	let isLoading = $state(false);
+	let data: any = $state([]);
+	let isLoading = $state(true);
+
+	onMount(async () => {
+		const [newDataMovie, newDataTv] = await Promise.all([
+			fetchNetflix('movie', true),
+			fetchNetflix('tv', true)
+		]);
+		netflixData = { movie: newDataMovie, tv: newDataTv };
+		data = netflixData.movie;
+		isLoading = false;
+	});
 
 	const setNetflixType = (newType: any) => {
 		if (newType == 'tv') {
@@ -97,10 +107,13 @@
 			style="display: flex; flex-wrap: nowrap; width: 100%; height: auto; overflow-x: auto;"
 		>
 			{#if isLoading || data.length == 0}
-				<!-- <LoadTrending /> -->
+				<LoadNetflix />
 			{:else}
 				{#each data as result, index}
-					<a href={result.media_type == 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}>
+					<a
+						data-sveltekit-preload-data
+						href={result.media_type == 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}
+					>
 						<div class="group item w-auto flex relative items-center" style="flex: 0 0 auto">
 							<p
 								class="group-hover:text-color-3/10 list-number w-auto center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]"
@@ -114,7 +127,8 @@
 									></div>
 									{@render NetflixLogo('absolute top-[10px] left-[10px] z-[40]')}
 									<img
-										class="object-cover rounded-md w-full h-auto"
+										loading="lazy"
+										class="object-cover rounded-md w-full h-auto bg-color-1/20 min-h-[170px] sm:min-h-[90px]"
 										src={`https://themoviedb.org/t/p/w500${
 											result?.images?.backdrops[0]?.file_path ?? result.backdrop_path
 										}`}

@@ -1,36 +1,35 @@
 <script lang="ts">
 	import { fetchTrending } from '$src/lib/fetch';
+	import { onMount } from 'svelte';
 	import LoadTrending from './loading/LoadTrending.svelte';
 	import TrendingLabel from './TrendingLabel.svelte';
 
 	//Page props..
-	let {
-		trendingData,
-		trendingType = 'movie'
-	}: { trendingData: { movie: any; tv: any }; trendingType?: 'movie' | 'tv' } = $props();
-	let trendingDataWeek: any[] = $state([]);
+	let { trendingType = 'movie' }: { trendingType?: 'movie' | 'tv' } = $props();
+	let trendingData: any = $state([]);
+
 	let period = $state('day');
 	let type = trendingType;
-	let data: any = $state(type == 'movie' ? trendingData.movie : trendingData.tv);
-	let isLoading = $state(false);
+	let isLoading = $state(true);
+	let data: any = $state([]);
+
+	onMount(async () => {
+		const [trendingDataDay, trendingDataWeek] = await Promise.all([
+			fetchTrending('day', type),
+			fetchTrending('week', type)
+		]);
+		trendingData = { day: trendingDataDay, tv: trendingDataWeek };
+		data = trendingData.day;
+		isLoading = false;
+	});
 
 	const setTrendingPeriod = async (newPeriod: string) => {
 		if (newPeriod == period) return;
-		if (newPeriod == 'week') {
-			if (trendingDataWeek.length == 0) {
-				isLoading = true;
-				period = newPeriod;
-				const newPeriodData: any = await fetchTrending(period, type);
-				trendingDataWeek = newPeriodData;
-				data = trendingDataWeek;
-				isLoading = false;
-			} else {
-				period = newPeriod;
-				data = trendingDataWeek;
-			}
-		} else {
+		if (newPeriod == 'day') {
+			data = trendingData.day;
 			period = newPeriod;
-			data = type == 'movie' ? trendingData.movie : trendingData.tv;
+		} else {
+			data = trendingData.tv;
 		}
 	};
 </script>
@@ -82,7 +81,10 @@
 				<LoadTrending />
 			{:else}
 				{#each data as result, index}
-					<a href={result.media_type == 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}>
+					<a
+						data-sveltekit-preload-data
+						href={result.media_type == 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}
+					>
 						<div class="group item w-auto h-auto items-center flex relative" style="flex: 0 0 auto">
 							<p
 								class="group-hover:text-color-3/10 list-number w-auto center-div font-semibold text-[120px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]"
