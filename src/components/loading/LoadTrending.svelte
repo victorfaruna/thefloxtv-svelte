@@ -21,8 +21,8 @@
 				</svg>
 			</div>
 			<div class="object-cover skeleton rounded-md w-full h-[270px] sm:h-[225px] shadow-2xl"></div>
-			<p class="my-2 h-3 skeleton"></p>
-			<p class="w-[60%] my-2 h-3 skeleton"></p>
+			<p class="my-2 h-3 skeleton rounded-sm"></p>
+			<p class="w-[60%] my-2 h-3 skeleton rounded-sm"></p>
 		</div>
 	</div>
 {/each}

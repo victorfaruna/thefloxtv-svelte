@@ -30,6 +30,7 @@
 			period = newPeriod;
 		} else {
 			data = trendingData.tv;
+			period = newPeriod;
 		}
 	};
 </script>
