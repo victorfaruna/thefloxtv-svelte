@@ -5,9 +5,9 @@
 		>
 			{index + 1}
 		</p>
-		<div class=" w-[180px] sm:w-[150px] relative translate-x-[-10px]">
+		<div class=" w-[180px] sm:w-[150px] h-auto relative translate-x-[-10px]">
 			<div
-				class="group-hover:opacity-[1] opacity-[0] duration-[0.7s] w-full h-[250px] sm:h-[200px] rounded-md absolute z-[2] bg-gradient-to-t from-color-3 via-color-3/30 to-[transparent] flex items-center justify-center"
+				class="group-hover:opacity-[1] opacity-[0] duration-[0.7s] w-full h-full rounded-md absolute z-[2] bg-gradient-to-t from-color-3 via-color-3/30 to-[transparent] flex items-center justify-center"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@
 					/>
 				</svg>
 			</div>
-			<div class="object-cover skeleton rounded-md w-full h-[250px] sm:h-[200px] shadow-2xl"></div>
+			<div class="object-cover skeleton rounded-md w-full h-[270px] sm:h-[225px] shadow-2xl"></div>
 			<p class="my-2 h-3 skeleton"></p>
 			<p class="w-[60%] my-2 h-3 skeleton"></p>
 		</div>

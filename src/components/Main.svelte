@@ -42,7 +42,7 @@
 					class="swiper-slide carousel-item relative"
 					style="background-size:cover; background-image: url({width > 1000
 						? `https://image.tmdb.org/t/p/original${result.backdrop_path}`
-						: `https://image.tmdb.org/t/p/w1280${result.backdrop_path}`});"
+						: `https://image.tmdb.org/t/p/w780${result.backdrop_path}`});"
 				>
 					<div
 						class="mask w-full h-[70%] absolute bg-gradient-to-t from-main via-transparent to-transparent left-0 bottom-0 z-[3]"

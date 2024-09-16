@@ -7,7 +7,7 @@
 		</p>
 		<div class=" w-[320px] h-auto sm:w-[170px] translate-x-[-10px] overflow-hidden">
 			<div
-				class="skeleton rounded-md image-container w-full h-[170px] sm:h-[90px] overflow-hidden relative"
+				class="skeleton rounded-md image-container w-full h-[180px] sm:h-[95.5px] overflow-hidden relative"
 			></div>
 			<p class="skeleton w-[80%] my-1 h-2"></p>
 		</div>

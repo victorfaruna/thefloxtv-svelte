@@ -91,28 +91,30 @@
 							>
 								{index + 1}
 							</p>
-							<div class=" w-[180px] sm:w-[150px] relative translate-x-[-10px]">
-								<div
-									class="group-hover:opacity-[1] opacity-[0] duration-[0.7s] w-full h-[250px] sm:h-full rounded-md absolute z-[2] bg-gradient-to-t from-color-3 via-color-3/30 to-[transparent] flex items-center justify-center"
-								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										fill="currentColor"
-										class="bi bi-play-circle-fill size-[50px] sm:size-[45px] text-black"
-										viewBox="0 0 16 16 "
+							<div class=" w-[180px] sm:w-[150px] h-auto relative translate-x-[-10px]">
+								<div class="image-container w-full h-auto overflow-hidden relative">
+									<div
+										class="group-hover:opacity-[1] opacity-[0] duration-[0.7s] w-full h-full rounded-md absolute z-[2] bg-gradient-to-t from-color-3 via-color-3/30 to-[transparent] flex items-center justify-center"
 									>
-										<path
-											d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"
-										/>
-									</svg>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="currentColor"
+											class="bi bi-play-circle-fill size-[50px] sm:size-[45px] text-black"
+											viewBox="0 0 16 16 "
+										>
+											<path
+												d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"
+											/>
+										</svg>
+									</div>
+									<img
+										class="object-cover rounded-md w-full h-full shadow-2xl bg-color-1/20 min-h-[270px] sm:min-h-[225px]"
+										src={`https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
+										width={220}
+										height={300}
+										alt=""
+									/>
 								</div>
-								<img
-									class="object-cover rounded-md w-full h-[250px] sm:h-[200px] shadow-2xl"
-									src={`https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
-									width={220}
-									height={300}
-									alt=""
-								/>
 								<TrendingLabel data={result} {type} />
 							</div>
 						</div>
