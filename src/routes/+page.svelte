@@ -11,7 +11,7 @@
 </script>
 
 <Main {mainData} />
-<div class="px-10 sm:px-3">
+<div class="px-5 sm:px-3">
 	<ForYou {forYouData} />
 	<Trending trendingType="movie" />
 	<Trending trendingType="tv" />

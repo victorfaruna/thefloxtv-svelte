@@ -136,7 +136,7 @@
 									{@render PrimeVideoLogo('absolute top-[10px] left-[10px] z-40')}
 									<img
 										loading="lazy"
-										class="object-cover rounded-md w-full h-auto bg-color-1/20 min-h-[170px] sm:min-h-[90px]"
+										class="object-cover rounded-md w-full h-auto bg-color-1/5 min-h-[170px] sm:min-h-[90px]"
 										src={`https://themoviedb.org/t/p/w500${
 											result?.images?.backdrops[0]?.file_path ?? result.backdrop_path
 										}`}

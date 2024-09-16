@@ -55,7 +55,7 @@
 <header
 	class={`w-full h-[80px] sm:h-[50px] px-[3%] flex items-center justify-between ${
 		$page.url.pathname == '/' && 'absolute z-10'
-	} bg-gradient-to-b via-[#13111a3e] from-main to-transparent`}
+	} bg-gradient-to-b  from-black to-transparent`}
 >
 	<div class="left-section flex gap-0 items-center">
 		<div class="logo-cont w-auto h-full center-div">
@@ -143,10 +143,10 @@
 			<form
 				action="/search"
 				method="GET"
-				class="center-div w-full h-[34px] sm:h-[40px] flex rounded-md sm:rounded-2xl bg-[#c8c8c83f] sm:bg-black shadow-2xl shadow-gray-950 backdrop-blur-[70px]"
+				class="center-div w-full h-[40px] sm:h-[50px] flex rounded-[1.5rem] bg-black/50 sm:bg-black shadow-2xl shadow-gray-950 p-2"
 			>
 				<div
-					class="search-rep-ico flex items-center justify-center w-[8%] sm:w-[12%] h-full text-[13px] text-gray-400"
+					class="search-rep-ico flex items-center justify-center px-[0.8rem] py-[0.3rem] text-[0.6rem] gap-1 font-[300] text-gray-400 bg-[#353535] rounded-[50rem]"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -162,6 +162,7 @@
 							d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z"
 						/>
 					</svg>
+					Filter
 				</div>
 				<input
 					tabIndex={0}
@@ -172,10 +173,10 @@
 					name="q"
 					placeholder="Search Movies and Tv Shows"
 					oninput={search}
-					class="w-[92%] h-full bg-transparent border-none outline-none text-white text-[12px] font-normal pl-[10px] text-center"
+					class="w-[92%] h-full bg-transparent border-none outline-none text-white/20 font-[300] text-[12px] pl-[10px] text-center"
 				/>
 				<div
-					class="search-rep-ico flex items-center justify-center w-[8%] sm:w-[12%] h-full text-[13px] text-gray-400"
+					class="search-rep-ico flex items-center justify-center px-[0.8rem] py-[0.3rem] text-[0.6rem] font-[300] text-color-3 rounded-[50rem]"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"

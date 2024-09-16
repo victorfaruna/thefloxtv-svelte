@@ -109,7 +109,7 @@
 										</svg>
 									</div>
 									<img
-										class="object-cover rounded-md w-full h-full shadow-2xl bg-color-1/20 min-h-[270px] sm:min-h-[225px]"
+										class="object-cover rounded-md w-full h-full shadow-2xl bg-color-1/5 min-h-[270px] sm:min-h-[225px]"
 										src={`https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
 										width={220}
 										height={300}
