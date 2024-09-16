@@ -46,7 +46,7 @@
 				>
 					<div class="inner-container w-full h-full flex flex-col justify-end px-5 relative z-[50]">
 						<div
-							class="text w-[60%] h-auto mb-[13rem] md:mb-[7rem] pb-10 overflow-hidden sm:w-full sm:text-center"
+							class="text w-[60%] h-auto mb-[13rem] md:mb-[7rem] pb-10 sm:pb-5 overflow-hidden sm:w-full sm:text-center"
 						>
 							<MovieLogo
 								movieId={result.id}
