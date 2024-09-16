@@ -39,7 +39,7 @@
 					slidesPerView: 1
 				}
 			},
-			spaceBetween: 10
+			spaceBetween: 15
 		});
 		return () => {
 			swiper.destroy();
@@ -79,7 +79,7 @@
 		</svg>
 	</div>
 	<div class="w-full sm:px-1 flex gap-2">
-		<div bind:this={swiperComponent} class="swiper w-full h-[15rem] sm:h-[10rem]">
+		<div bind:this={swiperComponent} class="swiper w-full h-[14rem] sm:h-[10rem]">
 			<div class="swiper-wrapper">
 				{#if isLoading}
 					Loading
@@ -95,17 +95,19 @@
 									style="background-Image: url(https://image.tmdb.org/t/p/w780{result.backdrop_path}); background-size: cover;"
 								>
 									<p
-										class="text-[17px] sm:text-[15px] font-semibold relative z-[2] text-gray-300 w-[60%] overflow-hidden text-ellipsis whitespace-nowrap"
+										class="text-[17px] sm:text-[15px] font-bold relative z-[2] text-gray-300 w-[60%] overflow-hidden text-ellipsis whitespace-nowrap"
 									>
 										{result.media_type == 'movie'
 											? result.title.toUpperCase()
 											: result.name.toUpperCase()}
 									</p>
-									<p class="text-[13px] word sm:text-[12px] relative z-[2] text-color-3 p">
+									<p
+										class="text-[13px] font-semibold word sm:text-[12px] relative z-[2] text-color-3 p"
+									>
 										{result.media_type == 'movie'
 											? getLetterRange(result.release_date, 4)
 											: getLetterRange(result.first_air_date, 4)}
-										&nbsp; &middot; &nbsp;
+										&nbsp; &nbsp;
 										{result.media_type == 'movie' ? `Movie` : 'TV'}
 									</p>
 								</div>

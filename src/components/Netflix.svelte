@@ -136,7 +136,7 @@
 									/>
 								</div>
 								<p
-									class="text-[14px] my-1 sm:text-[12px] text-[lightgrey] w-full whitespace-nowrap overflow-ellipsis overflow-hidden"
+									class="text-[14px] my-1 sm:text-[12px] text-color-1 w-full whitespace-nowrap overflow-ellipsis overflow-hidden"
 								>
 									{type == 'movie' ? result.title : result.name}
 								</p>

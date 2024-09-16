@@ -22,7 +22,7 @@
 </div>
 <div>
 	<p
-		class="text-[14px] sm:text-[12px] text-[lightgrey] w-full whitespace-nowrap overflow-ellipsis overflow-hidden"
+		class="text-[14px] sm:text-[12px] text-color-2/90 w-full whitespace-nowrap overflow-ellipsis overflow-hidden"
 	>
 		{type == 'movie' ? data.title : data.name}
 	</p>

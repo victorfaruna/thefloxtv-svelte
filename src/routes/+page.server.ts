@@ -5,8 +5,8 @@ export const ssr = true;
 
 export const load = (async () => {
 	const [mainData, forYouData] = await Promise.all([
-		fetchNowPlaying(),
-		fetchTrending('day', 'all', false)
+		fetchTrending('day', 'all', false),
+		fetchTrending('week', 'all', false)
 	]);
 	return {
 		mainData,
