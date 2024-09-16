@@ -162,7 +162,7 @@
 		background-color: rgb(var(--bg-color-1));
 		box-shadow: inset 0 0 80px transparent;
 		background-position: center;
-		transition: all 0.2s;
+		transition: all 0.3s ease-in-out;
 	}
 	.foryou-inner:hover {
 		box-shadow: inset 0 0 80px rgba(var(--color-3));
