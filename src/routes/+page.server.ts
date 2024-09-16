@@ -1,21 +1,33 @@
 import type { PageServerLoad } from './$types';
-import { fetchNetflix, fetchNowPlaying, fetchTrending } from '$src/lib/fetch';
+import { fetchNetflix, fetchNowPlaying, fetchPrimeVideo, fetchTrending } from '$src/lib/fetch';
 
 export const ssr = true;
 
 export const load = (async () => {
-	const [fetch1, fetch2, fetch3, fetch4, fetch5, fetch6] = await Promise.all([
+	const [
+		mainData,
+		forYouData,
+		trendingDataMovie,
+		trendingDataTv,
+		netflixDataMovie,
+		netflixDataTv,
+		primeVideoDataMovie,
+		primeVideoDataTv
+	] = await Promise.all([
 		fetchNowPlaying(),
 		fetchTrending('day', 'all', false),
 		fetchTrending('day', 'movie', false),
 		fetchTrending('day', 'tv', false),
 		fetchNetflix('movie', true),
-		fetchNetflix('tv', true)
+		fetchNetflix('tv', true),
+		fetchPrimeVideo('movie', true),
+		fetchPrimeVideo('tv', true)
 	]);
 	return {
-		mainData: fetch1,
-		forYouData: fetch2,
-		trendingData: { movie: fetch3, tv: fetch4 },
-		netflixData: { movie: fetch5, tv: fetch6 }
+		mainData,
+		forYouData,
+		trendingData: { movie: trendingDataMovie, tv: trendingDataTv },
+		netflixData: { movie: netflixDataMovie, tv: netflixDataTv },
+		primeVideoData: { movie: primeVideoDataMovie, tv: primeVideoDataTv }
 	};
 }) satisfies PageServerLoad;

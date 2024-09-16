@@ -78,20 +78,20 @@
 			class="scroll-container no-scrollbar"
 			style="display: flex; flex-wrap: nowrap; width: 100%; height: auto; overflow-x: auto;"
 		>
-			{#if isLoading || data.length == 0}
+			{#if isLoading || (data && data.length == 0)}
 				<LoadTrending />
 			{:else}
 				{#each data as result, index}
 					<a href={result.media_type == 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}>
-						<div class="group item w-auto h-auto flex relative" style="flex: 0 0 auto">
+						<div class="group item w-auto h-auto items-center flex relative" style="flex: 0 0 auto">
 							<p
-								class="group-hover:text-color-3/10 list-number w-auto h-auto center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]"
+								class="group-hover:text-color-3/10 list-number w-auto center-div font-semibold text-[120px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]"
 							>
 								{index + 1}
 							</p>
 							<div class=" w-[180px] sm:w-[150px] relative translate-x-[-10px]">
 								<div
-									class="group-hover:opacity-[1] opacity-[0] duration-[0.7s] w-full h-[250px] sm:h-[200px] rounded-md absolute z-[2] bg-gradient-to-t from-color-3 via-color-3/30 to-[transparent] flex items-center justify-center"
+									class="group-hover:opacity-[1] opacity-[0] duration-[0.7s] w-full h-[250px] sm:h-full rounded-md absolute z-[2] bg-gradient-to-t from-color-3 via-color-3/30 to-[transparent] flex items-center justify-center"
 								>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"

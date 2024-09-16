@@ -62,6 +62,43 @@ export const fetchNetflix = async (type: string, appendDetails: boolean = false)
 							? await getMovieDetails(item.id)
 							: await getSeriesDetails(item.id);
 					response.push({ ...details });
+					response.sort((a: any, b: any) => b.popularity - a.popularity);
+				})
+			);
+
+			return response;
+		} else {
+			return results;
+		}
+	} catch (error) {
+		console.log(error);
+	}
+};
+export const fetchPrimeVideo = async (type: string, appendDetails: boolean = false) => {
+	try {
+		const req = await fetch(
+			`https://api.themoviedb.org/3/discover/${type}?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&watch_region=US&with_watch_providers=2`,
+			{
+				headers: {
+					Authorization:
+						'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E'
+				},
+				cache: 'no-cache'
+			}
+		);
+		const data = await req.json();
+		let results = data.results;
+		if (appendDetails === true) {
+			let response: any = [];
+			await Promise.all(
+				results.map(async (item: any) => {
+					item['media_type'] = type;
+					const details =
+						item.media_type == 'movie'
+							? await getMovieDetails(item.id)
+							: await getSeriesDetails(item.id);
+					response.push({ ...details });
+					response.sort((a: any, b: any) => b.popularity - a.popularity);
 				})
 			);
 
