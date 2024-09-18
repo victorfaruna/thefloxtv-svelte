@@ -6,7 +6,6 @@
 	import Trending from '$components/Trending.svelte';
 	const { data } = $props();
 	const { mainData, forYouData, trendingMoviesData, trendingTvData } = data;
-	console.log(mainData);
 </script>
 
 <Main {mainData} />

@@ -15,7 +15,6 @@
 		window.addEventListener('resize', () => {
 			width = window.innerWidth;
 		});
-		console.log(width);
 		const swiper = new Swiper(swiperComponent, {
 			modules: [Autoplay, Navigation, Pagination],
 			loop: true,
