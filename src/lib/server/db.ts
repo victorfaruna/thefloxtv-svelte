@@ -6,4 +6,4 @@ config({ path: '.env' });
 const client = dev
 	? postgres(process.env.DATABASE_URL!)
 	: postgres(process.env.DATABASE_URL!, { ssl: 'require' });
-export const db = drizzle(client);
+export const db = drizzle(client, {});
