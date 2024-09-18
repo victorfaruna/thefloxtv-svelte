@@ -88,7 +88,9 @@
 						<div class="swiper-slide relative">
 							<a
 								data-sveltekit-preload-data
-								href={result.media_type == 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}
+								href={result.media_type == 'movie'
+									? `/movie/${result.tmdb_id}`
+									: `/tv/${result.id}`}
 							>
 								<div
 									class="inner foryou-inner w-full h-[95%] p-5 rounded-xl flex flex-col justify-end group"
@@ -101,14 +103,10 @@
 											? result.title.toUpperCase()
 											: result.name.toUpperCase()}
 									</p>
-									<p
-										class="text-[13px] font-semibold word sm:text-[12px] relative z-[2] text-color-3 p"
-									>
-										{result.media_type == 'movie'
-											? getLetterRange(result.release_date, 4)
-											: getLetterRange(result.first_air_date, 4)}
-										&nbsp; &nbsp;
-										{result.media_type == 'movie' ? `Movie` : 'TV'}
+									<p class="text-[12px] font-[500] relative z-[2] text-color-3 p flex gap-2">
+										<span>{result.genre1}</span>
+										<span>{result.genre2}</span>
+										<span>{result.genre3}</span>
 									</p>
 								</div>
 							</a>

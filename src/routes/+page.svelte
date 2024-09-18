@@ -5,16 +5,15 @@
 	import PrimeVideo from '$components/PrimeVideo.svelte';
 	import Trending from '$components/Trending.svelte';
 	const { data } = $props();
-	const { mainData, forYouData } = data;
-
-	console.log(data);
+	const { mainData, forYouData, trendingMoviesData, trendingTvData } = data;
+	console.log(mainData);
 </script>
 
 <Main {mainData} />
 <div class="px-5 sm:px-3">
 	<ForYou {forYouData} />
-	<Trending trendingType="movie" />
-	<Trending trendingType="tv" />
+	<Trending trendingType="movie" trendingData={trendingMoviesData} />
+	<Trending trendingType="tv" trendingData={trendingTvData} />
 	<Netflix />
 	<PrimeVideo />
 </div>

@@ -1,15 +1,23 @@
 import type { PageServerLoad } from './$types';
-import { fetchNetflix, fetchNowPlaying, fetchPrimeVideo, fetchTrending } from '$src/lib/fetch';
-
-export const ssr = true;
+import { db } from '$src/lib/server/db';
+import {
+	forYouTable,
+	mainTable,
+	trendingMoviesTable,
+	trendingTvTable
+} from '$src/lib/server/schema';
 
 export const load = (async () => {
-	const [mainData, forYouData] = await Promise.all([
-		fetchTrending('day', 'all', false),
-		fetchTrending('week', 'all', false)
+	const [mainData, forYouData, trendingMoviesData, trendingTvData] = await Promise.all([
+		db.select().from(mainTable),
+		db.select().from(forYouTable),
+		db.select().from(trendingMoviesTable),
+		db.select().from(trendingTvTable)
 	]);
 	return {
 		mainData,
-		forYouData
+		forYouData,
+		trendingMoviesData,
+		trendingTvData
 	};
 }) satisfies PageServerLoad;

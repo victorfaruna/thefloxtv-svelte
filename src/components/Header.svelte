@@ -143,7 +143,7 @@
 			<form
 				action="/search"
 				method="GET"
-				class="center-div w-full h-[40px] sm:h-[50px] flex rounded-[1.5rem] bg-black/50 sm:bg-black shadow-2xl shadow-gray-950 p-2"
+				class="group center-div w-full h-[40px] sm:h-[50px] flex rounded-[1.5rem] bg-black sm:bg-black shadow-2xl shadow-gray-950 p-2"
 			>
 				<div
 					class="search-rep-ico flex items-center justify-center px-[0.8rem] py-[0.3rem] text-[0.6rem] gap-1 font-[300] text-gray-400 bg-[#353535] sm:bg-transparent rounded-[50rem]"
@@ -173,7 +173,7 @@
 					name="q"
 					placeholder="Search Movies and Tv Shows"
 					oninput={search}
-					class="w-[92%] h-full bg-transparent border-none outline-none text-white/20 font-[300] text-[12px] pl-[10px] text-center"
+					class="w-[92%] h-full bg-transparent border-none outline-none text-white font-[300] text-[12px] pl-[10px] text-center"
 				/>
 				<div
 					class="search-rep-ico flex items-center justify-center px-[0.8rem] py-[0.3rem] text-[0.6rem] font-[300] text-color-3 rounded-[50rem]"
@@ -197,7 +197,7 @@
 			<div
 				id="searchresult"
 				tabIndex={0}
-				class="dropdown-content w-full max-h-[50vh] absolute top-[40px] left-0 overflow-y-auto shadow-2xl overflow-x-hidden bg-main/60 backdrop-blur-[60px] rounded-md px-[5%] py-4 sm:bg-black z-[10] sm:top-[150px] sm:w-[90%] sm:left-[5vw] sm:rounded-2xl sm:max-h-[70vh]"
+				class="dropdown-content w-full max-h-[50vh] absolute top-[30px] left-0 overflow-y-auto shadow-2xl shadow-color-1/20 overflow-x-hidden bg-main/80 backdrop-blur-[60px] rounded-xl px-[5%] z-[-1] py-4 sm:bg-black sm:top-[150px] sm:w-[90%] sm:left-[5vw] sm:rounded-2xl sm:max-h-[70vh]"
 			>
 				{#key searchValue}
 					<LivesearchResult query={searchValue} />

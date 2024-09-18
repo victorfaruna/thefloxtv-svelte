@@ -35,7 +35,7 @@
 </script>
 
 <div class="carousel-cont">
-	<div bind:this={swiperComponent} class="swiper carousel w-full h-[850px] md:h-[400px]">
+	<div bind:this={swiperComponent} class="swiper carousel w-full h-[800px] md:h-[400px]">
 		<div class="swiper-wrapper">
 			{#each mainData.slice(0, 10) as result}
 				<div
@@ -46,11 +46,10 @@
 				>
 					<div class="inner-container w-full h-full flex flex-col justify-end px-5 relative z-[50]">
 						<div
-							class="text w-[60%] h-auto mb-[16rem] md:mb-[2rem] overflow-hidden sm:w-full sm:text-center"
+							class="text w-[60%] h-auto mb-[13rem] md:mb-[2rem] overflow-hidden sm:w-full sm:text-center"
 						>
 							<MovieLogo
-								movieId={result.id}
-								mediaType={result.media_type}
+								movieLogo={result.logo_path}
 								movieTitle={result.name ? result.name : result.title}
 							/>
 
@@ -97,7 +96,9 @@
 							<div class="buttons flex gap-5 flex-wrap sm:justify-center font-[500]">
 								<a
 									data-sveltekit-preload-data
-									href={result.media_type === 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}
+									href={result.media_type === 'movie'
+										? `/movie/${result.tmdb_id}`
+										: `/tv/${result.id}`}
 								>
 									<button
 										class="view-btn w-[160px] h-[43px] border border-color-3/50 text-color-3 bg-color-3/[0.09] backdrop-blur-[7px] rounded-[1.5rem] center-div gap-2"

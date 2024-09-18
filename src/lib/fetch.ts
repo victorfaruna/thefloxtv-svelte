@@ -1,10 +1,6 @@
 import axios from 'axios';
 
-export const fetchTrending = async (
-	period: string | undefined,
-	type?: string | undefined,
-	appendDetails: boolean = false
-) => {
+export const fetchTrending = async (type: string | undefined, period?: string | undefined) => {
 	if (type == undefined) type = 'all';
 	try {
 		const req = await fetch(
@@ -19,20 +15,21 @@ export const fetchTrending = async (
 		);
 		const data = await req.json();
 		let results = data.results;
-		if (appendDetails === true) {
-			let response: any = [];
-			for (const item of results) {
-				item['media_type'] = type == 'all' ? item.media_type : type;
-				const details =
-					item.media_type == 'movie'
-						? await getMovieDetails(item.id)
-						: await getSeriesDetails(item.id);
-				response.push({ ...details });
+		let response: any = [];
+		for (const item of results) {
+			item['media_type'] = type == 'all' ? item.media_type : type;
+			if (item['media_type'] !== 'movie' && item['media_type'] !== 'tv') {
+				continue;
 			}
-			return response;
-		} else {
-			return results;
+			const details =
+				item['media_type'] == 'movie'
+					? await getMovieDetails(item.id)
+					: item['media_type'] == 'tv'
+						? await getSeriesDetails(item.id)
+						: [];
+			response.push({ ...details });
 		}
+		return response;
 	} catch (error) {
 		console.log(error);
 	}

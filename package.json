@@ -19,6 +19,7 @@
 		"@types/nprogress": "^0.2.3",
 		"autoprefixer": "^10.4.20",
 		"daisyui": "^4.12.10",
+		"drizzle-kit": "^0.24.2",
 		"eslint": "^9.0.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0",
@@ -37,9 +38,13 @@
 	"dependencies": {
 		"@splidejs/svelte-splide": "^0.2.9",
 		"axios": "^1.7.7",
+		"dotenv": "^16.4.5",
+		"drizzle-orm": "^0.33.0",
+		"ioredis": "^5.4.1",
 		"my-top-loader": "github:victorfaruna/sveltekit-top-loader#main",
 		"nprogress": "^0.2.0",
 		"nprogress-esm": "^0.2.6",
+		"postgres": "^3.4.4",
 		"svelte-swiper": "^1.0.1",
 		"swiper": "^11.1.12"
 	}

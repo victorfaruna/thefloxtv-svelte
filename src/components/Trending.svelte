@@ -5,32 +5,40 @@
 	import TrendingLabel from './TrendingLabel.svelte';
 
 	//Page props..
-	let { trendingType = 'movie' }: { trendingType?: 'movie' | 'tv' } = $props();
-	let trendingData: any = $state([]);
+	let {
+		trendingData,
+		trendingType = 'movie'
+	}: { trendingData: any; trendingType?: 'movie' | 'tv' } = $props();
+
+	let storedTrendingDataWeek: any = $state([]);
 
 	let period = $state('day');
 	let type = trendingType;
-	let isLoading = $state(true);
-	let data: any = $state([]);
+	let isLoading = $state(false);
+	let data: any = $state(trendingData);
 
 	onMount(async () => {
-		const [trendingDataDay, trendingDataWeek] = await Promise.all([
-			fetchTrending('day', type),
-			fetchTrending('week', type)
-		]);
-		trendingData = { day: trendingDataDay, tv: trendingDataWeek };
-		data = trendingData.day;
-		isLoading = false;
+		const trendingDataWeek = await fetchTrending(type, 'week');
+		storedTrendingDataWeek = trendingDataWeek;
 	});
 
 	const setTrendingPeriod = async (newPeriod: string) => {
 		if (newPeriod == period) return;
 		if (newPeriod == 'day') {
-			data = trendingData.day;
+			data = trendingData;
 			period = newPeriod;
 		} else {
-			data = trendingData.tv;
-			period = newPeriod;
+			if (storedTrendingDataWeek.length > 0) {
+				data = storedTrendingDataWeek;
+				period = newPeriod;
+			} else {
+				period = newPeriod;
+				isLoading = true;
+				const trendingDataWeek = await fetchTrending(type, newPeriod);
+				storedTrendingDataWeek = trendingDataWeek;
+				data = trendingDataWeek;
+				isLoading = false;
+			}
 		}
 	};
 </script>
