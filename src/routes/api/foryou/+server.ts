@@ -1,10 +1,10 @@
 import { fetchTrending } from '$src/lib/fetch';
-import { db } from '$src/lib/server/db.server';
+import { db } from '$lib/server/db';
 import { forYouTable } from '$src/lib/server/schema';
 
 export async function GET() {
 	try {
-		const trending1 = await fetchTrending('all', 'week');
+		const trending1: any = await fetchTrending('all', 'week');
 		for (const trending of trending1) {
 			trending.media_type === 'movie'
 				? await db.insert(forYouTable).values({

@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { db } from '$src/lib/server/db.server';
+import { db } from '$src/lib/server/db';
 import {
 	forYouTable,
 	mainTable,

@@ -1,5 +1,5 @@
 import { fetchTrending } from '$src/lib/fetch';
-import { db } from '$src/lib/server/db.server';
+import { db } from '$lib/server/db';
 import { mainTable } from '$src/lib/server/schema';
 
 export async function GET() {
