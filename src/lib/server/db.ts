@@ -5,5 +5,5 @@ import postgres from 'postgres';
 import { config } from 'dotenv';
 config({ path: '.env' });
 const { DATABASE_URL }: any = process.env;
-const client = postgres(DATABASE_URL);
+const client = postgres(DATABASE_URL, { port: 6543 });
 export const db = drizzle(client, { schema });
