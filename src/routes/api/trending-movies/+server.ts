@@ -1,5 +1,5 @@
 import { fetchTrending } from '$src/lib/fetch';
-import { db } from '$src/lib/server/db';
+import { db } from '$src/lib/server/db.server';
 import { trendingMoviesTable } from '$src/lib/server/schema';
 
 export async function GET() {
