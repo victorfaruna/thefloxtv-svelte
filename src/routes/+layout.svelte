@@ -3,7 +3,7 @@
 	import '$src/app.css';
 	import { page } from '$app/stores';
 	import { toSentenceCase } from '$src/lib';
-	import Toploader from '$lib/Toploader.svelte';
+	// import Toploader from '$lib/Toploader.svelte';
 
 	export let host = toSentenceCase($page.url.hostname.split('.')[0]);
 </script>
@@ -17,6 +17,6 @@
 </svelte:head>
 <Header />
 <div>
-	<Toploader color="rgba(var(--color-3))" showSpinner={false} height={2} />
+	<!-- <Toploader color="rgba(var(--color-3))" showSpinner={false} height={2} /> -->
 	<slot />
 </div>

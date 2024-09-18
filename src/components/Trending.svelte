@@ -10,41 +10,13 @@
 		trendingType = 'movie'
 	}: { trendingData: any; trendingType?: 'movie' | 'tv' } = $props();
 
-	let storedTrendingDataWeek: any = $state([]);
-
-	let period = $state('day');
 	let type = trendingType;
 	let isLoading = $state(false);
 	let data: any = $state(trendingData);
-
-	onMount(async () => {
-		const trendingDataWeek = await fetchTrending(type, 'week');
-		storedTrendingDataWeek = trendingDataWeek;
-	});
-
-	const setTrendingPeriod = async (newPeriod: string) => {
-		if (newPeriod == period) return;
-		if (newPeriod == 'day') {
-			data = trendingData;
-			period = newPeriod;
-		} else {
-			if (storedTrendingDataWeek.length > 0) {
-				data = storedTrendingDataWeek;
-				period = newPeriod;
-			} else {
-				period = newPeriod;
-				isLoading = true;
-				const trendingDataWeek = await fetchTrending(type, newPeriod);
-				storedTrendingDataWeek = trendingDataWeek;
-				data = trendingDataWeek;
-				isLoading = false;
-			}
-		}
-	};
 </script>
 
 <div class="cont my-10">
-	<div class="mb-5 justify-center flex sm:flex-col gap-5 sm:gap-3 items-center text-[12px]">
+	<div class="mb-5 flex sm:flex-col gap-5 sm:gap-3 items-center justify-between text-[12px]">
 		<div class="uppercase text-[25px] sm:text-[17px] font-bold text-white flex gap-1 items-center">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -58,33 +30,28 @@
 			</svg>
 			<p>Trending {type == 'movie' ? 'Movies' : 'Tv Shows'}</p>
 		</div>
-
-		<div class="flex gap-3 sm:gap-1 items-center text-[grey] sm:text-[11px]">
-			<button
-				aria-label="Today"
-				onclick={() => setTrendingPeriod('day')}
-				class={`px-3 py-1 border-[1.5px] rounded-md cursor-pointer active:border-color-3 active:text-color-3 ${
-					period == 'day' ? ' border-color-3 text-color-3' : 'border-color-1/20'
-				}`}
+		<div class="flex gap-2 items-center mr-6 sm:mr-0">
+			<p>View all</p>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="size-6"
 			>
-				Today
-			</button>
-			<button
-				aria-label="This Week"
-				onclick={() => setTrendingPeriod('week')}
-				class={`px-3 py-1 border-[1.5px] rounded-md cursor-pointer active:border-color-3 active:text-color-3 ${
-					period == 'week' ? ' border-color-3 text-color-3' : 'border-color-1/20'
-				}`}
-			>
-				This Week
-			</button>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+				/>
+			</svg>
 		</div>
 	</div>
 
-	<div class="trending-cont mb-[50px] flex sm:flex-col">
+	<div class="trending-cont h-auto overflow-hidden mb-[50px] flex sm:flex-col relative">
 		<div
-			class="scroll-container no-scrollbar"
-			style="display: flex; flex-wrap: nowrap; width: 100%; height: auto; overflow-x: auto;"
+			class="scroll-container no-scrollbar flex flex-nowrap w-full h-auto overflow-x-auto gap-5 sm:gap-4"
 		>
 			{#if isLoading || (data && data.length == 0)}
 				<LoadTrending />
@@ -95,12 +62,7 @@
 						href={result.media_type == 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}
 					>
 						<div class="group item w-auto h-auto items-center flex relative" style="flex: 0 0 auto">
-							<p
-								class="group-hover:text-color-3/10 list-number w-auto center-div font-semibold text-[120px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]"
-							>
-								{index + 1}
-							</p>
-							<div class=" w-[180px] sm:w-[150px] h-auto relative translate-x-[-10px]">
+							<div class=" w-[180px] sm:w-[150px] h-auto relative translate-">
 								<div class="image-container w-full h-auto overflow-hidden relative">
 									<div
 										class="group-hover:opacity-[1] opacity-[0] duration-[0.7s] w-full h-full rounded-md absolute z-[2] bg-gradient-to-t from-color-3 via-color-3/30 to-[transparent] flex items-center justify-center"
@@ -117,7 +79,7 @@
 										</svg>
 									</div>
 									<img
-										class="object-cover rounded-md w-full h-full shadow-2xl bg-color-1/5 min-h-[270px] sm:min-h-[225px]"
+										class="object-cover rounded-lg w-full shadow-2xl bg-color-1/5 h-[260px] sm:h-[215px]"
 										src={`https://themoviedb.org/t/p/w220_and_h330_face${result.poster_path}`}
 										width={220}
 										height={300}
@@ -133,3 +95,22 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.scroll-container::after {
+		content: '';
+		height: 100%;
+		background-color: black;
+		position: absolute;
+		z-index: 10;
+		bottom: 0;
+		right: 0;
+		box-shadow: 1px 0 90px 90px rgb(var(--bg-color-1));
+	}
+
+	@media (max-width: 768px) {
+		.scroll-container::after {
+			box-shadow: 1px 0 50px 60px rgb(var(--bg-color-1));
+		}
+	}
+</style>
