@@ -98,7 +98,7 @@
 									data-sveltekit-preload-data
 									href={result.media_type === 'movie'
 										? `/movie/${result.tmdb_id}`
-										: `/tv/${result.tmdbid}`}
+										: `/tv/${result.tmdb_id}`}
 								>
 									<button
 										class="view-btn w-[160px] h-[43px] border border-color-3/50 text-black bg-color-3/90 rounded-[1.5rem] center-div gap-2 glassmorphism"
