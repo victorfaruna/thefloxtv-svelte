@@ -29,13 +29,16 @@
 
 			breakpoints: {
 				900: {
-					slidesPerView: 3
+					slidesPerView: 3,
+					slidesPerGroup: 3
 				},
 				680: {
-					slidesPerView: 2
+					slidesPerView: 2,
+					slidesPerGroup: 2
 				},
 				200: {
-					slidesPerView: 1
+					slidesPerView: 1,
+					slidesPerGroup: 1
 				}
 			},
 			spaceBetween: 15
@@ -92,8 +95,8 @@
 									: `/tv/${result.id}`}
 							>
 								<div
-									class="inner foryou-inner w-full h-[95%] p-5 rounded-xl flex flex-col justify-end group"
-									style="background-Image: url(https://image.tmdb.org/t/p/w780{result.backdrop_path}); background-size: cover;"
+									class="inner foryou-inner w-full h-[95%] p-5 rounded-2xl flex flex-col justify-end group"
+									style="background-Image: url(https://image.tmdb.org/t/p/original{result.backdrop_path}); background-size: cover;"
 								>
 									<p
 										class="text-[17px] sm:text-[15px] font-bold relative z-[2] text-gray-300 w-[60%] overflow-hidden text-ellipsis whitespace-nowrap"
@@ -113,13 +116,13 @@
 					{/each}
 				{/if}
 			</div>
-			<div class="swiper-progress"></div>
+			<div class="swiper-progress relative z-[2]"></div>
 		</div>
 
 		<div class="controls w-[40px] flex flex-col gap-3 text-color-1/30 sm:hidden">
 			<button
 				aria-label="Slide Next"
-				class="w-full h-full rounded-lg center-div bg-color-1/20"
+				class="w-full h-full rounded-lg center-div bg-color-1/20 glassmorphism"
 				onclick={() => swipeNext()}
 			>
 				<svg
@@ -135,7 +138,7 @@
 			</button>
 			<button
 				aria-label="Slide Prev"
-				class="w-full h-full rounded-lg center-div bg-color-1/20"
+				class="w-full h-full rounded-lg center-div bg-color-1/20 glassmorphism"
 				onclick={() => swipePrev()}
 			>
 				<svg
@@ -160,6 +163,7 @@
 		box-shadow: inset 0 0 80px transparent;
 		background-position: center;
 		transition: all 0.3s ease-in-out;
+		position: relative;
 	}
 	.foryou-inner:hover {
 		box-shadow: inset 0 0 80px rgba(var(--color-3));
