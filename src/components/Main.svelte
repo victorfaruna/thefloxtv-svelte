@@ -86,7 +86,7 @@
 								</span>
 							</div>
 							<p
-								class="desc sm:hidden mr-6 sm:mr-0 mb-10 text-[#888] leading-6 text-[1rem]"
+								class="desc sm:hidden mr-6 sm:mr-0 mb-10 text-color-1 leading-6 text-[1rem]"
 								style="text-shadow: 0 1px 2px #000"
 							>
 								{result.overview.split(/\s+/).length > 45
@@ -98,7 +98,7 @@
 									data-sveltekit-preload-data
 									href={result.media_type === 'movie'
 										? `/movie/${result.tmdb_id}`
-										: `/tv/${result.id}`}
+										: `/tv/${result.tmdbid}`}
 								>
 									<button
 										class="view-btn w-[160px] h-[43px] border border-color-3/50 text-color-3 bg-color-3/[0.09] backdrop-blur-[7px] rounded-[1.5rem] center-div gap-2"

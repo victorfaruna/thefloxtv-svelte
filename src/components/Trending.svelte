@@ -59,7 +59,9 @@
 				{#each data as result, index}
 					<a
 						data-sveltekit-preload-data
-						href={result.media_type == 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}
+						href={result.media_type == 'movie'
+							? `/movie/${result.tmdb_id}`
+							: `/tv/${result.tmdb_id}`}
 					>
 						<div class="group item w-auto h-auto items-center flex relative" style="flex: 0 0 auto">
 							<div class=" w-[180px] sm:w-[150px] h-auto relative translate-">
