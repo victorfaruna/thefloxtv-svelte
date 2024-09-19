@@ -4,6 +4,7 @@ import { mainTable } from '$src/lib/server/schema';
 
 export async function GET() {
 	try {
+		await db.delete(mainTable);
 		const trending1 = await fetchTrending('all', 'day');
 		for (const trending of trending1) {
 			trending.media_type === 'movie'

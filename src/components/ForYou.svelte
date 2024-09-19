@@ -92,7 +92,7 @@
 								data-sveltekit-preload-data
 								href={result.media_type == 'movie'
 									? `/movie/${result.tmdb_id}`
-									: `/tv/${result.id}`}
+									: `/tv/${result.tmdb_id}`}
 							>
 								<div
 									class="inner foryou-inner w-full h-[95%] p-5 rounded-2xl flex flex-col justify-end group"

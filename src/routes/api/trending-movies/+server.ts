@@ -4,6 +4,7 @@ import { trendingMoviesTable } from '$src/lib/server/schema';
 
 export async function GET() {
 	try {
+		await db.delete(trendingMoviesTable);
 		const trending1 = await fetchTrending('movie', 'day');
 		for (const trending of trending1) {
 			await db.insert(trendingMoviesTable).values({

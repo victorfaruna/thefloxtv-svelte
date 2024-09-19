@@ -1,12 +1,14 @@
 import type { PageServerLoad } from './$types';
 import { db } from '$src/lib/server/db';
+
 import {
 	forYouTable,
 	mainTable,
 	trendingMoviesTable,
 	trendingTvTable
 } from '$src/lib/server/schema';
-
+export const ssr = true;
+export const csr = true;
 export const load = (async () => {
 	const [mainData, forYouData, trendingMoviesData, trendingTvData] = await Promise.all([
 		db.select().from(mainTable),

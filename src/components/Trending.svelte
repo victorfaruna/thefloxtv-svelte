@@ -63,10 +63,7 @@
 							? `/movie/${result.tmdb_id}`
 							: `/tv/${result.tmdb_id}`}
 					>
-						<div
-							class="group item w-auto h-auto items-center flex relative glassmorphism bg-color-1/20 rounded-xl p-2"
-							style="flex: 0 0 auto"
-						>
+						<div class="group item w-auto h-auto items-center flex relative" style="flex: 0 0 auto">
 							<div class=" w-[180px] sm:w-[150px] h-auto relative translate-">
 								<div class="image-container w-full h-auto overflow-hidden relative">
 									<div
