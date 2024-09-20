@@ -1,4 +1,5 @@
 <script>
+	import Footer from '$components/Footer.svelte';
 	import ForYou from '$components/ForYou.svelte';
 	import Main from '$components/Main.svelte';
 	import Netflix from '$components/Netflix.svelte';
@@ -17,4 +18,5 @@
 	<Trending trendingType="tv" trendingData={trendingTvData} />
 	<Netflix />
 	<PrimeVideo />
+	<Footer />
 </div>

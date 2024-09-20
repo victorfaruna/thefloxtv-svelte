@@ -3,8 +3,14 @@
 	import MovieScreen from '$components/MovieScreen.svelte';
 	import { getLetterRange, getWordRange } from '$src/lib';
 	let { data } = $props();
-	let { movieData } = data;
+	let movieData = $state(data.movieData);
 	let id = $page.params.id;
+
+	$effect(() => {
+		if ($page.params.id) {
+			movieData = data.movieData;
+		}
+	});
 </script>
 
 <main class="main-container w-full">

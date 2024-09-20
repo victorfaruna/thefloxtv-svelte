@@ -3,12 +3,18 @@
 	import SeriesScreen from '$components/SeriesScreen.svelte';
 	import { getLetterRange, getWordRange } from '$src/lib';
 	let { data } = $props();
-	let { seriesData } = data;
+	let seriesData = $state(data.seriesData);
 	let id = $page.params.id;
+
+	$effect(() => {
+		if ($page.params.id) {
+			seriesData = data.seriesData;
+		}
+	});
 </script>
 
 <main class="main-container w-full">
-	<SeriesScreen {seriesData} tvId={$page.params.id} />
+	<SeriesScreen {seriesData} tvId={id} />
 
 	<section class="w-full h-auto px-7 mt-2 sm:px-4">
 		<div class="movie-details w-full h-auto flex gap-3">

@@ -46,7 +46,7 @@
 				>
 					<div class="inner-container w-full h-full flex flex-col justify-end px-5 relative z-[50]">
 						<div
-							class="text w-[60%] h-auto mb-[13rem] md:mb-[2rem] overflow-hidden sm:w-full sm:text-center"
+							class="text w-[60%] h-auto mb-[14.5rem] md:mb-[2rem] overflow-hidden sm:w-full sm:text-center"
 						>
 							<MovieLogo
 								movieLogo={result.logo_path}
@@ -54,18 +54,22 @@
 							/>
 
 							<div
-								class="info flex items-center font-[500] sm:justify-center gap-6 sm:gap-3 mb-3 text-[1rem]"
+								class="info flex text-white items-center font-[500] sm:justify-center gap-6 sm:gap-3 mb-3 text-[1rem] sm:text-[0.7rem]"
 								style="text-shadow: 0 1px 2px #000;"
 							>
+								<span
+									class="certification center-div px-[7px] py-[0.5px] bg-color-3 rounded-2xl font-bold text-[11px] text-black"
+									style="text-shadow: none">HD</span
+								>
+								<span
+									class="certification center-div px-[7px] py-[0.5px] rounded-2xl font-bold text-[11px] border"
+									>R</span
+								>
 								<span>
 									{result.media_type === 'movie'
 										? getLetterRange(result.release_date, 4)
 										: getLetterRange(result.first_air_date, 4)}
 								</span>
-								<span
-									class="certification center-div px-[7px] py-[0.5px] rounded-2xl font-bold text-[11px] border"
-									>HD</span
-								>
 								<span class="flex gap-1 items-center">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +90,7 @@
 								</span>
 							</div>
 							<p
-								class="desc sm:hidden mr-6 sm:mr-0 mb-10 text-color-1 leading-6 text-[1rem]"
+								class="desc sm:hidden mr-8 sm:mr-0 mb-10 text-color-1 leading-6 text-[1rem]"
 								style="text-shadow: 0 1px 2px #000"
 							>
 								{result.overview.split(/\s+/).length > 45
@@ -101,7 +105,7 @@
 										: `/tv/${result.tmdb_id}`}
 								>
 									<button
-										class="view-btn w-[160px] h-[43px] border border-color-3/50 text-black bg-color-3/90 rounded-[1.5rem] center-div gap-2 glassmorphism"
+										class="view-btn w-[160px] h-[43px] border border-color-3/50 text-black bg-color-3/90 rounded-[0.8rem] center-div gap-2 glassmorphism"
 									>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
