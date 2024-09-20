@@ -13,6 +13,14 @@
 	let type = trendingType;
 	let isLoading = $state(false);
 	let data: any = $state(trendingData);
+
+	let scrollCont: HTMLDivElement;
+
+	const scrollItemLeft = () => {
+		if (scrollCont) {
+			scrollCont.scrollBy({ left: 200, behavior: 'smooth' });
+		}
+	};
 </script>
 
 <div class="cont my-10">
@@ -51,6 +59,27 @@
 
 	<div class="trending-cont h-auto overflow-hidden mb-[50px] flex sm:flex-col relative">
 		<div
+			class="absolute w-[45px] h-[260px] sm:h-[215px] top-0 right-0 z-[100] flex gap-2 items-center"
+		>
+			<button
+				onclick={scrollItemLeft}
+				class="size-[40px] rounded-full bg-sec shadow flex items-center justify-center"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+					class="size-6"
+				>
+					<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+				</svg>
+			</button>
+		</div>
+
+		<div
+			bind:this={scrollCont}
 			class="scroll-container no-scrollbar flex flex-nowrap w-full h-auto overflow-x-auto gap-5 sm:gap-4"
 		>
 			{#if isLoading || (data && data.length == 0)}
