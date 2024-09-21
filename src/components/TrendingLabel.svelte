@@ -9,7 +9,7 @@
 			? getLetterRange(data.release_date, 4)
 			: getLetterRange(data.first_air_date, 4)}
 	</p>
-	<p class="border border-[grey] rounded-lg px-[5px] py-[0.5px]">
+	<p class="border border-[grey] rounded-xl px-[5px] py-[0.5px]">
 		{type}
 	</p>
 	<p>

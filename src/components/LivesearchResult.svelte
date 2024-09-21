@@ -19,8 +19,8 @@
 {#if isLoading || query == ''}
 	<div class="SearchResult">
 		<div class="wrapper">
-			<div class="item flex gap-[10px] my-[10px]">
-				<div class="w-[40px] h-[50px] rounded-md object-cover skeleton"></div>
+			<div class="item flex gap-[10px]">
+				<div class="size-[50px] rounded-md object-cover skeleton"></div>
 				<div class="w-full flex flex-col gap-2">
 					<p class="w-[70%] h-3 rounded-sm skeleton opacity-[0.6]"></p>
 					<p class="w-[40%] h-2 rounded-sm skeleton opacity-[0.4]"></p>
@@ -36,12 +36,12 @@
 	</div>
 {:else}
 	<div class="SearchResult">
-		<div class="wrapper">
+		<div class="wrapper flex flex-col gap-5">
 			{#each data as result}
 				<a href={result.media_type == 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}>
-					<div class="item flex gap-[10px] my-[10px]">
+					<div class="item flex gap-[10px]">
 						<img
-							class="w-[40px] h-[50px] rounded-sm object-cover"
+							class="size-[50px] rounded-md object-cover"
 							src={`https://image.tmdb.org/t/p/w94_and_h141_bestv2${
 								result.media_type == 'movie' ? result.poster_path : result.poster_path
 							}`}
@@ -53,7 +53,7 @@
 							<p class="title text-[lightgrey]" style="text-shadow: 0.5px 0.5px 0.5px black">
 								{result.media_type == 'movie' ? result.title : result.name}
 							</p>
-							<p class="sub text-color-3 text-[11px]" style=" word-spacing: 3px">
+							<p class="sub text-color-1/50 text-[11px]" style=" word-spacing: 3px">
 								{result.media_type == 'movie' ? `Movie ` : `TV `}
 								&middot;
 								{result.media_type == 'movie'
