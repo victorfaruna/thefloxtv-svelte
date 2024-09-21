@@ -105,7 +105,7 @@
 										: `/tv/${result.tmdb_id}`}
 								>
 									<button
-										class="view-btn w-[160px] h-[43px] border border-color-3/50 text-black bg-color-3/90 rounded-[0.8rem] center-div gap-2 glassmorphism"
+										class="view-btn w-[160px] h-[43px] border border-color-3/50 text-black bg-color-3 rounded-[1.5rem] center-div gap-2 glassmorphism"
 									>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"

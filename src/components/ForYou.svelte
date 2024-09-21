@@ -18,10 +18,7 @@
 		const swiper = new Swiper(swiperComponent, {
 			modules: [Autoplay, Navigation, Pagination],
 			loop: true,
-			autoplay: {
-				delay: 5000,
-				disableOnInteraction: false
-			},
+
 			pagination: {
 				el: '.swiper-progress',
 				type: 'progressbar'

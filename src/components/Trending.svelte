@@ -24,9 +24,9 @@
 </script>
 
 <div class="cont my-10">
-	<div class="mb-5 flex sm:flex-col gap-5 sm:gap-3 items-center justify-between text-[12px]">
+	<div class="mb-5 flex gap-5 sm:gap-3 items-center justify-between text-[12px]">
 		<div class=" text-[25px] sm:text-[17px] font-bold text-white flex gap-1 items-center">
-			<svg
+			<!-- <svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="currentColor"
 				class="bi bi-file-play-fill size-[25px] sm:size-[17px] text-color-3"
@@ -35,10 +35,10 @@
 				<path
 					d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M6 5.883a.5.5 0 0 1 .757-.429l3.528 2.117a.5.5 0 0 1 0 .858l-3.528 2.117a.5.5 0 0 1-.757-.43V5.884z"
 				/>
-			</svg>
+			</svg> -->
 			<p>Trending {type == 'movie' ? 'Movies' : 'Tv Shows'}</p>
 		</div>
-		<div class="flex gap-2 items-center mr-6 sm:mr-0">
+		<div class="flex gap-2 items-center mr-6 sm:mr-3">
 			<p>View all</p>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +63,7 @@
 		>
 			<button
 				onclick={scrollItemLeft}
-				class="size-[40px] rounded-full bg-sec shadow flex items-center justify-center"
+				class="size-[40px] rounded-full bg-tet shadow flex items-center justify-center"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

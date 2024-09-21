@@ -13,7 +13,7 @@
 				title="Movie"
 				class="w-full h-full"
 				id="playit"
-				src={`https://vidsrc.cc/v2/embed/movie/${movieId}`}
+				src={`https://vidlink.pro/movie/${movieId}?primaryColor=000&autoplay=false`}
 				allowFullScreen
 			></iframe>
 		{:else}
