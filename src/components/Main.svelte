@@ -1,10 +1,7 @@
 <script lang="ts">
-	import Swiper from 'swiper';
-	import 'swiper/css';
-	import 'swiper/css/navigation';
-	import 'swiper/css/pagination';
+	import Swiper from 'swiper/bundle';
+	import 'swiper/css/bundle';
 	import { getLetterRange, getWordRange } from '$src/lib';
-	import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 	import MovieLogo from '$components/MovieLogo.svelte';
 	import { onMount } from 'svelte';
 	//
@@ -20,10 +17,12 @@
 			width = window.innerWidth;
 		});
 		const swiper = new Swiper(swiperComponent, {
-			modules: [Autoplay, Navigation, Pagination],
-			loop: true,
+			effect: 'fade',
+			fadeEffect: {
+				crossFade: true
+			},
 			autoplay: {
-				delay: 5000,
+				delay: 10000,
 				disableOnInteraction: false
 			}
 		});
