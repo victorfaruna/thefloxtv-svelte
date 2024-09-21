@@ -37,7 +37,7 @@
 <div class="carousel-cont">
 	<div bind:this={swiperComponent} class="swiper carousel w-full h-[800px] md:h-[400px]">
 		<div class="swiper-wrapper">
-			{#each mainData.slice(0, 10) as result}
+			{#each mainData.slice(0, 9) as result}
 				<div
 					class="swiper-slide carousel-item relative main-carousel"
 					style="background-size:cover; background-image: url({width > 1000

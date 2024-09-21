@@ -55,7 +55,7 @@
 <header
 	class={`w-full h-[80px] sm:h-[50px] px-[3%] flex items-center justify-between ${
 		$page.url.pathname == '/' && 'absolute z-10'
-	} bg-gradient-to-b  from-black to-transparent`}
+	} bg-gradient-to-b  from-main to-transparent`}
 >
 	<div class="left-section flex gap-0 items-center">
 		<div class="logo-cont w-auto h-full center-div">
@@ -197,7 +197,7 @@
 			<div
 				id="searchresult"
 				tabIndex={0}
-				class="dropdown-content w-full max-h-[50vh] absolute top-[30px] left-0 overflow-y-auto shadow-2xl shadow-color-1/20 overflow-x-hidden bg-main/80 backdrop-blur-[60px] rounded-xl px-[5%] z-[-1] py-4 sm:bg-black sm:top-[150px] sm:w-[90%] sm:left-[5vw] sm:rounded-2xl sm:max-h-[70vh]"
+				class="dropdown-content w-full max-h-[50vh] absolute top-[43px] left-0 overflow-y-auto shadow-2xl shadow-black/80 overflow-x-hidden bg-tet backdrop-blur-[60px] rounded-2xl px-[5%] z-[-1] py-4 sm:bg-black sm:top-[150px] sm:w-[90%] sm:left-[5vw] sm:rounded-2xl sm:max-h-[70vh]"
 			>
 				{#key searchValue}
 					<LivesearchResult query={searchValue} />

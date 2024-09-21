@@ -53,9 +53,9 @@
 							<p class="title text-[lightgrey]" style="text-shadow: 0.5px 0.5px 0.5px black">
 								{result.media_type == 'movie' ? result.title : result.name}
 							</p>
-							<p class="sub text-color-3 text-[11px] font-light" style=" word-spacing: 3px">
+							<p class="sub text-color-3 text-[11px]" style=" word-spacing: 3px">
 								{result.media_type == 'movie' ? `Movie ` : `TV `}
-								&middot; &nbsp;
+								&middot;
 								{result.media_type == 'movie'
 									? getLetterRange(result.release_date, 4)
 									: getLetterRange(result.first_air_date, 4)}
