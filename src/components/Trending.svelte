@@ -24,8 +24,8 @@
 </script>
 
 <div class="cont my-10">
-	<div class="mb-5 flex gap-5 sm:gap-3 items-center justify-between text-[12px]">
-		<div class=" text-[1.2rem] sm:text-[1rem] font-bold text-white flex gap-1 items-center">
+	<div class="mb-2 flex gap-5 sm:gap-3 items-center justify-between text-[12px]">
+		<div class=" text-[1.2rem] sm:text-[1rem] font-bold text-color-3 flex gap-1 items-center">
 			<!-- <svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="currentColor"
@@ -92,11 +92,14 @@
 							? `/movie/${result.tmdb_id}`
 							: `/tv/${result.tmdb_id}`}
 					>
-						<div class="group item w-auto h-auto items-end flex relative" style="flex: 0 0 auto">
+						<div
+							class="group item w-auto h-auto items-end flex gap-1 relative"
+							style="flex: 0 0 auto"
+						>
 							<div class="flex flex-col gap-2 items-center text-[1rem]">
 								<p
 									style="writing-mode: vertical-rl;  transform: rotate(180deg) "
-									class="h-[230px] sm:h-[190px] whitespace-nowrap overflow-ellipsis overflow-hidden text-white/90"
+									class="h-[200px] sm:h-[160px] whitespace-nowrap overflow-ellipsis overflow-hidden text-white/90"
 								>
 									{result.name ? result.name : result.title}
 								</p>
@@ -122,8 +125,6 @@
 									<img
 										class="object-cover w-full shadow-2xl bg-color-1/5 h-[230px] sm:h-[190px]"
 										src={`https://themoviedb.org/t/p/w500${result.poster_path}`}
-										width={220}
-										height={300}
 										alt=""
 									/>
 								</div>

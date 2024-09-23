@@ -36,7 +36,7 @@
 </script>
 
 <div class="carousel-cont w-full overflow-hidden">
-	<div bind:this={swiperComponent} class="swiper carousel w-full h-[800px] md:h-[400px]">
+	<div bind:this={swiperComponent} class="swiper carousel w-full h-screen md:h-[400px]">
 		<div class="swiper-wrapper">
 			{#each mainData.slice(0, 10) as result, index (result.id)}
 				<div
@@ -46,10 +46,10 @@
 						: `https://image.tmdb.org/t/p/w1280${result.backdrop_path}`});"
 				>
 					<div
-						class="inner-container w-full h-full flex flex-col justify-end px-7 sm:px-4 relative z-[50]"
+						class="inner-container w-full h-full flex flex-col justify-center md:justify-end px-7 sm:px-4 relative z-[50]"
 					>
 						<div
-							class="text w-[50%] h-auto mb-[14.5rem] md:mb-[2rem] overflow-hidden sm:w-full sm:text-center flex flex-col gap-2"
+							class="text w-[50%] h-auto md:mb-[2rem] overflow-hidden sm:w-full sm:text-center flex flex-col gap-2"
 						>
 							<p class="text-[1.5rem] text-color-3 sm:text-[0.9rem]">#{index + 1} Spotlight</p>
 							<p class="text-[2.7rem] text-white font-semibold sm:text-[1.5rem]">

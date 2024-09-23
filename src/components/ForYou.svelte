@@ -53,7 +53,7 @@
 	};
 </script>
 
-<div class="wrapper mt-[-10rem] relative z-[3] md:mt-0">
+<div class="wrapper mt-[-7rem] relative z-[3] md:mt-0">
 	<div class="text-center mb-3 text-[13px] flex gap-2 justify-center items-center">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
