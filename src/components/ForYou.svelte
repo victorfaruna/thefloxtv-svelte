@@ -29,7 +29,7 @@
 					slidesPerView: 3,
 					slidesPerGroup: 3
 				},
-				680: {
+				550: {
 					slidesPerView: 2,
 					slidesPerGroup: 2
 				},
@@ -53,7 +53,7 @@
 	};
 </script>
 
-<div class="wrapper mt-[-7rem] relative z-[3] md:mt-0">
+<div class="wrapper mt-[-4rem] relative z-[3] md:mt-0">
 	<div class="text-center mb-3 text-[13px] flex gap-2 justify-center items-center">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
