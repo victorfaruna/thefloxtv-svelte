@@ -63,7 +63,7 @@
 		>
 			<button
 				onclick={scrollItemLeft}
-				class="size-[40px] rounded-full bg-tet shadow flex items-center justify-center"
+				class="size-[40px] rounded-full bg-tet border border-color-1/5 flex items-center justify-center"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
