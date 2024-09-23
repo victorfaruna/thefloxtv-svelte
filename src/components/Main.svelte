@@ -163,12 +163,7 @@
 		z-index: 1;
 		top: 0;
 		position: absolute;
-		background: linear-gradient(
-			90deg,
-			rgba(var(--bg-color-1)) 0,
-			rgba(var(--bg-color-1)) 0,
-			rgba(24, 24, 24, 0) 100%
-		);
+		background: linear-gradient(90deg, rgba(var(--bg-color-1)), rgba(var(--bg-color-1), 0));
 	}
 	.main-carousel::after {
 		display: block;

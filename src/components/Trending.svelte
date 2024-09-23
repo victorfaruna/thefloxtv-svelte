@@ -38,23 +38,6 @@
 			</svg> -->
 			<p>Trending {type == 'movie' ? 'Movies' : 'Tv Shows'}</p>
 		</div>
-		<div class="flex gap-2 items-center mr-6 sm:mr-3">
-			<p>View all</p>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-				class="size-6"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-				/>
-			</svg>
-		</div>
 	</div>
 
 	<div class="trending-cont h-auto overflow-hidden mb-[50px] flex sm:flex-col relative">
@@ -99,7 +82,7 @@
 							<div class="flex flex-col gap-2 items-center text-[1rem]">
 								<p
 									style="writing-mode: vertical-rl;  transform: rotate(180deg) "
-									class="h-[200px] sm:h-[160px] whitespace-nowrap overflow-ellipsis overflow-hidden text-white/90"
+									class="sm:text-[0.8rem] h-[200px] sm:h-[160px] whitespace-nowrap overflow-ellipsis overflow-hidden text-white/90"
 								>
 									{result.name ? result.name : result.title}
 								</p>
