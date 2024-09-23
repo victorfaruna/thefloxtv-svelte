@@ -25,7 +25,7 @@
 
 <div class="cont my-10">
 	<div class="mb-5 flex gap-5 sm:gap-3 items-center justify-between text-[12px]">
-		<div class=" text-[25px] sm:text-[17px] font-bold text-white flex gap-1 items-center">
+		<div class=" text-[1.2rem] sm:text-[1rem] font-bold text-white flex gap-1 items-center">
 			<!-- <svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="currentColor"
@@ -85,18 +85,28 @@
 			{#if isLoading || (data && data.length == 0)}
 				<LoadTrending />
 			{:else}
-				{#each data.slice(0, 10) as result}
+				{#each data.slice(0, 10) as result, index}
 					<a
 						data-sveltekit-preload-data
 						href={result.media_type == 'movie'
 							? `/movie/${result.tmdb_id}`
 							: `/tv/${result.tmdb_id}`}
 					>
-						<div class="group item w-auto h-auto items-center flex relative" style="flex: 0 0 auto">
-							<div class=" w-[180px] sm:w-[150px] h-auto relative">
+						<div class="group item w-auto h-auto items-end flex relative" style="flex: 0 0 auto">
+							<div class="flex flex-col gap-2 items-center text-[1rem]">
+								<p
+									style="writing-mode: vertical-rl;  transform: rotate(180deg) "
+									class="h-[230px] sm:h-[190px] whitespace-nowrap overflow-ellipsis overflow-hidden text-white/90"
+								>
+									{result.name ? result.name : result.title}
+								</p>
+								<p class="text-color-3 font-bold">{(index + 1).toString().padStart(2, '0')}</p>
+							</div>
+
+							<div class=" w-[160px] sm:w-[130px] h-auto relative">
 								<div class="image-container w-full h-auto overflow-hidden relative">
 									<div
-										class="group-hover:opacity-[1] opacity-[0] duration-[0.7s] w-full h-full rounded-md absolute z-[2] bg-gradient-to-t from-color-3 via-color-3/30 to-[transparent] flex items-center justify-center"
+										class="group-hover:opacity-[1] opacity-[0] duration-[0.7s] w-full h-full absolute z-[2] bg-gradient-to-t from-color-3 via-color-3/30 to-[transparent] flex items-center justify-center"
 									>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
@@ -110,14 +120,14 @@
 										</svg>
 									</div>
 									<img
-										class="object-cover rounded-lg w-full shadow-2xl bg-color-1/5 h-[260px] sm:h-[215px]"
+										class="object-cover w-full shadow-2xl bg-color-1/5 h-[230px] sm:h-[190px]"
 										src={`https://themoviedb.org/t/p/w500${result.poster_path}`}
 										width={220}
 										height={300}
 										alt=""
 									/>
 								</div>
-								<TrendingLabel data={result} {type} />
+								<!-- <TrendingLabel data={result} {type} /> -->
 							</div>
 						</div>
 					</a>

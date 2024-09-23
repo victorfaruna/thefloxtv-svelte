@@ -97,7 +97,7 @@
 								</span>
 							</div>
 							<p
-								class="desc sm:hidden mr-8 sm:mr-0 text-color-1 leading-6 text-[1rem]"
+								class="desc sm:hidden mr-8 sm:mr-0 text-color-1 mb-2 leading-6 text-[1rem]"
 								style="text-shadow: 0 1px 2px #000"
 							>
 								{result.overview.split(/\s+/).length > 45
@@ -112,7 +112,7 @@
 										: `/tv/${result.tmdb_id}`}
 								>
 									<button
-										class="view-btn w-[160px] h-[43px] border text-black bg-color-3 rounded-[1.5rem] center-div gap-2"
+										class="view-btn w-[160px] h-[43px] text-black bg-color-3 rounded-[1.5rem] center-div gap-2"
 									>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
