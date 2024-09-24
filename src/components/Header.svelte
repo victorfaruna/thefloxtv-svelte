@@ -54,7 +54,7 @@
 </div>
 <header
 	class={`w-full h-[80px] sm:h-[50px] px-[3%] flex items-center justify-between ${
-		$page.url.pathname !== '/r' && 'absolute z-10'
+		$page.url.pathname == '/' && 'absolute z-10'
 	} bg-gradient-to-b  from-main to-transparent`}
 >
 	<div class="left-section flex gap-0 items-center">

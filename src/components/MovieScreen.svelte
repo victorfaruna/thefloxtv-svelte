@@ -9,7 +9,7 @@
 </script>
 
 <div
-	class="movie-container-screen w-full h-auto pt-[90px] sm:pt-[60px] py-5 px-10 bg-cover sm:px-0"
+	class="movie-container-screen w-full h-auto py-5 px-10 bg-cover sm:px-0"
 	style="background-image: url(https://image.tmdb.org/t/p/w500{movieData.backdrop_path});"
 >
 	<div class="inner w-full h-full relative z-[3]">
@@ -21,7 +21,7 @@
 			<span class="text-color-1/70">Watching {movieData.title}</span>
 		</p>
 		<div
-			class="next-container w-full h-auto rounded-md sm:rounded-none overflow-hidden backdrop-blur-[10px] bg-color-1/20 flex gap-2 md:flex-col-reverse md:gap-0"
+			class="next-container w-full h-auto rounded-md sm:rounded-none overflow-hidden backdrop-blur-[10px] bg-sec flex gap-2 md:flex-col-reverse md:gap-0"
 		>
 			<div class="side w-[25%] h-full pb-3 md:w-full">
 				<p class="w-full p-4 text-white">List of Movie Files:</p>
@@ -54,15 +54,15 @@
 					title="Movie"
 					class="w-full h-[85vh] sm:h-[230px]"
 					id="playit"
-					src={`https://vidlink.pro/movie/${movieId}?primaryColor=ffdd95&autoplay=false&iconColor=ffdd95&poster=false`}
+					src={`https://vidlink.pro/movie/${movieId}?primaryColor=ffdd95&autoplay=false&iconColor=ffdd95`}
 					allowFullScreen
 				></iframe>
-				<div class="rest w-full h-auto p-4 overflow-hidden">
-					<div class="w-full h-auto bg-main/50 rounded-md flex overflow-hidden">
-						<div
-							class="left bg-color-3 w-[200px] min-h-[100px] flex items-center text-center text-tet font-[500]"
-						>
-							If current server doesn't work please try other servers beside.
+				<div
+					class="rest w-full h-auto p-4 overflow-hidden border-b border-dotted border-b-color-2/10"
+				>
+					<div class="w-full h-auto bg-main/20 rounded-md flex overflow-hidden md:rounded-none">
+						<div class="left bg-color-3 p-3 flex items-center text-center text-tet font-[500]">
+							Servers:
 						</div>
 						<div class="left bg-transparent w-full h-full"></div>
 					</div>
