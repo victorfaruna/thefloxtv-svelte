@@ -36,22 +36,15 @@
 </script>
 
 <div class="carousel-cont w-full overflow-hidden">
-	<div bind:this={swiperComponent} class="swiper carousel w-full h-screen sm:h-[400px]">
+	<div bind:this={swiperComponent} class="swiper carousel w-full h-[90vh] sm:h-[400px]">
 		<div class="swiper-wrapper">
 			{#each mainData.slice(0, 10) as result, index (result.id)}
-				<div
-					class="swiper-slide carousel-item relative main-carousel bg-center bg-cover"
-					style="background-image: url({width > 1000
-						? `https://image.tmdb.org/t/p/original${result.backdrop_path}`
-						: `https://image.tmdb.org/t/p/w1280${result.backdrop_path}`});"
-				>
-					<div
-						class="inner-container w-full h-full flex flex-col justify-center md:justify-end px-7 sm:px-4 relative z-[50]"
-					>
+				<div class="swiper-slide carousel-item relative main-carousel bg-cover bg-no-repeat">
+					<div class="inner-container w-full h-full flex items-end pl-7 sm:pl-4">
 						<div
-							class="text w-[50%] h-auto mb-[-2rem] md:mb-[2rem] overflow-hidden sm:w-full sm:text-center flex flex-col gap-2"
+							class="text w-[50%] absolute z-[2] h-auto mb-[4rem] sm:mb-[2rem] overflow-hidden sm:w-full sm:text-center flex flex-col gap-4 sm:gap-2"
 						>
-							<p class="text-[1.5rem] text-color-3 sm:text-[0.9rem]">#{index + 1} Spotlight</p>
+							<p class="text-[1.2rem] text-color-3 sm:text-[0.9rem]">#{index + 1} Spotlight</p>
 							<p class="text-[2.7rem] text-white font-semibold sm:text-[1.5rem]">
 								{result.name ? result.name : result.title}
 							</p>
@@ -101,7 +94,7 @@
 								style="text-shadow: 0 1px 2px #000"
 							>
 								{result.overview.split(/\s+/).length > 45
-									? getWordRange(result.overview, 45)
+									? getWordRange(result.overview, 40)
 									: result.overview}
 							</p>
 							<div class="buttons flex gap-5 flex-wrap sm:justify-center font-[500]">
@@ -144,6 +137,12 @@
 								</button>
 							</div>
 						</div>
+						<div
+							class="w-[80%] sm:w-full h-full absolute right-0 z-[-1] bg-cover"
+							style="background-image: url({width > 1000
+								? `https://image.tmdb.org/t/p/w1280${result.backdrop_path}`
+								: `https://image.tmdb.org/t/p/w1280${result.backdrop_path}`});"
+						></div>
 					</div>
 				</div>
 			{/each}
@@ -160,10 +159,10 @@
 		width: 100%;
 		height: 100%;
 		left: 0;
-		z-index: 1;
+		z-index: 2;
 		top: 0;
 		position: absolute;
-		background: linear-gradient(90deg, rgba(var(--bg-color-1)), rgba(var(--bg-color-1), 0));
+		background: linear-gradient(90deg, rgba(var(--bg-color-1)) 30%, rgba(var(--bg-color-1), 0));
 	}
 	.main-carousel::after {
 		display: block;
@@ -173,5 +172,11 @@
 		left: 0;
 		right: 0;
 		box-shadow: 1px 0 100px 100px rgb(var(--bg-color-1));
+	}
+
+	@media (max-width: 768px) {
+		.main-carousel::before {
+			background: linear-gradient(90deg, rgba(var(--bg-color-1)), rgba(var(--bg-color-1), 0));
+		}
 	}
 </style>
