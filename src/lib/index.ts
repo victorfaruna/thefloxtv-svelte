@@ -54,3 +54,7 @@ export const formatDate = (dateString: any) => {
 	// Return the formatted date string
 	return `${month} ${day}, ${year}`;
 };
+
+export const isOdd = (number: any) => {
+	return number % 2 !== 0;
+};

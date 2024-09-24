@@ -54,7 +54,7 @@
 </div>
 <header
 	class={`w-full h-[80px] sm:h-[50px] px-[3%] flex items-center justify-between ${
-		$page.url.pathname == '/' && 'absolute z-10'
+		$page.url.pathname !== '/r' && 'absolute z-10'
 	} bg-gradient-to-b  from-main to-transparent`}
 >
 	<div class="left-section flex gap-0 items-center">
@@ -143,7 +143,7 @@
 			<form
 				action="/search"
 				method="GET"
-				class="group center-div w-full h-[40px] sm:h-[50px] flex rounded-[1.5rem] bg-black sm:bg-black shadow-2xl shadow-gray-950 p-2"
+				class="group center-div w-full h-[40px] sm:h-[50px] flex rounded-[1.5rem] bg-tet sm:bg-black shadow-2xl shadow-gray-950 p-2"
 			>
 				<div
 					class="search-rep-ico flex items-center justify-center px-[0.8rem] py-[0.3rem] text-[0.6rem] gap-1 font-[300] text-gray-400 bg-[#353535] sm:bg-transparent rounded-[50rem]"
