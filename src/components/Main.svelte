@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Swiper from 'swiper/bundle';
 	import 'swiper/css/bundle';
-	import { getLetterRange, getWordRange } from '$src/lib';
+	import { formatDate, getLetterRange, getWordRange } from '$src/lib';
 	import MovieLogo from '$components/MovieLogo.svelte';
 	import { onMount } from 'svelte';
 	//
@@ -54,8 +54,7 @@
 							/> -->
 
 							<div
-								class="info flex text-white items-center font-[500] sm:justify-center gap-6 sm:gap-3 text-[1rem] sm:text-[0.7rem]"
-								style="text-shadow: 0 1px 2px #000;"
+								class="info flex text-white flex-wrap items-center font-[500] sm:justify-center gap-6 sm:gap-3 text-[1rem] sm:text-[0.7rem]"
 							>
 								<span
 									class="certification center-div px-[7px] py-[0.5px] bg-color-3 rounded-2xl font-bold text-[11px] text-black"
@@ -66,9 +65,13 @@
 									>R</span
 								>
 								<span>
-									{result.media_type === 'movie'
+									<!-- {result.media_type === 'movie'
 										? getLetterRange(result.release_date, 4)
-										: getLetterRange(result.first_air_date, 4)}
+										: getLetterRange(result.first_air_date, 4)} -->
+
+									{result.media_type === 'movie'
+										? formatDate(result.release_date)
+										: formatDate(result.first_air_date)}
 								</span>
 								<span class="flex gap-1 items-center">
 									<svg
