@@ -18,7 +18,9 @@
 
 	<section class="w-full h-auto px-7 mt-2 sm:px-4">
 		<div class="movie-details w-full h-auto flex gap-3">
-			<div class="small-image-container w-[250px] h-[270px] rounded-lg overflow-hidden sm:hidden">
+			<div
+				class="small-image-container w-[250px] h-[270px] sm:w-[120px] sm:h-[130px] overflow-hidden"
+			>
 				<img
 					class="w-full h-full object-cover"
 					src={`https://image.tmdb.org/t/p/w220_and_h330_face${seriesData.poster_path}`}
@@ -33,7 +35,7 @@
 				<p class="text-[30px] font-bold sm:text-[25px]">
 					{seriesData.name}
 				</p>
-				<div class="quick-info flex gap-3 items-center text-gray-500">
+				<div class="quick-info flex gap-3 flex-wrap items-center text-gray-500">
 					<span
 						class="w-auto px-[8px] py-[0.5px] text-[13px] sm:text-[11px] font-[600] text-gray-500 outline outline-1 outline-color-3 rounded-sm"
 					>
@@ -54,7 +56,7 @@
 			</div>
 		</div>
 		{''}
-		<div class="cast-container w-full h-auto mt-6">
+		<div class="cast-container w-full h-auto mt-6 relative">
 			<p class="text-[30px] font-bold sm:text-[20px] text-white mb-4">Cast</p>
 			{' '}
 			<div
@@ -97,3 +99,15 @@
 		/> -->
 	</section>
 </main>
+
+<style>
+	.scroll-container::after {
+		content: '';
+		position: absolute;
+		height: 100%;
+		right: 0;
+		top: 0;
+		z-index: 2;
+		box-shadow: 0 0 90px 90px rgb(var(--bg-color-1));
+	}
+</style>

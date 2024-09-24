@@ -68,7 +68,7 @@
 			{#if isLoading || (data && data.length == 0)}
 				<LoadTrending />
 			{:else}
-				{#each data.slice(0, 10) as result, index}
+				{#each data.slice(0, 20) as result, index}
 					<a
 						data-sveltekit-preload-data
 						href={result.media_type == 'movie'
@@ -106,6 +106,7 @@
 										</svg>
 									</div>
 									<img
+										loading="lazy"
 										class="object-cover w-full shadow-2xl bg-color-1/5 h-[230px] sm:h-[190px]"
 										src={`https://themoviedb.org/t/p/w500${result.poster_path}`}
 										alt=""

@@ -1,5 +1,24 @@
 import axios from 'axios';
 
+export const fetchSeasonDetails = async (id: any, season: any) => {
+	try {
+		const req = await fetch(
+			`https://api.themoviedb.org/3/tv/${id}/season/${season}?language=en-US`,
+			{
+				headers: {
+					Authorization:
+						'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTliOGUyOGRjM2M5ZDkwMGNlYjQ2OTZiZjJkMjQ3YyIsInN1YiI6IjY1MDA0ZDIwNmEyMjI3MDBjM2I2MDM3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DNP1HXf6xyRe_8C7rR7fljfalpmJZgcry6JN8xLwk8E'
+				},
+				cache: 'no-cache'
+			}
+		);
+		const data = await req.json();
+		return data;
+	} catch (error) {
+		console.log(error);
+	}
+};
+
 export const fetchTrending = async (type: string | undefined, period?: string | undefined) => {
 	if (type == undefined) type = 'all';
 	try {

@@ -52,9 +52,9 @@
 			<div class="screen w-[75%] bg-sec h-full overflow-hidden md:w-full">
 				<iframe
 					title="Movie"
-					class="w-full h-[85vh] sm:h-[230px]"
+					class="w-full h-[85vh] sm:h-[210px]"
 					id="playit"
-					src={`https://vidlink.pro/movie/${movieId}?primaryColor=ffdd95&autoplay=false&iconColor=ffdd95`}
+					src={`https://vidlink.pro/movie/${movieId}?primaryColor=ffdd95&autoplay=false&iconColor=ffdd95&icons=default`}
 					allowFullScreen
 				></iframe>
 				<div
