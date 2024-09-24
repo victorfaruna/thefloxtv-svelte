@@ -40,8 +40,8 @@
 		<div class="swiper-wrapper">
 			{#each mainData.slice(0, 10) as result, index (result.id)}
 				<div
-					class="swiper-slide carousel-item relative main-carousel"
-					style="background-size:cover; background-image: url({width > 1000
+					class="swiper-slide carousel-item relative main-carousel bg-center bg-cover"
+					style="background-image: url({width > 1000
 						? `https://image.tmdb.org/t/p/original${result.backdrop_path}`
 						: `https://image.tmdb.org/t/p/w1280${result.backdrop_path}`});"
 				>
@@ -129,7 +129,7 @@
 								</a>
 								<button
 									data-sveltekit-preload-data
-									class="center-div w-[130px] h-[43px] rounded-[1.5rem] bg-color-1/50 gap-1"
+									class="center-div w-[130px] h-[43px] rounded-[1.5rem] bg-color-1/20 gap-1 text-white/80"
 								>
 									Detail
 									<svg
