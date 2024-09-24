@@ -9,7 +9,7 @@
 </script>
 
 <div
-	class="movie-container-screen w-full h-auto py-5 px-10 bg-cover sm:px-0"
+	class="movie-container-screen w-full h-auto py-5 px-10 bg-cover sm:px-0 sm:py-0"
 	style="background-image: url(https://image.tmdb.org/t/p/w500{movieData.backdrop_path});"
 >
 	<div class="inner w-full h-full relative z-[3]">
@@ -60,11 +60,28 @@
 				<div
 					class="rest w-full h-auto p-4 overflow-hidden border-b border-dotted border-b-color-2/10"
 				>
-					<div class="w-full h-auto bg-main/20 rounded-md flex overflow-hidden md:rounded-none">
-						<div class="left bg-color-3 p-3 flex items-center text-center text-tet font-[500]">
-							Servers:
+					<div
+						class="w-full h-auto bg-main/20 rounded-md flex overflow-hidden md:rounded-none items-center px-5"
+					>
+						<div class="left bg-transparent w-full h-[40px] flex items-center gap-3">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								fill="currentColor"
+								class="bi bi-file-earmark-play-fill"
+								viewBox="0 0 16 16"
+							>
+								<path
+									d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M6 6.883a.5.5 0 0 1 .757-.429l3.528 2.117a.5.5 0 0 1 0 .858l-3.528 2.117a.5.5 0 0 1-.757-.43V6.884z"
+								/>
+							</svg>
+							<p>Source :</p>
+							<div class="options flex gap-2">
+								<button class="p-1 px-2 text-main rounded-md bg-color-3">Vidcloud</button>
+								<button class="p-1 px-2 text-white rounded-md bg-color-1/10">Vidsrc</button>
+							</div>
 						</div>
-						<div class="left bg-transparent w-full h-full"></div>
 					</div>
 				</div>
 			</div>
