@@ -6,9 +6,9 @@
 	let { seriesData, tvId }: { seriesData: any; tvId: any } = $props();
 	let collapseRef;
 	let isSeasonListVisible = $state(false);
-	let seasonCount = seriesData.last_episode_to_air.season_number;
+	let seasonCount = $state(seriesData.last_episode_to_air.season_number);
 	let seasonData: any = $state([]);
-	let seasonSelect = $state(seasonCount);
+	let seasonSelect = $state(1);
 	let episodeSelect = $state(1);
 	let episodeCount = $derived(
 		seasonSelect == seriesData.seasons[seriesData.seasons.length - 1].season_number
@@ -19,10 +19,11 @@
 	);
 	onMount(() => {
 		episodeSelect = 1;
-		seasonSelect = seasonCount;
+		seasonSelect = 1;
 	});
 
 	$effect(() => {
+		if (seriesData) seasonCount = seriesData.last_episode_to_air.season_number;
 		if (seasonSelect) episodeSelect = 1;
 		const fetchEpisodes = async () => {
 			const res = await fetchSeasonDetails(seriesData.id, seasonSelect);
@@ -53,11 +54,15 @@
 		>
 			<div class="side w-[25%] h-full pb-3 md:w-full">
 				<div class="p-4 flex gap-2 items-center">
-					<div>Seasons :</div>
-					<div class="flex gap-2">
+					<div class="text-white">List of Seasons :</div>
+					<div
+						class="flex gap-2 no-scrollbar"
+						style="display: flex; flex-wrap: nowrap; width: 100%; height: auto; overflow-x: scroll "
+					>
 						{#each Array.from({ length: seasonCount }) as _, index}
 							<button
 								onclick={() => (seasonSelect = index + 1)}
+								style="flex: 0 0 auto"
 								class={`px-2 py-1 rounded-md  ${seasonSelect === index + 1 ? 'bg-color-3 text-main' : 'bg-color-1/10'}`}
 							>
 								<p>SS {index + 1}</p>
