@@ -129,7 +129,7 @@
 					title="Movie"
 					class="w-full h-[85vh] sm:h-[210px]"
 					id="playit"
-					src={`https://viddlink.pro/tv/${seriesData.id}/${seasonSelect}/${episodeSelect}?primaryColor=ffdd95&autoplay=false&iconColor=ffdd95&icons=default`}
+					src={`https://vidlink.pro/tv/${seriesData.id}/${seasonSelect}/${episodeSelect}?primaryColor=ffdd95&autoplay=false&iconColor=ffdd95&icons=default`}
 					allowFullScreen
 				></iframe>
 				<div
