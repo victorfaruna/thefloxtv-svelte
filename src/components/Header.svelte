@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import LivesearchResult from '$components/LivesearchResult.svelte';
 	import { fade, fly } from 'svelte/transition';
@@ -6,6 +7,10 @@
 	let isSearchToggled = $state(false);
 	let searchValue: string = $state('');
 	let timeout: any;
+
+	onNavigate(() => {
+		isSearchToggled = false;
+	});
 
 	const search = (e: any) => {
 		clearTimeout(timeout);

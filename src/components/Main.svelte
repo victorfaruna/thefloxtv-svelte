@@ -40,7 +40,7 @@
 		<div class="swiper-wrapper">
 			{#each mainData.slice(0, 10) as result, index (result.id)}
 				<div class="swiper-slide carousel-item relative main-carousel bg-cover bg-no-repeat">
-					<div class="inner-container w-full h-full flex items-end pl-7 sm:pl-4">
+					<div class="inner-container w-full h-full flex items-end pl-7 sm:pl-0">
 						<div
 							class="text w-[50%] absolute z-[2] h-auto mb-[4rem] sm:mb-[2rem] overflow-hidden sm:w-full sm:text-center flex flex-col gap-4 sm:gap-2"
 						>

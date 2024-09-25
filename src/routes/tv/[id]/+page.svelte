@@ -56,7 +56,7 @@
 			</div>
 		</div>
 		{''}
-		<div class="cast-container w-full h-auto mt-6 relative">
+		<div class="cast-container w-full h-auto mt-6 relative overflow-hidden">
 			<p class="text-[30px] font-bold sm:text-[20px] text-white mb-4">Cast</p>
 			{' '}
 			<div

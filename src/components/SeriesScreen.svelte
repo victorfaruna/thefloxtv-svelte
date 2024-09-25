@@ -68,29 +68,55 @@
 				<p class="w-full px-4 mb-4 text-white">List of Episodes:</p>
 
 				<div class="episode-list w-full max-h-[400px] overflow-y-auto">
-					{#each seasonData as item, index}
-						<button
-							onclick={() => (episodeSelect = index + 1)}
-							class={`item cursor-pointer w-full px-4 h-[40px]  ${episodeSelect === index + 1 ? 'border-l-4  border-l-color-3/90 bg-color-3/30' : isOdd(index + 1) ? 'bg-tet' : 'bg-sec'} text-white flex items-center justify-between gap-2`}
-						>
-							<div class="flex gap-2 items-center">
-								<p>{index + 1}.</p>
-								<p>
-									{item.name}
-								</p>
-							</div>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="currentColor"
-								class={`bi bi-play-circle-fill size-4  ${episodeSelect === index + 1 ? 'text-color-3' : 'text-color-1'}`}
-								viewBox="0 0 16 16"
+					{#if seasonData.length == 0}
+						{#each Array.from({ length: episodeCount }) as _, index}
+							<button
+								onclick={() => (episodeSelect = index + 1)}
+								class={`item cursor-pointer w-full px-4 h-[40px]  ${episodeSelect === index + 1 ? 'border-l-4  border-l-color-3/90 bg-color-3/30' : isOdd(index + 1) ? 'bg-tet' : 'bg-sec'} text-white flex items-center justify-between gap-2`}
 							>
-								<path
-									d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"
-								/>
-							</svg>
-						</button>
-					{/each}
+								<div class="flex gap-2 items-center">
+									<p>{index + 1}.</p>
+									<p>
+										Loading... EP{index + 1}
+									</p>
+								</div>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									fill="currentColor"
+									class={`bi bi-play-circle-fill size-4  ${episodeSelect === index + 1 ? 'text-color-3' : 'text-color-1'}`}
+									viewBox="0 0 16 16"
+								>
+									<path
+										d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"
+									/>
+								</svg>
+							</button>
+						{/each}
+					{:else}
+						{#each seasonData.filter((item: any) => item.runtime > 0) as item, index}
+							<button
+								onclick={() => (episodeSelect = index + 1)}
+								class={`item cursor-pointer w-full px-4 h-[40px]  ${episodeSelect === index + 1 ? 'border-l-4  border-l-color-3/90 bg-color-3/30' : isOdd(index + 1) ? 'bg-tet' : 'bg-sec'} text-white flex items-center justify-between gap-2`}
+							>
+								<div class="flex gap-2 items-center">
+									<p>{index + 1}.</p>
+									<p>
+										{item.name}
+									</p>
+								</div>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									fill="currentColor"
+									class={`bi bi-play-circle-fill size-4  ${episodeSelect === index + 1 ? 'text-color-3' : 'text-color-1'}`}
+									viewBox="0 0 16 16"
+								>
+									<path
+										d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"
+									/>
+								</svg>
+							</button>
+						{/each}
+					{/if}
 				</div>
 			</div>
 			<div class="screen w-[75%] bg-sec h-full overflow-hidden md:w-full">
@@ -98,7 +124,7 @@
 					title="Movie"
 					class="w-full h-[85vh] sm:h-[210px]"
 					id="playit"
-					src={`https://vidlink.pro/tv/${seriesData.id}/${seasonSelect}/${episodeSelect}?primaryColor=ffdd95&autoplay=false&iconColor=ffdd95&icons=default`}
+					src={`https://viddlink.pro/tv/${seriesData.id}/${seasonSelect}/${episodeSelect}?primaryColor=ffdd95&autoplay=false&iconColor=ffdd95&icons=default`}
 					allowFullScreen
 				></iframe>
 				<div
