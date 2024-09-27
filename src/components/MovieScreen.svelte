@@ -1,11 +1,8 @@
 <script lang="ts">
-	import { formatDate, getLetterRange, isOdd } from '$src/lib';
+	import { getLetterRange } from '$src/lib';
 
 	let { movieData, movieId }: { movieData: any; movieId: any } = $props();
-	let hasStartedPlaying = $state(false);
-	let setHasStartedPlaying = (value: boolean) => {
-		hasStartedPlaying = value;
-	};
+	let streamServer = $state('vidcloud');
 </script>
 
 <div
@@ -50,13 +47,23 @@
 				</ol>
 			</div>
 			<div class="screen w-[75%] bg-sec h-full overflow-hidden md:w-full">
-				<iframe
-					title="Movie"
-					class="w-full h-[85vh] sm:h-[210px]"
-					id="playit"
-					src={`https://vidlink.pro/movie/${movieId}?primaryColor=ffdd95&autoplay=false&iconColor=ffdd95&icons=default`}
-					allowFullScreen
-				></iframe>
+				{#if streamServer === 'vidcloud'}
+					<iframe
+						title="Movie"
+						class="w-full h-[85vh] sm:h-[210px]"
+						id="playit"
+						src={`https://vidlink.pro/movie/${movieData.id}?primaryColor=ffdd95&autoplay=false&iconColor=ffdd95&icons=default`}
+						allowFullScreen
+					></iframe>
+				{:else}
+					<iframe
+						title="Movie"
+						class="w-full h-[85vh] sm:h-[210px]"
+						id="playit"
+						src={`https://vidsrc.cc/v2/embed/movie/${movieData.id}`}
+						allowFullScreen
+					></iframe>
+				{/if}
 				<div
 					class="rest w-full h-auto p-4 overflow-hidden border-b border-dotted border-b-color-2/10"
 				>
@@ -78,8 +85,14 @@
 							</svg>
 							<p>Source :</p>
 							<div class="options flex gap-2">
-								<button class="p-1 px-2 text-main rounded-md bg-color-3">Vidcloud</button>
-								<button class="p-1 px-2 text-white rounded-md bg-color-1/10">Vidsrc</button>
+								<button
+									class={`p-1 px-2 rounded-md ${streamServer === 'vidcloud' ? 'bg-color-3 text-main' : 'bg-color-1/10'}`}
+									onclick={() => (streamServer = 'vidcloud')}>Vidcloud</button
+								>
+								<button
+									class={`p-1 px-2  rounded-md ${streamServer === 'vidsrc' ? 'bg-color-3 text-main' : 'bg-color-1/10'}`}
+									onclick={() => (streamServer = 'vidsrc')}>Vidsrc</button
+								>
 							</div>
 						</div>
 					</div>

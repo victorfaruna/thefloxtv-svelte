@@ -4,7 +4,7 @@
 	import { getLetterRange, getWordRange } from '$src/lib';
 	let { data } = $props();
 	let movieData = $state(data.movieData);
-	let id = $page.params.id;
+	let id = $state($page.params.id);
 
 	$effect(() => {
 		if ($page.params.id) {
