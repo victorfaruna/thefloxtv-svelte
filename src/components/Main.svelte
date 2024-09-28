@@ -45,7 +45,9 @@
 							class="text w-[50%] absolute z-[2] h-auto mb-[4rem] sm:mb-[2rem] overflow-hidden sm:w-full sm:text-center flex flex-col gap-4 sm:gap-2"
 						>
 							<p class="text-[1.2rem] text-color-3 sm:text-[0.9rem]">#{index + 1} Spotlight</p>
-							<p class="text-[2.7rem] text-white font-semibold sm:text-[1.5rem]">
+							<p
+								class="text-[2.7rem] text-white font-semibold sm:text-[1.5rem] w-full mr-2 overflow-ellipsis overflow-hidden whitespace-nowrap"
+							>
 								{result.name ? result.name : result.title}
 							</p>
 							<!-- <MovieLogo
@@ -62,7 +64,7 @@
 								>
 								<span
 									class="certification center-div px-[7px] py-[0.5px] rounded-2xl font-bold text-[11px] border"
-									>R</span
+									>{result.content_rating == '' ? '?' : result.content_rating}</span
 								>
 								<span>
 									<!-- {result.media_type === 'movie'

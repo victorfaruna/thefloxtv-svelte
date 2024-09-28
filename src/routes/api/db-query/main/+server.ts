@@ -14,6 +14,10 @@ export async function GET() {
 						title: trending.title ?? '',
 						overview: trending.overview ?? '',
 						popularity: trending.popularity ?? '',
+						content_rating:
+							trending.release_dates?.results?.filter(
+								(item: any) => item.iso_3166_1 == 'US' || item.iso_3166_1 == 'CA'
+							)[0]?.release_dates[0]?.certification ?? '',
 						vote_average: trending.vote_average ?? '',
 						vote_count: trending.vote_count ?? '',
 						runtime: trending.runtime ?? '',
@@ -32,6 +36,10 @@ export async function GET() {
 						name: trending.name,
 						overview: trending.overview,
 						popularity: trending.popularity,
+						content_rating:
+							trending.content_ratings?.results?.filter(
+								(item: any) => item.iso_3166_1 == 'US' || item.iso_3166_1 == 'CA'
+							)[0]?.rating ?? '',
 						vote_average: trending.vote_average,
 						vote_count: trending.vote_count,
 						first_air_date: trending.first_air_date,
@@ -44,7 +52,7 @@ export async function GET() {
 						poster_path: trending.poster_path,
 						backdrop_path: trending.backdrop_path,
 						logo_path: trending.images?.logos[0]?.file_path ?? '',
-						media_type: trending.media_type
+						media_type: trending.media_type ?? ''
 					});
 		}
 		return new Response(JSON.stringify({ message: 'success' }), { status: 200 });
