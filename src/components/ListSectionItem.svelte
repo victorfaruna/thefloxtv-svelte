@@ -26,7 +26,7 @@
 <div class="list-container w-full overflow-hidden sm:pr-4">
 	<p class="list-title text-[1rem] font-semibold text-color-3 mb-6">{listTitle}</p>
 	<div class="inner flex flex-col gap-3">
-		{#each data.sort((a: any, b: any) => b.vote_average - a.vote_average).slice(0, 5) as item}
+		{#each data.sort((a: any, b: any) => b.title - a.title).slice(0, 5) as item}
 			<div
 				class="item w-full flex gap-4 items-center border-b border-color-1/10 py-3 last:border-none"
 			>
@@ -37,7 +37,7 @@
 				/>
 				<div class="info flex flex-col gap-2">
 					<p
-						class=" text-white/90 font-[500] text-[0.8rem] w-full overflow-ellipsis overflow-hidden whitespace-nowrap"
+						class=" text-white/90 font-[500] text-[0.8rem] w-[90%] overflow-ellipsis overflow-hidden whitespace-nowrap"
 					>
 						{item.name ? item.name : item.title}
 					</p>
@@ -50,6 +50,8 @@
 							class="px-2 py-[1px] bg-pink-200 text-main text-[0.7rem] font-semibold rounded-r-[0.29rem]"
 							>{item.vote_average.toFixed(1)}
 						</span>
+						&middot;
+						<span class="font-semibold">{item.media_type}</span>
 					</div>
 				</div>
 			</div>
