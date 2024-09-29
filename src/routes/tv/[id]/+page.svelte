@@ -43,8 +43,10 @@
 					</span>
 					{#each seriesData.genres.slice(0, 3) as genre}
 						<span class="text-[13px] sm:text-[11px]">
-							{genre.name} &middot;
+							{genre.name}
 						</span>
+
+						&middot;
 					{/each}
 					<span class="text-[17px] sm:text-[11px] text-[var(--color-3)]">
 						{getLetterRange(seriesData.first_air_date, 4)}

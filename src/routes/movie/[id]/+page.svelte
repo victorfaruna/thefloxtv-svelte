@@ -42,8 +42,9 @@
 					</span>
 					{#each movieData.genres.slice(0, 3) as genre}
 						<span class="text-[13px] sm:text-[11px]">
-							{genre.name} &middot;
+							{genre.name}
 						</span>
+						&middot;
 					{/each}
 					<span class="text-[17px] sm:text-[11px] text-color-3">
 						{getLetterRange(movieData.release_date, 4)}

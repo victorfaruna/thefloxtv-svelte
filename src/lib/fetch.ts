@@ -166,9 +166,9 @@ export const getSearchResult = async (query: string | undefined) => {
 		);
 		return res.data.results.filter(
 			(movie: any) =>
-				movie.popularity > 6 && // Adjust threshold as needed
-				movie.vote_average > 6.5 && // Minimum rating
-				movie.vote_count > 100 // Minimum number of svotes
+				movie.popularity > 100 && // Adjust threshold as needed
+				movie.vote_average > 7 && // Minimum rating
+				movie.vote_count > 50 // Minimum number of svotes
 		);
 	} catch (error) {
 		console.log(error);

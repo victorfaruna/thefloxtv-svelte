@@ -93,7 +93,7 @@
 							>
 								<div
 									class="inner foryou-inner w-full h-[95%] p-5 rounded-2xl flex flex-col justify-end group"
-									style="background-Image: url(https://image.tmdb.org/t/p/original{result.backdrop_path}); background-size: cover;"
+									style="background-Image: url(https://image.tmdb.org/t/p/w1280{result.backdrop_path}); background-size: cover;"
 								>
 									<p
 										class="text-[17px] sm:text-[15px] font-bold relative z-[2] text-gray-300 w-[60%] overflow-hidden text-ellipsis whitespace-nowrap"
@@ -119,7 +119,7 @@
 		<div class="controls w-[35px] flex flex-col gap-3 text-color-3 sm:hidden">
 			<button
 				aria-label="Slide Next"
-				class="w-full h-full rounded-lg center-div bg-color-1/20 glassmorphism hover:bg-color-3 hover:text-main"
+				class="w-full h-full rounded-lg center-div bg-color-1/20 glassmorphism active:bg-color-3 active:text-main"
 				onclick={() => swipeNext()}
 			>
 				<svg
@@ -135,7 +135,7 @@
 			</button>
 			<button
 				aria-label="Slide Prev"
-				class="w-full h-full rounded-lg center-div bg-color-1/20 glassmorphism hover:bg-color-3 hover:text-main"
+				class="w-full h-full rounded-lg center-div bg-color-1/20 glassmorphism active:bg-color-3 active:text-main"
 				onclick={() => swipePrev()}
 			>
 				<svg

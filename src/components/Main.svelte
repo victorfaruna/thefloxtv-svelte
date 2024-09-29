@@ -99,7 +99,7 @@
 								style="text-shadow: 0 1px 2px #000"
 							>
 								{result.overview.split(/\s+/).length > 45
-									? getWordRange(result.overview, 40)
+									? getWordRange(result.overview, 25)
 									: result.overview}
 							</p>
 							<div class="buttons flex gap-5 flex-wrap sm:justify-center font-[500]">
@@ -143,7 +143,7 @@
 							</div>
 						</div>
 						<div
-							class="w-[80%] sm:w-full h-full absolute right-0 z-[-1] bg-cover"
+							class="w-[90%] sm:w-full h-full absolute right-0 z-[-1] bg-cover"
 							style="background-image: url({width > 1000
 								? `https://image.tmdb.org/t/p/w1280${result.backdrop_path}`
 								: `https://image.tmdb.org/t/p/w1280${result.backdrop_path}`});"
@@ -167,7 +167,7 @@
 		z-index: 2;
 		top: 0;
 		position: absolute;
-		background: linear-gradient(90deg, rgba(var(--bg-color-1)) 30%, rgba(var(--bg-color-1), 0));
+		background: linear-gradient(93deg, rgba(var(--bg-color-1)) 20%, rgba(var(--bg-color-1), 0));
 	}
 	.main-carousel::after {
 		display: block;
@@ -181,6 +181,7 @@
 
 	@media (max-width: 768px) {
 		.main-carousel::before {
+			width: 100%;
 			background: linear-gradient(90deg, rgba(var(--bg-color-1)), rgba(var(--bg-color-1), 0));
 		}
 	}
