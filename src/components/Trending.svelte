@@ -108,7 +108,7 @@
 									<img
 										loading="lazy"
 										class="object-cover w-full shadow-2xl bg-color-1/5 h-[230px] sm:h-[190px]"
-										src={`https://themoviedb.org/t/p/w500${result.poster_path}`}
+										src={`http://image.tmdb.org/t/p/w500${result.poster_path}`}
 										alt=""
 									/>
 								</div>

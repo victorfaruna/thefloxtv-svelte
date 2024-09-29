@@ -1,6 +1,7 @@
 <script>
 	import Footer from '$components/Footer.svelte';
 	import ForYou from '$components/ForYou.svelte';
+	import ListSectionItem from '$components/ListSectionItem.svelte';
 	import Main from '$components/Main.svelte';
 	import Netflix from '$components/Netflix.svelte';
 	import PrimeVideo from '$components/PrimeVideo.svelte';
@@ -16,6 +17,16 @@
 <div class="pl-6 sm:pl-4">
 	<Trending trendingType="movie" trendingData={trendingMoviesData} />
 	<Trending trendingType="tv" trendingData={trendingTvData} />
+
+	<div
+		class="list-section grid gap-3 sm:grid-cols-1 sm:gap-10"
+		style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));"
+	>
+		<ListSectionItem listType="top-airing" listTitle="Top Airing" listData={forYouData} />
+		<ListSectionItem listType="top-rated" listTitle="Top Rated" listData={mainData} />
+		<ListSectionItem listType="upcoming" listTitle="Upcoming" />
+		<ListSectionItem listType="now-playing" listTitle="Now Playing" />
+	</div>
 	<Netflix />
 	<PrimeVideo />
 	<Footer />
