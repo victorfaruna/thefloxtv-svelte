@@ -116,7 +116,7 @@
 			<div class="swiper-progress relative z-[2]"></div>
 		</div>
 
-		<div class="controls w-[35px] flex flex-col gap-3 text-color-3 sm:w-[25px]">
+		<div class="controls w-[35px] flex flex-col gap-3 text-color-3 sm:hidden">
 			<button
 				aria-label="Slide Next"
 				class="w-full h-full rounded-lg center-div bg-color-1/20 glassmorphism hover:bg-color-3 hover:text-main"
