@@ -27,10 +27,8 @@
 	<p class="list-title text-[1rem] font-semibold text-color-3 mb-6">{listTitle}</p>
 	<div class="inner flex flex-col gap-3">
 		{#each data.sort((a: any, b: any) => b.title - a.title).slice(0, 5) as item}
-			<a href={`/${item.name ? 'tv' : 'movie'}/${item.id}`}>
-				<div
-					class="item w-full flex gap-4 items-center border-b border-color-1/10 py-3 last:border-none"
-				>
+			<a href={`/${item.name ? 'tv' : 'movie'}/${item.tmdb_id ?? item.id}`}>
+				<div class="item w-full flex gap-4 items-center border-b border-color-1/5 py-3">
 					<img
 						class="w-[60px] h-[80px] rounded-md object-cover"
 						src={`http://image.tmdb.org/t/p/w185${item.poster_path}`}
