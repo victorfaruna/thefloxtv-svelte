@@ -7,7 +7,7 @@
 	import PrimeVideo from '$components/PrimeVideo.svelte';
 	import Trending from '$components/Trending.svelte';
 	const { data } = $props();
-	const { mainData, forYouData, trendingMoviesData, trendingTvData } = data;
+	const { mainData, forYouData, trendingMoviesData, trendingTvData, topTenData } = data;
 </script>
 
 <Main {mainData} />
@@ -24,8 +24,8 @@
 	>
 		<ListSectionItem listType="top-airing" listTitle="Top Airing" listData={forYouData} />
 		<ListSectionItem listType="top-rated" listTitle="Top Rated" listData={mainData} />
-		<ListSectionItem listType="upcoming" listTitle="Upcoming" />
-		<ListSectionItem listType="now-playing" listTitle="Now Playing" />
+		<ListSectionItem listType="upcoming" listTitle="Top 10 Movies" listData={topTenData.movie} />
+		<ListSectionItem listType="now-playing" listTitle="Top 10 TV Shows" listData={topTenData.tv} />
 	</div>
 	<Netflix />
 	<PrimeVideo />

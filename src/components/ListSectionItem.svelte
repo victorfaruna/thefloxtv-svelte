@@ -26,7 +26,7 @@
 <div class="list-container w-full overflow-hidden sm:pr-4">
 	<p class="list-title text-[1rem] font-semibold text-color-3 mb-6">{listTitle}</p>
 	<div class="inner flex flex-col gap-3">
-		{#each data.slice(0, 5) as item}
+		{#each data.sort((a: any, b: any) => b.vote_average - a.vote_average).slice(0, 5) as item}
 			<div
 				class="item w-full flex gap-4 items-center border-b border-color-1/10 py-3 last:border-none"
 			>
