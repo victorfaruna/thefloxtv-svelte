@@ -38,7 +38,9 @@
 <div class="carousel-cont w-full overflow-hidden">
 	<div bind:this={swiperComponent} class="swiper carousel w-full h-[90vh] sm:h-[400px]">
 		<div class="swiper-wrapper">
-			{#each mainData.slice(0, 10) as result, index (result.id)}
+			{#each mainData
+				.filter((item: any) => item.vote_average > 6)
+				.slice(0, 10) as result, index (result.id)}
 				<div class="swiper-slide carousel-item relative main-carousel bg-cover bg-no-repeat">
 					<div class="inner-container w-full h-full flex items-end pl-[3%] sm:pl-0">
 						<div

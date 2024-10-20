@@ -76,7 +76,7 @@
 								class={`item cursor-pointer w-full px-4 h-[40px]  ${episodeSelect === index + 1 ? 'border-l-4  border-l-color-3/90 bg-color-3/30' : isOdd(index + 1) ? 'bg-tet' : 'bg-sec'} text-white flex items-center justify-between gap-2`}
 							>
 								<div class="flex gap-2 items-center">
-									<p>EP {index + 1}.</p>
+									<p>EP {index + 1}:</p>
 									<p>Loading...</p>
 								</div>
 								<svg
@@ -97,9 +97,11 @@
 								onclick={() => (episodeSelect = index + 1)}
 								class={`item cursor-pointer w-full px-4 h-[40px]  ${episodeSelect === index + 1 ? 'border-l-4  border-l-color-3/90 bg-color-3/30' : isOdd(index + 1) ? 'bg-tet' : 'bg-sec'} text-white flex items-center justify-between gap-2`}
 							>
-								<div class="flex gap-2 items-center">
-									<p>Ep {index + 1}.</p>
-									<p>
+								<div class="w-full flex gap-2 items-center">
+									<p class="whitespace-nowrap">EP {index + 1}:</p>
+									<p
+										class="w-[200px] text-left overflow-ellipsis overflow-hidden whitespace-nowrap"
+									>
 										{item.name}
 									</p>
 								</div>

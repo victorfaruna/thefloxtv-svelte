@@ -31,7 +31,7 @@
 				<div class="item w-[95%] flex gap-4 items-center border-b border-color-1/[0.1] pb-3">
 					<img
 						class="w-[60px] h-[80px] rounded-md object-cover"
-						src={`http://image.tmdb.org/t/p/w185${item.poster_path}`}
+						src={`https://image.tmdb.org/t/p/w185${item.poster_path}`}
 						alt="poster"
 					/>
 					<div class="info flex flex-col gap-2">
