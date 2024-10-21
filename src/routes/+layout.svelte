@@ -5,7 +5,11 @@
 	import { toSentenceCase } from '$src/lib';
 	// import Toploader from '$lib/Toploader.svelte';
 	import { navigating } from '$app/stores';
-	import { Analytics } from '@vercel/analytics/react';
+	//Injecting Vercel's analytics
+	import { dev } from '$app/environment';
+	import { inject } from '@vercel/analytics';
+	inject({ mode: dev ? 'development' : 'production' });
+	//...
 	export let host = toSentenceCase($page.url.hostname.split('.')[0]);
 </script>
 
@@ -23,8 +27,6 @@
 <div>
 	<slot />
 </div>
-
-<Analytics />
 
 <style>
 	.loading-container {
