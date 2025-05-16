@@ -23,7 +23,7 @@
 		"@types/nprogress": "^0.2.3",
 		"autoprefixer": "^10.4.20",
 		"daisyui": "^4.12.10",
-		"drizzle-kit": "^0.24.2",
+		"drizzle-kit": "^0.31.1",
 		"eslint": "^9.0.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0",
