@@ -15,13 +15,13 @@
 
 <main class="main-container w-full">
 	<MovieScreen {movieData} movieId={id} />
-	<section class="w-full h-auto p-7 mt-4 sm:p-4">
-		<div class="movie-details w-full h-auto flex gap-3">
+	<section class="mt-4 h-auto w-full p-7 max-sm:p-4">
+		<div class="movie-details flex h-auto w-full gap-3">
 			<div
-				class="small-image-container w-[250px] h-[270px] sm:w-[120px] sm:h-[130px] overflow-hidden"
+				class="small-image-container h-[270px] w-[250px] overflow-hidden max-sm:h-[130px] max-sm:w-[120px]"
 			>
 				<img
-					class="w-full h-full object-cover"
+					class="h-full w-full object-cover"
 					src={`https://image.tmdb.org/t/p/w220_and_h330_face${movieData.poster_path}`}
 					width={220}
 					height={330}
@@ -29,35 +29,35 @@
 				/>
 			</div>
 			<div
-				class="title-card text-semibold text-slate-200 w-full pr-[10%] sm:pr-5 flex flex-col gap-3"
+				class="title-card text-semibold flex w-full flex-col gap-3 pr-[10%] text-slate-200 max-sm:pr-5"
 			>
-				<p class="text-[30px] font-bold sm:text-[25px]">
+				<p class="text-[30px] font-bold max-sm:text-[25px]">
 					{movieData.title}
 				</p>
-				<div class="quick-info flex gap-3 flex-wrap items-center text-gray-500">
+				<div class="quick-info flex flex-wrap items-center gap-3 text-gray-500">
 					<span
-						class="w-auto px-[8px] py-[0.5px] text-[13px] sm:text-[11px] font-[600] text-gray-500 outline outline-1 outline-color-3 rounded-sm"
+						class="outline-color-3 w-auto rounded-sm px-[8px] py-[0.5px] text-[13px] font-[600] text-gray-500 outline outline-1 max-sm:text-[11px]"
 					>
 						HD
 					</span>
 					{#each movieData.genres.slice(0, 3) as genre}
-						<span class="text-[13px] sm:text-[11px]">
+						<span class="text-[13px] max-sm:text-[11px]">
 							{genre.name}
 						</span>
 						&middot;
 					{/each}
-					<span class="text-[17px] sm:text-[11px] text-color-3">
+					<span class="text-color-3 text-[17px] max-sm:text-[11px]">
 						{getLetterRange(movieData.release_date, 4)}
 					</span>
 				</div>
-				<p class="description text-[17px] sm:text-[11px]">
+				<p class="description text-[17px] max-sm:text-[11px]">
 					{getWordRange(movieData.overview, 25)}
 				</p>
 			</div>
 		</div>
 		{''}
-		<div class="cast-container w-full h-auto mt-6 relative overflow-hidden">
-			<p class="text-[30px] font-bold sm:text-[20px] text-white mb-4">Cast</p>
+		<div class="cast-container relative mt-6 h-auto w-full overflow-hidden">
+			<p class="mb-4 text-[30px] font-bold text-white max-sm:text-[20px]">Cast</p>
 			{' '}
 			<div
 				class="scroll-container no-scrollbar"
@@ -65,11 +65,11 @@
 			>
 				{#each movieData.credits.cast.slice(0, 7) as cast}
 					<div
-						class="item w-auto h-auto mr-[10px] flex flex-col items-center relative gap-3 sm:mr-[8px]"
+						class="item relative mr-[10px] flex h-auto w-auto flex-col items-center gap-3 max-sm:mr-[8px]"
 						style="flex: 0 0 auto"
 					>
 						<img
-							class="w-[130px] h-[130px] sm:w-[100px] sm:h-[100px] rounded-2xl object-cover"
+							class="h-[130px] w-[130px] rounded-2xl object-cover max-sm:h-[100px] max-sm:w-[100px]"
 							src={cast.profile_path == null
 								? '/images/null-avatar.png'
 								: `https://media.themoviedb.org/t/p/w240_and_h266_face${cast.profile_path}`}
@@ -78,12 +78,12 @@
 							loading="lazy"
 							alt="cast"
 						/>
-						<p class="text-gray-300 text-[14px] sm:text-[12px]">{getWordRange(cast.name, 2)}</p>
+						<p class="text-[14px] text-gray-300 max-sm:text-[12px]">{getWordRange(cast.name, 2)}</p>
 					</div>
 				{/each}
 				<a target="_blank" href={`https://www.themoviedb.org/movie/${movieData.id}/cast`}>
 					<div
-						class="w-[200px] h-[130px] sm:h-[100px] flex gap-2 items-center justify-center text-color-3 text-[12px]"
+						class="text-color-3 flex h-[130px] w-[200px] items-center justify-center gap-2 text-[12px] max-sm:h-[100px]"
 					>
 						<p>View&nbsp;All</p>
 						<i class="fa-regular fa-arrow-right"></i>

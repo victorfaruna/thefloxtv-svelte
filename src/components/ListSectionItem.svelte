@@ -1,54 +1,52 @@
 <script lang="ts">
-	import { fetchTrending } from '$src/lib/fetch';
-	import { onMount } from 'svelte';
-
 	let { listType, listTitle, listData }: any = $props();
-	let data: any = $state(listData ?? []);
+	let data = listData;
 
-	async function fetchData() {
-		switch (listType) {
-			case 'top-airing':
-				data = await fetchTrending('all', 'week');
-				break;
-			case 'latest':
-				data = fetchTrending('all', 'week');
-				break;
-			case 'upcoming':
-				data = data.upcoming;
-				break;
-		}
-	}
-	onMount(async () => {
-		listData ? '' : await fetchData();
-	});
+	// async function fetchData() {
+	// 	switch (listType) {
+	// 		case 'top-airing':
+	// 			data = await fetchTrending('all', 'week');
+	// 			break;
+	// 		case 'latest':
+	// 			data = fetchTrending('all', 'week');
+	// 			break;
+	// 		case 'upcoming':
+	// 			data = data.upcoming;
+	// 			break;
+	// 	}
+	// }
+
+	// onMount(async () => {
+	// 	listData ? '' : await fetchData();
+	// });
 </script>
 
-<div class="list-container w-full overflow-hidden sm:pr-4">
-	<p class="list-title text-[1rem] font-semibold text-color-3 mb-6">{listTitle}</p>
+<div class="list-container w-full overflow-hidden max-sm:pr-4">
+	<p class="list-title text-color-3 mb-6 text-[1rem] font-semibold">{listTitle}</p>
 	<div class="inner flex flex-col gap-3">
 		{#each data.sort((a: any, b: any) => b.title - a.title).slice(0, 5) as item}
 			<a href={`/${item.name ? 'tv' : 'movie'}/${item.tmdb_id ?? item.id}`}>
-				<div class="item w-[95%] flex gap-4 items-center border-b border-color-1/[0.1] pb-3">
+				<div class="item border-color-1/[0.1] flex w-[95%] items-center gap-4 border-b pb-3">
 					<img
-						class="w-[60px] h-[80px] rounded-md object-cover"
+						class="h-[80px] w-[60px] rounded-md object-cover"
 						src={`https://image.tmdb.org/t/p/w185${item.poster_path}`}
 						alt="poster"
 					/>
 					<div class="info flex flex-col gap-2">
 						<p
-							class=" text-white/90 font-[500] text-[0.8rem] w-[90%] overflow-ellipsis overflow-hidden whitespace-nowrap"
+							class=" w-[90%] overflow-hidden text-[0.8rem] font-[500] overflow-ellipsis whitespace-nowrap text-white/90"
 						>
 							{item.name ? item.name : item.title}
 						</p>
-						<div class="overflow-hidden flex gap-1">
+						<div class="flex gap-1 overflow-hidden">
 							<span
-								class="px-2 py-[1px] bg-green-300 text-main text-[0.7rem] font-semibold rounded-l-[0.29rem]"
+								class="text-main rounded-l-[0.29rem] bg-green-300 px-2 py-[1px] text-[0.7rem] font-semibold"
 								>{item.release_date
 									? item.release_date.slice(0, 4)
 									: item.first_air_date.slice(0, 4)}
 							</span>
 							<span
-								class="px-2 py-[1px] bg-pink-300 text-main text-[0.7rem] font-semibold rounded-r-[0.29rem]"
+								class="text-main rounded-r-[0.29rem] bg-pink-300 px-2 py-[1px] text-[0.7rem] font-semibold"
 								>{item.vote_average.toFixed(1)}
 							</span>
 							&middot;

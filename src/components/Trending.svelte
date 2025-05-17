@@ -24,12 +24,12 @@
 </script>
 
 <div class="cont my-10">
-	<div class="mb-2 flex gap-5 sm:gap-3 items-center justify-between text-[12px]">
-		<div class=" text-[1.2rem] sm:text-[1rem] font-bold text-color-3 flex gap-1 items-center">
+	<div class="mb-2 flex items-center justify-between gap-5 text-[12px] max-sm:gap-3">
+		<div class=" text-color-3 flex items-center gap-1 text-[1.2rem] font-bold max-sm:text-[1rem]">
 			<!-- <svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="currentColor"
-				class="bi bi-file-play-fill size-[25px] sm:size-[17px] text-color-3"
+				class="bi bi-file-play-fill size-[25px] max-sm:size-[17px] text-color-3"
 				viewBox="0 0 16 16"
 			>
 				<path
@@ -40,13 +40,14 @@
 		</div>
 	</div>
 
-	<div class="trending-cont h-auto overflow-hidden mb-[50px] flex sm:flex-col relative">
+	<div class="trending-cont relative mb-[50px] flex h-auto overflow-hidden max-sm:flex-col">
 		<div
-			class="absolute w-[45px] h-[260px] sm:h-[215px] top-0 right-0 z-[100] flex gap-2 items-center"
+			class="absolute top-0 right-0 z-[100] flex h-[260px] w-[45px] items-center gap-2 max-sm:h-[215px]"
 		>
 			<button
 				onclick={scrollItemLeft}
-				class="size-[40px] rounded-full bg-tet border border-color-1/5 text-color-3 flex items-center justify-center"
+				aria-label="Scroll Left"
+				class="bg-tet border-color-1/5 text-color-3 flex size-[40px] items-center justify-center rounded-full border"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +64,7 @@
 
 		<div
 			bind:this={scrollCont}
-			class="scroll-container no-scrollbar flex flex-nowrap w-full h-auto overflow-x-auto gap-5 sm:gap-4"
+			class="scroll-container no-scrollbar flex h-auto w-full flex-nowrap gap-5 overflow-x-auto max-sm:gap-4"
 		>
 			{#if isLoading || (data && data.length == 0)}
 				<LoadTrending />
@@ -76,28 +77,28 @@
 							: `/tv/${result.tmdb_id}`}
 					>
 						<div
-							class="group item w-auto h-auto items-end flex gap-1 relative"
+							class="group item relative flex h-auto w-auto items-end gap-1"
 							style="flex: 0 0 auto"
 						>
-							<div class="flex flex-col gap-2 items-center text-[1rem]">
+							<div class="flex flex-col items-center gap-2 text-[1rem]">
 								<p
 									style="writing-mode: vertical-rl;  transform: rotate(180deg) "
-									class="sm:text-[0.8rem] h-[200px] sm:h-[160px] whitespace-nowrap overflow-ellipsis overflow-hidden text-white/90"
+									class="h-[200px] overflow-hidden overflow-ellipsis whitespace-nowrap text-white/90 max-sm:h-[160px] max-sm:text-[0.8rem]"
 								>
 									{result.name ? result.name : result.title}
 								</p>
 								<p class="text-color-3 font-bold">{(index + 1).toString().padStart(2, '0')}</p>
 							</div>
 
-							<div class=" w-[160px] sm:w-[130px] h-auto relative">
-								<div class="image-container w-full h-auto overflow-hidden relative">
+							<div class=" relative h-auto w-[160px] max-sm:w-[130px]">
+								<div class="image-container relative h-auto w-full overflow-hidden">
 									<div
-										class="group-hover:opacity-[1] opacity-[0] duration-[0.7s] w-full h-full absolute z-[2] bg-gradient-to-t from-color-3 via-color-3/30 to-[transparent] flex items-center justify-center"
+										class="from-color-3 via-color-3/30 absolute z-[2] flex h-full w-full items-center justify-center bg-gradient-to-t to-[transparent] opacity-[0] duration-[0.7s] group-hover:opacity-[1]"
 									>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											fill="currentColor"
-											class="bi bi-play-circle-fill size-[50px] sm:size-[45px] text-black"
+											class="bi bi-play-circle-fill size-[50px] text-black max-sm:size-[45px]"
 											viewBox="0 0 16 16 "
 										>
 											<path
@@ -107,7 +108,7 @@
 									</div>
 									<img
 										loading="lazy"
-										class="object-cover w-full shadow-2xl bg-color-1/5 h-[230px] sm:h-[190px]"
+										class="bg-color-1/5 h-[230px] w-full object-cover shadow-2xl max-sm:h-[190px]"
 										src={`http://image.tmdb.org/t/p/w500${result.poster_path}`}
 										alt=""
 									/>

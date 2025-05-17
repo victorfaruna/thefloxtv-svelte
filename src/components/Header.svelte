@@ -2,7 +2,7 @@
 	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import LivesearchResult from '$components/LivesearchResult.svelte';
-	import { fade, fly } from 'svelte/transition';
+
 	let isNavToggled = $state(false);
 	let isSearchToggled = $state(false);
 	let searchValue: string = $state('');
@@ -23,7 +23,7 @@
 </script>
 
 <div
-	class={`w-[80vw] h-screen bg-tet  fixed top-0 left-0 z-30 p-[10%] shadow-2xl ${
+	class={`bg-tet fixed top-0  left-0 z-30 h-screen w-[80vw] p-[10%] shadow-2xl ${
 		isNavToggled ? 'translate-x-0' : 'translate-x-[-100%]'
 	} transition-all duration-300`}
 >
@@ -40,8 +40,8 @@
 			</svg>
 		</button> -->
 
-	<nav class="w-full h-full flex items-center justify-center">
-		<ul class="text-[18px] text-[b8b8b8] flex flex-col gap-[30px] text-center">
+	<nav class="flex h-full w-full items-center justify-center">
+		<ul class="flex flex-col gap-[30px] text-center text-[18px] text-[b8b8b8]">
 			<li class="">
 				<a href="/">Home</a>
 			</li>
@@ -58,12 +58,12 @@
 	</nav>
 </div>
 <header
-	class={`w-full h-[80px] sm:h-[50px] px-[3%] flex items-center justify-between ${
+	class={`flex h-[80px] w-full items-center justify-between px-8 max-sm:h-[50px] max-sm:px-3 ${
 		$page.url.pathname == '/' && 'absolute z-10'
-	} bg-gradient-to-b  from-main to-transparent`}
+	} from-main  bg-gradient-to-b to-transparent`}
 >
-	<div class="left-section flex gap-0 items-center">
-		<div class="logo-cont w-auto h-full center-div">
+	<div class="left-section flex items-center gap-0">
+		<div class="logo-cont center-div h-full w-auto">
 			<a data-sveltekit-preload-data aria-label="Home" href="/">
 				<svg
 					class="w-[120px] fill-[rgb(var(--color-3))]"
@@ -126,12 +126,12 @@
 		</div>
 
 		<div
-			class={`focused search-bar center-div dropdown w-[40vw] h-full z-[100]  mx-[20px] relative sm:fixed sm:w-full sm:top-0 sm:right-0 sm:mx-0 sm:items-start sm:py-[90px] sm:px-5 sm:bg-gray-700/20 sm:backdrop-blur-md ${
-				!isSearchToggled ? 'sm:hidden' : ''
+			class={`focused search-bar dropdown relative z-[100] mx-[20px]   h-full w-[40vw] max-sm:fixed max-sm:top-0 max-sm:right-0 max-sm:mx-0 max-sm:w-full max-sm:items-start max-sm:bg-gray-700/20 max-sm:px-5 max-sm:py-[90px] max-sm:backdrop-blur-md ${
+				!isSearchToggled ? 'max-sm:hidden' : ''
 			}`}
 			id="searchBar"
 		>
-			<div class="hidden sm:block text-white absolute top-5 right-5 text-[15px]">
+			<div class="absolute top-5 right-5 hidden text-[15px] text-white max-sm:block">
 				<button aria-label="Cancel" onclick={() => (isSearchToggled = !isSearchToggled)}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -148,10 +148,10 @@
 			<form
 				action="/search"
 				method="GET"
-				class="group center-div w-full h-[40px] sm:h-[50px] flex rounded-[1.5rem] bg-tet sm:bg-black shadow-2xl shadow-gray-950 p-2"
+				class="group center-div bg-tet flex h-[40px] w-full rounded-[1.5rem] p-2 shadow-2xl shadow-gray-950 max-sm:h-[50px] max-sm:bg-black"
 			>
 				<div
-					class="search-rep-ico flex items-center justify-center px-[0.8rem] py-[0.3rem] text-[0.6rem] gap-1 font-[300] text-gray-400 bg-[#353535] sm:bg-transparent rounded-[50rem]"
+					class="search-rep-ico flex items-center justify-center gap-1 rounded-[50rem] bg-[#353535] px-[0.8rem] py-[0.3rem] text-[0.6rem] font-[300] text-gray-400 max-sm:bg-transparent"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +167,7 @@
 							d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z"
 						/>
 					</svg>
-					<span class="sm:hidden">Filter</span>
+					<span class="max-sm:hidden">Filter</span>
 				</div>
 				<input
 					tabIndex={0}
@@ -178,10 +178,10 @@
 					name="q"
 					placeholder="Search Movies and Tv Shows"
 					oninput={search}
-					class="w-[92%] h-full bg-transparent border-none outline-none text-white font-[300] text-[12px] pl-[10px] text-center"
+					class="h-full w-[92%] border-none bg-transparent pl-[10px] text-center text-[12px] font-[300] text-white outline-none"
 				/>
 				<div
-					class="search-rep-ico flex items-center justify-center px-[0.8rem] py-[0.3rem] text-[0.6rem] font-[300] text-color-3 rounded-[50rem]"
+					class="search-rep-ico text-color-3 flex items-center justify-center rounded-[50rem] px-[0.8rem] py-[0.3rem] text-[0.6rem] font-[300]"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -202,7 +202,7 @@
 			<div
 				id="searchresult"
 				tabIndex={0}
-				class="dropdown-content w-full max-h-[50vh] absolute top-[43px] left-0 overflow-y-auto shadow-2xl shadow-black/80 overflow-x-hidden bg-tet backdrop-blur-[60px] rounded-2xl px-[5%] z-[-1] py-4 sm:bg-black sm:top-[150px] sm:w-[90%] sm:left-[5vw] sm:rounded-2xl sm:max-h-[70vh]"
+				class="dropdown-content bg-tet absolute top-[43px] left-0 z-[-1] max-h-[50vh] w-full overflow-x-hidden overflow-y-auto rounded-2xl px-[5%] py-4 shadow-2xl shadow-black/80 backdrop-blur-[60px] max-sm:top-[150px] max-sm:left-[5vw] max-sm:max-h-[70vh] max-sm:w-[90%] max-sm:rounded-2xl max-sm:bg-black"
 			>
 				{#key searchValue}
 					<LivesearchResult query={searchValue} />
@@ -213,7 +213,7 @@
 
 	<div class="right-section">
 		<nav class="nav w-full">
-			<ul class="w-full flex justify-between gap-[25px] lg:hidden">
+			<ul class="flex w-full justify-between gap-[25px] max-lg:hidden">
 				<li class="text-[12px] text-[#f3f3f3]" style="text-shadow: 0.5px 0.5px 0.5px black">
 					<a href="/">Home</a>
 				</li>
@@ -229,8 +229,8 @@
 			</ul>
 		</nav>
 
-		<nav class="md-nav hidden pr-[3vw] lg:block">
-			<div class="w-full flex justify-between gap-[25px]">
+		<nav class="md-nav hidden pr-[3vw] max-lg:block">
+			<div class="flex w-full justify-between gap-[25px]">
 				<button aria-label="Search" onclick={() => (isSearchToggled = true)}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"

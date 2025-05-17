@@ -1,15 +1,15 @@
 {#each [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as result, index}
-	<div class="group item w-auto flex relative items-center" style="flex: 0 0 auto">
+	<div class="group item relative flex w-auto items-center" style="flex: 0 0 auto">
 		<p
-			class="group-hover:text-color-3/10 list-number w-auto center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]"
+			class="group-hover:text-color-3/10 list-number center-div w-auto font-[Lato,Lato-fallback,Arial,sans-serif] text-[150px] font-semibold text-[#ffffff1e] max-sm:text-[100px]"
 		>
 			{index + 1}
 		</p>
-		<div class=" w-[320px] h-auto sm:w-[170px] translate-x-[-10px] overflow-hidden">
+		<div class=" h-auto w-[320px] translate-x-[-10px] overflow-hidden max-sm:w-[170px]">
 			<div
-				class="skeleton rounded-md image-container w-full h-[180px] sm:h-[95.5px] overflow-hidden relative"
+				class="skeleton image-container relative h-[180px] w-full overflow-hidden rounded-md max-sm:h-[95.5px]"
 			></div>
-			<p class="skeleton w-[80%] my-1 h-2"></p>
+			<p class="skeleton my-1 h-2 w-[80%]"></p>
 		</div>
 	</div>
 {/each}

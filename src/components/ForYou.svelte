@@ -54,7 +54,7 @@
 </script>
 
 <div class="wrapper relative z-[3] mt-0">
-	<div class="text-center mb-3 text-[13px] flex gap-2 justify-center items-center">
+	<div class="mb-3 flex items-center justify-center gap-2 text-center text-[13px]">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="currentColor"
@@ -77,8 +77,8 @@
 			/>
 		</svg>
 	</div>
-	<div class="w-full sm:px-1 flex gap-2">
-		<div bind:this={swiperComponent} class="swiper w-full h-[14rem] sm:h-[10rem]">
+	<div class="flex w-full gap-2 max-sm:px-1">
+		<div bind:this={swiperComponent} class="swiper h-[14rem] w-full max-sm:h-[10rem]">
 			<div class="swiper-wrapper">
 				{#if isLoading}
 					Loading
@@ -92,17 +92,17 @@
 									: `/tv/${result.tmdb_id}`}
 							>
 								<div
-									class="inner foryou-inner w-full h-[95%] p-5 rounded-2xl flex flex-col justify-end group"
+									class="inner foryou-inner group flex h-[95%] w-full flex-col justify-end rounded-2xl p-5"
 									style="background-Image: url(https://image.tmdb.org/t/p/w1280{result.backdrop_path}); background-size: cover;"
 								>
 									<p
-										class="text-[17px] sm:text-[15px] font-bold relative z-[2] text-gray-300 w-[60%] overflow-hidden text-ellipsis whitespace-nowrap"
+										class="relative z-[2] w-[60%] overflow-hidden text-[17px] font-bold text-ellipsis whitespace-nowrap text-gray-300 max-sm:text-[15px]"
 									>
 										{result.media_type == 'movie'
 											? result.title.toUpperCase()
 											: result.name.toUpperCase()}
 									</p>
-									<p class="text-[12px] font-[500] relative z-[2] text-color-3 p flex gap-2">
+									<p class="text-color-3 p relative z-[2] flex gap-2 text-[12px] font-[500]">
 										<span>{result.genre1}</span>
 										<span>{result.genre2}</span>
 										<span>{result.genre3}</span>
@@ -116,10 +116,10 @@
 			<div class="swiper-progress relative z-[2]"></div>
 		</div>
 
-		<div class="controls w-[35px] flex flex-col gap-3 text-color-3 sm:hidden">
+		<div class="controls text-color-3 flex w-[35px] flex-col gap-3 max-sm:hidden">
 			<button
 				aria-label="Slide Next"
-				class="w-full h-full rounded-lg center-div bg-color-1/20 glassmorphism active:bg-color-3 active:text-main"
+				class="center-div bg-color-1/20 glassmorphism active:bg-color-3 active:text-main h-full w-full rounded-lg"
 				onclick={() => swipeNext()}
 			>
 				<svg
@@ -135,7 +135,7 @@
 			</button>
 			<button
 				aria-label="Slide Prev"
-				class="w-full h-full rounded-lg center-div bg-color-1/20 glassmorphism active:bg-color-3 active:text-main"
+				class="center-div bg-color-1/20 glassmorphism active:bg-color-3 active:text-main h-full w-full rounded-lg"
 				onclick={() => swipePrev()}
 			>
 				<svg

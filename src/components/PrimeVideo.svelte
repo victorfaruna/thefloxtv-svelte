@@ -32,7 +32,7 @@
 
 {#snippet PrimeVideoLogo(className: string = '')}
 	<svg
-		class="w-[60px] sm:w-[50px] {className}"
+		class="w-[60px] max-sm:w-[50px] {className}"
 		xmlns="http://www.w3.org/2000/svg"
 		xmlns:xlink="http://www.w3.org/1999/xlink"
 		version="1.1"
@@ -81,17 +81,19 @@
 {/snippet}
 
 <div class="cont my-10">
-	<div class="mb-5 flex justify-center sm:flex-col gap-5 sm:gap-3 items-center text-[12px]">
-		<div class="uppercase text-[25px] sm:text-[17px] font-bold text-white flex gap-1 items-center">
+	<div class="mb-5 flex items-center justify-center gap-5 text-[12px] max-sm:flex-col max-sm:gap-3">
+		<div
+			class="flex items-center gap-1 text-[25px] font-bold text-white uppercase max-sm:text-[17px]"
+		>
 			{@render PrimeVideoLogo('')}
 			<p>Watch Amazon Prime</p>
 		</div>
 
-		<div class="flex gap-3 sm:gap-1 items-center text-[grey] sm:text-[11px]">
+		<div class="flex items-center gap-3 text-[grey] max-sm:gap-1 max-sm:text-[11px]">
 			<button
 				aria-label="Today"
 				onclick={() => setPrimeVideoType('movie')}
-				class={`px-3 py-1 border-[1.5px] rounded-md cursor-pointer active:border-color-3 active:text-color-3 ${
+				class={`active:border-color-3 active:text-color-3 cursor-pointer rounded-md border-[1.5px] px-3 py-1 ${
 					type == 'movie' ? ' border-color-3 text-color-3' : 'border-color-1/20'
 				}`}
 			>
@@ -100,7 +102,7 @@
 			<button
 				aria-label="This Week"
 				onclick={() => setPrimeVideoType('tv')}
-				class={`px-3 py-1 border-[1.5px] rounded-md cursor-pointer active:border-color-3 active:text-color-3 ${
+				class={`active:border-color-3 active:text-color-3 cursor-pointer rounded-md border-[1.5px] px-3 py-1 ${
 					type == 'tv' ? ' border-color-3 text-color-3' : 'border-color-1/20'
 				}`}
 			>
@@ -109,7 +111,7 @@
 		</div>
 	</div>
 
-	<div class="trending-cont mb-[50px] flex sm:flex-col">
+	<div class="trending-cont mb-[50px] flex max-sm:flex-col">
 		<div
 			class="scroll-container no-scrollbar"
 			style="display: flex; flex-wrap: nowrap; width: 100%; height: auto; overflow-x: auto;"
@@ -122,21 +124,21 @@
 						data-sveltekit-preload-data
 						href={result.media_type == 'movie' ? `/movie/${result.id}` : `/tv/${result.id}`}
 					>
-						<div class="group item w-auto flex relative items-center" style="flex: 0 0 auto">
+						<div class="group item relative flex w-auto items-center" style="flex: 0 0 auto">
 							<p
-								class="group-hover:text-color-3/10 list-number w-auto center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]"
+								class="group-hover:text-color-3/10 list-number center-div w-auto font-[Lato,Lato-fallback,Arial,sans-serif] text-[150px] font-semibold text-[#ffffff1e] max-sm:text-[100px]"
 							>
 								{index + 1}
 							</p>
-							<div class=" w-[320px] h-auto sm:w-[170px] translate-x-[-10px]">
-								<div class="image-container w-full h-auto overflow-hidden relative">
+							<div class=" h-auto w-[320px] translate-x-[-10px] max-sm:w-[170px]">
+								<div class="image-container relative h-auto w-full overflow-hidden">
 									<div
-										class="filter w-full h-full absolute z-30 bg-gradient-to-r from-main/50 to-[transparent] flex items-center justify-center"
+										class="from-main/50 absolute z-30 flex h-full w-full items-center justify-center bg-gradient-to-r to-[transparent] filter"
 									></div>
 									{@render PrimeVideoLogo('absolute top-[10px] left-[10px] z-40')}
 									<img
 										loading="lazy"
-										class="object-cover rounded-md w-full h-auto bg-color-1/5 min-h-[170px] sm:min-h-[90px]"
+										class="bg-color-1/5 h-auto min-h-[170px] w-full rounded-md object-cover max-sm:min-h-[90px]"
 										src={`https://themoviedb.org/t/p/w500${
 											result?.images?.backdrops[0]?.file_path ?? result.backdrop_path
 										}`}
@@ -144,7 +146,7 @@
 									/>
 								</div>
 								<p
-									class="text-[14px] my-1 sm:text-[12px] text-color-1 w-full whitespace-nowrap overflow-ellipsis overflow-hidden"
+									class="text-color-1 my-1 w-full overflow-hidden text-[14px] overflow-ellipsis whitespace-nowrap max-sm:text-[12px]"
 								>
 									{type == 'movie' ? result.title : result.name}
 								</p>

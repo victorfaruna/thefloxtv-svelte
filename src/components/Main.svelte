@@ -36,19 +36,19 @@
 </script>
 
 <div class="carousel-cont w-full overflow-hidden">
-	<div bind:this={swiperComponent} class="swiper carousel w-full h-[90vh] sm:h-[400px]">
+	<div bind:this={swiperComponent} class="swiper carousel h-[90vh] w-full max-sm:h-[400px]">
 		<div class="swiper-wrapper">
 			{#each mainData
 				.filter((item: any) => item.vote_average > 6)
 				.slice(0, 10) as result, index (result.id)}
-				<div class="swiper-slide carousel-item relative main-carousel bg-cover bg-no-repeat">
-					<div class="inner-container w-full h-full flex items-end pl-[3%] sm:pl-0">
+				<div class="swiper-slide carousel-item main-carousel relative bg-cover bg-no-repeat">
+					<div class="inner-container flex h-full w-full items-end pl-[3%] max-sm:pl-0">
 						<div
-							class="text w-[50%] absolute z-[2] h-auto mb-[4rem] sm:mb-[2rem] overflow-hidden sm:w-full sm:text-center flex flex-col gap-4 sm:gap-2"
+							class="text absolute z-[2] mb-[4rem] flex h-auto w-[50%] flex-col gap-4 overflow-hidden max-sm:mb-[2rem] max-sm:w-full max-sm:gap-2 max-sm:text-center"
 						>
-							<p class="text-[1.2rem] text-color-3 sm:text-[0.9rem]">#{index + 1} Spotlight</p>
+							<p class="text-color-3 text-[1.2rem] max-sm:text-[0.9rem]">#{index + 1} Spotlight</p>
 							<p
-								class="text-[2.7rem] text-white font-semibold sm:text-[1.5rem] w-full mr-2 overflow-ellipsis overflow-hidden whitespace-nowrap"
+								class="mr-2 w-full overflow-hidden text-[2.7rem] font-semibold overflow-ellipsis whitespace-nowrap text-white max-sm:text-[1.5rem]"
 							>
 								{result.name ? result.name : result.title}
 							</p>
@@ -58,14 +58,14 @@
 							/> -->
 
 							<div
-								class="info flex text-white flex-wrap items-center font-[500] sm:justify-center gap-6 sm:gap-3 text-[1rem] sm:text-[0.7rem]"
+								class="info flex flex-wrap items-center gap-6 text-[1rem] font-[500] text-white max-sm:justify-center max-sm:gap-3 max-sm:text-[0.7rem]"
 							>
 								<span
-									class="certification center-div px-[7px] py-[0.5px] bg-color-3 rounded-2xl font-bold text-[11px] text-black"
+									class="certification center-div bg-color-3 rounded-2xl px-[7px] py-[0.5px] text-[11px] font-bold text-black"
 									style="text-shadow: none">HD</span
 								>
 								<span
-									class="certification center-div px-[7px] py-[0.5px] rounded-2xl font-bold text-[11px] border"
+									class="certification center-div rounded-2xl border px-[7px] py-[0.5px] text-[11px] font-bold"
 									>{result.content_rating == '' ? '?' : result.content_rating}</span
 								>
 								<span>
@@ -77,7 +77,7 @@
 										? formatDate(result.release_date)
 										: formatDate(result.first_air_date)}
 								</span>
-								<span class="flex gap-1 items-center">
+								<span class="flex items-center gap-1">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										fill="none"
@@ -97,14 +97,16 @@
 								</span>
 							</div>
 							<p
-								class="desc sm:hidden mr-8 sm:mr-0 text-color-1 mb-2 leading-6 text-[1rem]"
+								class="desc text-color-1 mr-8 mb-2 text-[1rem] leading-6 max-sm:mr-0 max-sm:hidden"
 								style="text-shadow: 0 1px 2px #000"
 							>
 								{result.overview.split(/\s+/).length > 45
 									? getWordRange(result.overview, 25)
 									: result.overview}
 							</p>
-							<div class="buttons flex gap-5 sm:gap-3 flex-wrap sm:justify-center font-[500]">
+							<div
+								class="buttons flex flex-wrap gap-5 font-[500] max-sm:justify-center max-sm:gap-3"
+							>
 								<a
 									data-sveltekit-preload-data
 									href={result.media_type === 'movie'
@@ -112,7 +114,7 @@
 										: `/tv/${result.tmdb_id}`}
 								>
 									<button
-										class="view-btn w-[160px] h-[43px] text-black bg-color-3 rounded-[1.5rem] center-div gap-2"
+										class="view-btn bg-color-3 center-div h-[43px] w-[160px] gap-2 rounded-[1.5rem] text-black"
 									>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +131,7 @@
 								</a>
 								<button
 									data-sveltekit-preload-data
-									class="center-div w-[130px] h-[43px] rounded-[1.5rem] bg-color-1/20 gap-1 text-white/80"
+									class="center-div bg-color-1/20 h-[43px] w-[130px] gap-1 rounded-[1.5rem] text-white/80"
 								>
 									Detail
 									<svg
@@ -145,7 +147,7 @@
 							</div>
 						</div>
 						<div
-							class="w-[90%] sm:w-full h-full absolute right-0 z-[-1] bg-cover"
+							class="absolute right-0 z-[-1] h-full w-[90%] bg-cover max-sm:w-full"
 							style="background-image: url({width > 1000
 								? `https://image.tmdb.org/t/p/original${result.backdrop_path}`
 								: `https://image.tmdb.org/t/p/original${result.backdrop_path}`});"

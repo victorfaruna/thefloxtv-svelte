@@ -1,18 +1,18 @@
 {#each [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as result, index}
-	<div class="group item w-auto h-auto flex relative" style="flex: 0 0 auto">
+	<div class="group item relative flex h-auto w-auto" style="flex: 0 0 auto">
 		<p
-			class="group-hover:text-color-3/10 list-number w-auto h-auto center-div font-semibold text-[150px] font-[Lato,Lato-fallback,Arial,sans-serif] text-[#ffffff1e] sm:text-[100px]"
+			class="group-hover:text-color-3/10 list-number center-div h-auto w-auto font-[Lato,Lato-fallback,Arial,sans-serif] text-[150px] font-semibold text-[#ffffff1e] max-sm:text-[100px]"
 		>
 			{index + 1}
 		</p>
-		<div class=" w-[180px] sm:w-[150px] h-auto relative translate-x-[-10px]">
+		<div class=" relative h-auto w-[180px] translate-x-[-10px] max-sm:w-[150px]">
 			<div
-				class="group-hover:opacity-[1] opacity-[0] duration-[0.7s] w-full h-full rounded-md absolute z-[2] bg-gradient-to-t from-color-3 via-color-3/30 to-[transparent] flex items-center justify-center"
+				class="from-color-3 via-color-3/30 absolute z-[2] flex h-full w-full items-center justify-center rounded-md bg-gradient-to-t to-[transparent] opacity-[0] duration-[0.7s] group-hover:opacity-[1]"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="currentColor"
-					class="bi bi-play-circle-fill size-[50px] sm:size-[45px] text-black"
+					class="bi bi-play-circle-fill size-[50px] text-black max-sm:size-[45px]"
 					viewBox="0 0 16 16 "
 				>
 					<path
@@ -20,9 +20,11 @@
 					/>
 				</svg>
 			</div>
-			<div class="object-cover skeleton rounded-md w-full h-[270px] sm:h-[225px] shadow-2xl"></div>
-			<p class="my-2 h-3 skeleton rounded-sm"></p>
-			<p class="w-[60%] my-2 h-3 skeleton rounded-sm"></p>
+			<div
+				class="skeleton h-[270px] w-full rounded-md object-cover shadow-2xl max-sm:h-[225px]"
+			></div>
+			<p class="skeleton my-2 h-3 rounded-sm"></p>
+			<p class="skeleton my-2 h-3 w-[60%] rounded-sm"></p>
 		</div>
 	</div>
 {/each}

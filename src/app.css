@@ -1,6 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin "daisyui" {
+	themes: false;
+}
 
 :root {
 	/* --bg-color-1: 9, 9, 14; */
@@ -17,18 +18,22 @@
 	--font-family-1: 'Poppins', sans-serif;
 }
 
+@theme {
+	--color-main: rgba(var(--bg-color-1));
+	--color-sec: rgba(var(--bg-color-2));
+	--color-tet: rgba(var(--bg-color-3));
+	--color-color-1: rgba(var(--color-1));
+	--color-color-2: rgba(var(--color-2));
+	--color-color-3: rgba(var(--color-3));
+	--color-color-4: rgba(var(--color-4));
+}
+
 :root body {
 	color: rgb(var(--color-1));
 	background-color: rgb(var(--bg-color-1));
 	font-family: var(--font-family-1);
 	font-size: 12px;
 	font-weight: 400;
-}
-
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
 }
 
 .center-div {

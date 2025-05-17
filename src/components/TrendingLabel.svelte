@@ -3,13 +3,13 @@
 	let { data, type }: any = $props();
 </script>
 
-<div class="w-full flex gap-2 text-[12px] items-center justify-between px-[1px] py-2">
+<div class="flex w-full items-center justify-between gap-2 px-[1px] py-2 text-[12px]">
 	<p>
 		{type == 'movie'
 			? getLetterRange(data.release_date, 4)
 			: getLetterRange(data.first_air_date, 4)}
 	</p>
-	<p class="border border-[grey] rounded-xl px-[5px] py-[0.5px]">
+	<p class="rounded-xl border border-[grey] px-[5px] py-[0.5px]">
 		{type}
 	</p>
 	<p>
@@ -20,7 +20,7 @@
 </div>
 <div>
 	<p
-		class="text-[14px] sm:text-[12px] text-color-2/90 w-full whitespace-nowrap overflow-ellipsis overflow-hidden"
+		class="text-color-2/90 w-full overflow-hidden text-[14px] overflow-ellipsis whitespace-nowrap max-sm:text-[12px]"
 	>
 		{type == 'movie' ? data.title : data.name}
 	</p>

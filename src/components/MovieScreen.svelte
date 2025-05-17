@@ -6,11 +6,11 @@
 </script>
 
 <div
-	class="movie-container-screen w-full h-auto py-5 px-10 bg-cover sm:px-0 sm:py-0"
+	class="movie-container-screen h-auto w-full bg-cover px-10 py-5 max-sm:px-0 max-sm:py-0"
 	style="background-image: url(https://image.tmdb.org/t/p/w500{movieData.backdrop_path});"
 >
-	<div class="inner w-full h-full relative z-[3]">
-		<p class="breadcrum flex gap-3 text-[0.8rem] mb-5 md:hidden">
+	<div class="inner relative z-[3] h-full w-full">
+		<p class="breadcrum mb-5 flex gap-3 text-[0.8rem] max-md:hidden">
 			<span>Home</span>
 			<span>/</span>
 			<span>Movie</span>
@@ -18,15 +18,15 @@
 			<span class="text-color-1/70">Watching {movieData.title}</span>
 		</p>
 		<div
-			class="next-container w-full h-auto rounded-md sm:rounded-none overflow-hidden backdrop-blur-[10px] bg-sec flex gap-2 md:flex-col-reverse md:gap-0"
+			class="next-container bg-sec flex h-auto w-full gap-2 overflow-hidden rounded-md backdrop-blur-[10px] max-md:flex-col-reverse max-md:gap-0 max-sm:rounded-none"
 		>
-			<div class="side w-[25%] h-full pb-3 md:w-full">
+			<div class="side h-full w-[25%] pb-3 max-md:w-full">
 				<p class="w-full p-4 text-white">List of Movie Files:</p>
 				<ol class="list-outside" type="a">
 					<li
-						class={`item cursor-pointer w-full px-4 h-[40px] bg-color-3/10 border-l-4 text-white border-l-color-3/80 flex items-center justify-between gap-2`}
+						class={`item bg-color-3/10 border-l-color-3/80 flex h-[40px] w-full cursor-pointer items-center justify-between gap-2 border-l-4 px-4 text-white`}
 					>
-						<div class="flex gap-2 items-center">
+						<div class="flex items-center gap-2">
 							<p>1.</p>
 							<p>
 								{movieData.title} -
@@ -36,7 +36,7 @@
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
-							class="bi bi-play-circle-fill size-4 text-color-3"
+							class="bi bi-play-circle-fill text-color-3 size-4"
 							viewBox="0 0 16 16"
 						>
 							<path
@@ -46,11 +46,11 @@
 					</li>
 				</ol>
 			</div>
-			<div class="screen w-[75%] bg-sec h-full overflow-hidden md:w-full">
+			<div class="screen bg-sec h-full w-[75%] overflow-hidden max-md:w-full">
 				{#if streamServer === 'vidcloud'}
 					<iframe
 						title="Movie"
-						class="w-full h-[85vh] sm:h-[210px]"
+						class="h-[85vh] w-full max-sm:h-[210px]"
 						id="playit"
 						src={`https://vidlink.pro/movie/${movieData.id}?primaryColor=ffdd95&autoplay=false&iconColor=ffdd95&icons=default`}
 						allowFullScreen
@@ -58,19 +58,19 @@
 				{:else}
 					<iframe
 						title="Movie"
-						class="w-full h-[85vh] sm:h-[210px]"
+						class="h-[85vh] w-full max-sm:h-[210px]"
 						id="playit"
 						src={`https://vidsrc.cc/v2/embed/movie/${movieData.id}`}
 						allowFullScreen
 					></iframe>
 				{/if}
 				<div
-					class="rest w-full h-auto p-4 overflow-hidden border-b border-dotted border-b-color-2/10"
+					class="rest border-b-color-2/10 h-auto w-full overflow-hidden border-b border-dotted p-4"
 				>
 					<div
-						class="w-full h-auto bg-main/20 rounded-md flex overflow-hidden md:rounded-none items-center px-5"
+						class="bg-main/20 flex h-auto w-full items-center overflow-hidden rounded-md px-5 max-md:rounded-none"
 					>
-						<div class="left bg-transparent w-full h-[40px] flex items-center gap-3">
+						<div class="left flex h-[40px] w-full items-center gap-3 bg-transparent">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="16"
@@ -86,11 +86,11 @@
 							<p>Source :</p>
 							<div class="options flex gap-2">
 								<button
-									class={`p-1 px-2 rounded-md ${streamServer === 'vidcloud' ? 'bg-color-3 text-main' : 'bg-color-1/10'}`}
+									class={`rounded-md p-1 px-2 ${streamServer === 'vidcloud' ? 'bg-color-3 text-main' : 'bg-color-1/10'}`}
 									onclick={() => (streamServer = 'vidcloud')}>Vidcloud</button
 								>
 								<button
-									class={`p-1 px-2  rounded-md ${streamServer === 'vidsrc' ? 'bg-color-3 text-main' : 'bg-color-1/10'}`}
+									class={`rounded-md p-1  px-2 ${streamServer === 'vidsrc' ? 'bg-color-3 text-main' : 'bg-color-1/10'}`}
 									onclick={() => (streamServer = 'vidsrc')}>Vidsrc</button
 								>
 							</div>
@@ -100,7 +100,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- <div class="screen w-full h-[80vh] sm:h-[200px] overflow-hidden mb-3 relative">
+	<!-- <div class="screen w-full h-[80vh] max-sm:h-[200px] overflow-hidden mb-3 relative">
 		{#if hasStartedPlaying}
 			<iframe
 				title="Movie"
@@ -125,7 +125,7 @@
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
-							class="bi bi-play-circle-fill size-[60px] sm:size-[45px] text-main"
+							class="bi bi-play-circle-fill size-[60px] max-sm:size-[45px] text-main"
 							viewBox="0 0 16 16"
 						>
 							<path

@@ -34,11 +34,11 @@
 </script>
 
 <div
-	class="movie-container-screen w-full h-auto py-5 px-10 bg-cover sm:px-0 sm:py-0"
+	class="movie-container-screen h-auto w-full bg-cover px-10 py-5 max-sm:px-0 max-sm:py-0"
 	style="background-image: url(https://image.tmdb.org/t/p/w500{seriesData.backdrop_path});"
 >
-	<div class="inner w-full h-full relative z-[3]">
-		<p class="breadcrum flex gap-3 text-[0.8rem] mb-5 md:hidden">
+	<div class="inner relative z-[3] h-full w-full">
+		<p class="breadcrum mb-5 flex gap-3 text-[0.8rem] max-md:hidden">
 			<span>Home</span>
 			<span>/</span>
 			<span>Movie</span>
@@ -46,36 +46,36 @@
 			<span class="text-color-1/70">Watching {seriesData.name}</span>
 		</p>
 		<div
-			class="next-container w-full h-auto rounded-md sm:rounded-none overflow-hidden backdrop-blur-[10px] bg-sec flex md:flex-col-reverse md:gap-0"
+			class="next-container bg-sec flex h-auto w-full overflow-hidden rounded-md backdrop-blur-[10px] max-md:flex-col-reverse max-md:gap-0 max-sm:rounded-none"
 		>
-			<div class="side w-[25%] h-full pb-3 md:w-full">
-				<div class="p-4 flex gap-2 items-center">
+			<div class="side h-full w-[25%] pb-3 max-md:w-full">
+				<div class="flex items-center gap-2 p-4">
 					<div class="text-white">List of Seasons :</div>
 					<div
-						class="flex gap-2 no-scrollbar"
+						class="no-scrollbar flex gap-2"
 						style="display: flex; flex-wrap: nowrap; width: 100%; height: auto; overflow-x: scroll "
 					>
 						{#each Array.from({ length: seasonCount }) as _, index}
 							<button
 								onclick={() => (seasonSelect = index + 1)}
 								style="flex: 0 0 auto"
-								class={`px-2 py-1 rounded-md  ${seasonSelect === index + 1 ? 'bg-color-3 text-main' : 'bg-color-1/10'}`}
+								class={`rounded-md px-2 py-1  ${seasonSelect === index + 1 ? 'bg-color-3 text-main' : 'bg-color-1/10'}`}
 							>
 								<p>Season {index + 1}</p>
 							</button>
 						{/each}
 					</div>
 				</div>
-				<p class="w-full px-4 mb-4 text-white">List of Episodes:</p>
+				<p class="mb-4 w-full px-4 text-white">List of Episodes:</p>
 
-				<div class="episode-list w-full max-h-[400px] overflow-y-auto">
+				<div class="episode-list max-h-[400px] w-full overflow-y-auto">
 					{#if seasonData.length == 0}
 						{#each Array.from({ length: episodeCount }) as _, index}
 							<button
 								onclick={() => (episodeSelect = index + 1)}
-								class={`item cursor-pointer w-full px-4 h-[40px]  ${episodeSelect === index + 1 ? 'border-l-4  border-l-color-3/90 bg-color-3/30' : isOdd(index + 1) ? 'bg-tet' : 'bg-sec'} text-white flex items-center justify-between gap-2`}
+								class={`item h-[40px] w-full cursor-pointer px-4  ${episodeSelect === index + 1 ? 'border-l-color-3/90  bg-color-3/30 border-l-4' : isOdd(index + 1) ? 'bg-tet' : 'bg-sec'} flex items-center justify-between gap-2 text-white`}
 							>
-								<div class="flex gap-2 items-center">
+								<div class="flex items-center gap-2">
 									<p>EP {index + 1}:</p>
 									<p>Loading...</p>
 								</div>
@@ -95,12 +95,12 @@
 						{#each seasonData.filter((item: any) => item.runtime > 0) as item, index}
 							<button
 								onclick={() => (episodeSelect = index + 1)}
-								class={`item cursor-pointer w-full px-4 h-[40px]  ${episodeSelect === index + 1 ? 'border-l-4  border-l-color-3/90 bg-color-3/30' : isOdd(index + 1) ? 'bg-tet' : 'bg-sec'} text-white flex items-center justify-between gap-2`}
+								class={`item h-[40px] w-full cursor-pointer px-4  ${episodeSelect === index + 1 ? 'border-l-color-3/90  bg-color-3/30 border-l-4' : isOdd(index + 1) ? 'bg-tet' : 'bg-sec'} flex items-center justify-between gap-2 text-white`}
 							>
-								<div class="w-full flex gap-2 items-center">
+								<div class="flex w-full items-center gap-2">
 									<p class="whitespace-nowrap">EP {index + 1}:</p>
 									<p
-										class="w-[200px] text-left overflow-ellipsis overflow-hidden whitespace-nowrap"
+										class="w-[200px] overflow-hidden text-left overflow-ellipsis whitespace-nowrap"
 									>
 										{item.name}
 									</p>
@@ -120,11 +120,11 @@
 					{/if}
 				</div>
 			</div>
-			<div class="screen w-[75%] bg-sec h-full overflow-hidden md:w-full">
+			<div class="screen bg-sec h-full w-[75%] overflow-hidden max-md:w-full">
 				{#if streamServer === 'vidcloud'}
 					<iframe
 						title="Tv show"
-						class="w-full h-[85vh] sm:h-[210px]"
+						class="h-[85vh] w-full max-sm:h-[210px]"
 						id="playit"
 						src={`https://vidlink.pro/tv/${seriesData.id}/${seasonSelect}/${episodeSelect}?primaryColor=ffdd95&autoplay=false&iconColor=ffdd95&icons=default`}
 						allowFullScreen
@@ -132,19 +132,19 @@
 				{:else}
 					<iframe
 						title="Tv show"
-						class="w-full h-[85vh] sm:h-[210px]"
+						class="h-[85vh] w-full max-sm:h-[210px]"
 						id="playit"
 						src={`https://vidsrc.cc/v2/embed/tv/${seriesData.id}/${seasonSelect}/${episodeSelect}`}
 						allowFullScreen
 					></iframe>
 				{/if}
 				<div
-					class="rest w-full h-auto p-4 overflow-hidden border-b border-dotted border-b-color-2/10"
+					class="rest border-b-color-2/10 h-auto w-full overflow-hidden border-b border-dotted p-4"
 				>
 					<div
-						class="w-full h-auto bg-main/20 rounded-md flex overflow-hidden md:rounded-none items-center px-5"
+						class="bg-main/20 flex h-auto w-full items-center overflow-hidden rounded-md px-5 max-md:rounded-none"
 					>
-						<div class="left bg-transparent w-full h-[40px] flex items-center gap-3">
+						<div class="left flex h-[40px] w-full items-center gap-3 bg-transparent">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="16"
@@ -160,11 +160,11 @@
 							<p>Source :</p>
 							<div class="options flex gap-2">
 								<button
-									class={`p-1 px-2 rounded-md ${streamServer === 'vidcloud' ? 'bg-color-3 text-main' : 'bg-color-1/10'}`}
+									class={`rounded-md p-1 px-2 ${streamServer === 'vidcloud' ? 'bg-color-3 text-main' : 'bg-color-1/10'}`}
 									onclick={() => (streamServer = 'vidcloud')}>Vidcloud</button
 								>
 								<button
-									class={`p-1 px-2  rounded-md ${streamServer === 'vidsrc' ? 'bg-color-3 text-main' : 'bg-color-1/10'}`}
+									class={`rounded-md p-1  px-2 ${streamServer === 'vidsrc' ? 'bg-color-3 text-main' : 'bg-color-1/10'}`}
 									onclick={() => (streamServer = 'vidsrc')}>Vidsrc</button
 								>
 							</div>
@@ -178,7 +178,7 @@
 
 <!-- 
 <div class="movie-container-screen w-full">
-	<div class="screen w-full h-[80vh] sm:h-[200px] overflow-hidden mb-3 relative">
+	<div class="screen w-full h-[80vh] max-sm:h-[200px] overflow-hidden mb-3 relative">
 		{#if hasStartedPlaying}
 			<iframe
 				title="TV"
@@ -202,7 +202,7 @@
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
-							class="bi bi-play-circle-fill size-[60px] sm:size-[45px] text-main"
+							class="bi bi-play-circle-fill size-[60px] max-sm:size-[45px] text-main"
 							viewBox="0 0 16 16"
 						>
 							<path
@@ -215,9 +215,9 @@
 		{/if}
 	</div>
 
-	<div class="w-full px-7 sm:px-4">
+	<div class="w-full px-7 max-sm:px-4">
 		<div
-			class="episode-changer-cont relative w-[300px] sm:w-full h-[auto] text-[13px] overflow-hidden"
+			class="episode-changer-cont relative w-[300px] max-sm:w-full h-[auto] text-[13px] overflow-hidden"
 		>
 			<button
 				class="season-changer w-full absolute z-[3] font-semibold shadow-2xl rounded-t-md h-[50px] flex items-center bg-[#071220] justify-center gap-1 cursor-pointer"
@@ -226,7 +226,7 @@
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="currentColor"
-					class="bi bi-file-play-fill size-5 text-color-3 sm:size-4"
+					class="bi bi-file-play-fill size-5 text-color-3 max-sm:size-4"
 					viewBox="0 0 16 16"
 				>
 					<path
@@ -248,7 +248,7 @@
 			<div
 				class={`season-list transition-transform z-[2] top-[40px] duration-[0.2s] max-h-[160px] overflow-y-auto ${
 					!isSeasonListVisible ? 'translate-y-[-1000px]' : 'translate-y-0'
-				} w-[150px] absolute left-[75px] sm:left-[calc(50% - 75px)] rounded-b-md round shadow-2xl bg-[#03070c]`}
+				} w-[150px] absolute left-[75px] max-sm:left-[calc(50% - 75px)] rounded-b-md round shadow-2xl bg-[#03070c]`}
 				onblur={() => changeSeasonListVisibilty()}
 			>
 				{#each Array.from({ length: seasonCount }) as season, index}
