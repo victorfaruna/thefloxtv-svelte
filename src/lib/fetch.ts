@@ -164,7 +164,7 @@ export const getSearchResult = async (query: string | undefined) => {
 				}
 			}
 		);
-		return res.data.results.filter((movie: any) => movie.vote_average > 5);
+		return res.data.results.filter((movie: any) => movie.vote_average > 6);
 	} catch (error) {
 		console.log(error);
 	}

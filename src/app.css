@@ -24,7 +24,8 @@
 	--color-tet: rgba(var(--bg-color-3));
 	--color-color-1: rgba(var(--color-1));
 	--color-color-2: rgba(var(--color-2));
-	--color-color-3: rgba(var(--color-3));
+	/* --color-color-3: rgba(var(--color-3)); */
+	--color-color-3: #da70d6;
 	--color-color-4: rgba(var(--color-4));
 }
 

@@ -1,7 +1,42 @@
 <script lang="ts">
 	import { onNavigate } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import LivesearchResult from '$components/LivesearchResult.svelte';
+
+	//Wallet connect logic..............
+	import { connect, disconnect, type StarknetWindowObject } from 'starknetkit';
+	import { WebWalletConnector } from 'starknetkit/webwallet';
+	import { InjectedConnector } from 'starknetkit/injected';
+
+	let address: string = $state('');
+	let connectionWallet: StarknetWindowObject | any = $state();
+
+	const handleConnect = async () => {
+		if (connectionWallet) {
+			await disconnect();
+			connectionWallet = undefined;
+			address = '';
+			return;
+		}
+		const { wallet, connectorData } = await connect({
+			modalMode: 'alwaysAsk',
+			modalTheme: 'dark',
+			connectors: [
+				new InjectedConnector({
+					options: { id: 'argentX', name: 'Argent X' }
+				}),
+				new InjectedConnector({
+					options: { id: 'braavos', name: 'Braavos' }
+				}),
+				new WebWalletConnector({ url: 'https://web.argent.xyz' })
+			]
+		});
+
+		if (wallet && connectorData) {
+			connectionWallet = wallet;
+			address = connectorData.account || '';
+		}
+	};
 
 	let isNavToggled = $state(false);
 	let isSearchToggled = $state(false);
@@ -59,14 +94,14 @@
 </div>
 <header
 	class={`flex h-[80px] w-full items-center justify-between px-8 max-sm:h-[50px] max-sm:px-3 ${
-		$page.url.pathname == '/' && 'absolute z-10'
+		page.url.pathname == '/' && 'absolute z-10'
 	} from-main  bg-gradient-to-b to-transparent`}
 >
 	<div class="left-section flex items-center gap-0">
 		<div class="logo-cont center-div h-full w-auto">
 			<a data-sveltekit-preload-data aria-label="Home" href="/">
 				<svg
-					class="w-[120px] fill-[rgb(var(--color-3))]"
+					class="fill-color-3 w-[120px]"
 					xmlns="http://www.w3.org/2000/svg"
 					xml:space="preserve"
 					width="3.5in"
@@ -211,7 +246,7 @@
 		</div>
 	</div>
 
-	<div class="right-section">
+	<!-- <div class="right-section">
 		<nav class="nav w-full">
 			<ul class="flex w-full justify-between gap-[25px] max-lg:hidden">
 				<li class="text-[12px] text-[#f3f3f3]" style="text-shadow: 0.5px 0.5px 0.5px black">
@@ -270,5 +305,28 @@
 				</button>
 			</div>
 		</nav>
-	</div>
+	</div> -->
+
+	<button
+		onclick={async () => await handleConnect()}
+		class="connect-button border-color-3/90 flex cursor-pointer items-center gap-2 rounded-full border-1 bg-black px-6 py-3 text-white"
+	>
+		{#if address}
+			<img src={connectionWallet.icon} alt="" class="size-4 object-cover" />
+		{/if}
+		{address ? address.slice(0, 5) + '...' + address.slice(-5) : 'Connect Wallet'}<svg
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke-width="1.5"
+			stroke="currentColor"
+			class="size-4"
+		>
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
+			/>
+		</svg>
+	</button>
 </header>

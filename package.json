@@ -52,6 +52,8 @@
 		"dotenv": "^16.5.0",
 		"drizzle-orm": "^0.40.0",
 		"postgres": "^3.4.5",
+		"starknet": "^6.24.1",
+		"starknetkit": "^2.10.4",
 		"svelte-swiper": "^1.0.1",
 		"swiper": "^11.2.6"
 	}
