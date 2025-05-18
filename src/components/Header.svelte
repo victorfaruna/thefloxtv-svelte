@@ -58,7 +58,7 @@
 </script>
 
 <header
-	class={`h flex w-full items-center justify-between px-8 py-[1rem] max-sm:px-3 ${
+	class={`h flex w-full items-center justify-between px-8 py-[0.8rem] max-sm:px-3 ${
 		page.url.pathname == '/' && 'absolute z-10'
 	} from-main  bg-gradient-to-b to-transparent`}
 >
@@ -289,7 +289,7 @@
 						viewBox="0 0 24 24"
 						stroke-width="1.5"
 						stroke="currentColor"
-						class="size-6 text-white"
+						class="size-5 text-white"
 					>
 						<path
 							stroke-linecap="round"
@@ -323,7 +323,7 @@
 		</nav>
 		<button
 			onclick={async () => await handleConnect()}
-			class="connect-button border-color-1/20 bg-color-3/90 flex cursor-pointer items-center gap-1 rounded-full border-1 border-2 px-4 py-2 font-medium text-black max-sm:rounded-full max-sm:px-2"
+			class="connect-button border-color-1/20 bg-color-3/90 flex cursor-pointer items-center gap-1 rounded-full border-1 border-2 p-2 font-medium text-black max-sm:rounded-full max-sm:p-1"
 		>
 			{#if address}
 				<img src={connectionWallet.icon} alt="" class="size-4 object-cover" />
@@ -338,7 +338,7 @@
 					viewBox="0 0 24 24"
 					stroke-width="2.5"
 					stroke="currentColor"
-					class="size-3 max-sm:size-4"
+					class="size-3"
 				>
 					<path
 						stroke-linecap="round"
