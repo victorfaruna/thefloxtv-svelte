@@ -11,9 +11,9 @@
 >
 	<div class="inner relative z-[3] h-full w-full">
 		<p class="breadcrum mb-5 flex gap-3 text-[0.8rem] max-md:hidden">
-			<span>Home</span>
+			<a href="/">Home</a>
 			<span>/</span>
-			<span>Movie</span>
+			<a href="/">Movie</a>
 			<span>/</span>
 			<span class="text-color-1/70">Watching {movieData.title}</span>
 		</p>
@@ -52,7 +52,7 @@
 						title="Movie"
 						class="h-[85vh] w-full max-sm:h-[210px]"
 						id="playit"
-						src={`https://vidlink.pro/movie/${movieData.id}?primaryColor=ffdd95&autoplay=false&iconColor=ffdd95&icons=default`}
+						src={`https://vidlink.pro/movie/${movieData.id}?primaryColor=ccccff&autoplay=false&iconColor=ccccff&icons=default`}
 						allowFullScreen
 					></iframe>
 				{:else}

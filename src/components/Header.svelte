@@ -93,7 +93,7 @@
 	</nav>
 </div>
 <header
-	class={`flex h-[80px] w-full items-center justify-between px-8 max-sm:h-[50px] max-sm:px-3 ${
+	class={`flex h-[80px] w-full items-center justify-between px-8 max-sm:h-[70px] max-sm:px-5 ${
 		page.url.pathname == '/' && 'absolute z-10'
 	} from-main  bg-gradient-to-b to-transparent`}
 >
@@ -247,7 +247,7 @@
 	</div>
 
 	<!-- <div class="right-section">
-		<nav class="nav w-full">
+		<nav class="nav w-full hidden">
 			<ul class="flex w-full justify-between gap-[25px] max-lg:hidden">
 				<li class="text-[12px] text-[#f3f3f3]" style="text-shadow: 0.5px 0.5px 0.5px black">
 					<a href="/">Home</a>
@@ -305,28 +305,84 @@
 				</button>
 			</div>
 		</nav>
-	</div> -->
+	</div>  -->
 
-	<button
-		onclick={async () => await handleConnect()}
-		class="connect-button border-color-3/90 flex cursor-pointer items-center gap-2 rounded-full border-1 bg-black px-6 py-3 text-white"
-	>
-		{#if address}
-			<img src={connectionWallet.icon} alt="" class="size-4 object-cover" />
-		{/if}
-		{address ? address.slice(0, 5) + '...' + address.slice(-5) : 'Connect Wallet'}<svg
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke-width="1.5"
-			stroke="currentColor"
-			class="size-4"
+	<div class="right flex items-center gap-5">
+		<nav class="text-color-1 flex list-none items-center gap-3 text-white max-sm:hidden">
+			<li><a href="/">Home</a></li>
+			<li>&middot;</li>
+			<li><a href="/">About</a></li>
+			<li>&middot;</li>
+			<li><a href="/">Pricing</a></li>
+		</nav>
+
+		<nav class="md-nav hidden max-lg:block">
+			<div class="flex w-full justify-between gap-5">
+				<button aria-label="Search" onclick={() => (isSearchToggled = true)}>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="size-6 text-white"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+						/>
+					</svg>
+				</button>
+				<!-- 
+				<button aria-label="Menu" onclick={() => (isNavToggled = !isNavToggled)}
+					><svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="size-6 text-white"
+					>
+						{#if isNavToggled}
+							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+						{:else}
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M3.75 9h16.5m-16.5 6.75h16.5"
+							/>
+						{/if}
+					</svg>
+				</button> -->
+			</div>
+		</nav>
+		<button
+			onclick={async () => await handleConnect()}
+			class="connect-button border-color-1/20 bg-color-3/90 flex cursor-pointer items-center gap-1 rounded-full border-1 border-2 px-4 py-2 font-medium text-black max-sm:rounded-[0.5rem] max-sm:px-2"
 		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
-			/>
-		</svg>
-	</button>
+			{#if address}
+				<img src={connectionWallet.icon} alt="" class="size-4 object-cover" />
+			{/if}
+			{#if address}
+				<span>{address.slice(0, 5) + '...' + address.slice(-5)}</span>
+			{:else}
+				<span class="max-sm:hidden">Connect Wallet</span>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="2.5"
+					stroke="currentColor"
+					class="size-3"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
+					/>
+				</svg>
+			{/if}
+		</button>
+	</div>
 </header>

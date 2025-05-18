@@ -126,7 +126,7 @@
 						title="Tv show"
 						class="h-[85vh] w-full max-sm:h-[210px]"
 						id="playit"
-						src={`https://vidlink.pro/tv/${seriesData.id}/${seasonSelect}/${episodeSelect}?primaryColor=ffdd95&autoplay=false&iconColor=ffdd95&icons=default`}
+						src={`https://vidlink.pro/tv/${seriesData.id}/${seasonSelect}/${episodeSelect}?primaryColor=ccccff&autoplay=false&iconColor=ccccff&icons=default`}
 						allowFullScreen
 					></iframe>
 				{:else}
