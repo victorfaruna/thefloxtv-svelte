@@ -58,9 +58,9 @@
 </script>
 
 <header
-	class={`h flex w-full items-center justify-between px-8 py-[0.8rem] max-sm:px-3 ${
+	class={`h flex w-full items-center justify-between px-8 py-[1.2rem] max-sm:px-3 max-sm:py-[0.8rem] ${
 		page.url.pathname == '/' && 'absolute z-10'
-	} from-main  bg-gradient-to-b to-transparent`}
+	} from-main via-main/80  bg-gradient-to-b to-transparent`}
 >
 	<div class="left-section flex items-center gap-0">
 		<div class="logo-cont center-div">
@@ -145,8 +145,7 @@
 				</button>
 			</div>
 			<form
-				action="/search"
-				method="GET"
+				onsubmit={(e) => e.preventDefault()}
 				class="group center-div bg-tet flex h-[40px] w-full rounded-[1.5rem] p-2 shadow-2xl shadow-gray-950 max-sm:h-[50px] max-sm:bg-black"
 			>
 				<div
@@ -271,7 +270,7 @@
 		</nav>
 	</div>  -->
 
-	<div class="right flex items-center gap-5 max-sm:gap-3">
+	<div class="right flex items-center gap-5 max-sm:gap-5">
 		<nav class="text-color-1 flex list-none items-center gap-3 text-white max-sm:hidden">
 			<li><a href="/">Home</a></li>
 			<li>&middot;</li>
@@ -281,8 +280,8 @@
 		</nav>
 
 		<nav class="md-nav hidden max-lg:block">
-			<div class="flex w-full justify-between gap-5">
-				<button aria-label="Search" onclick={() => (isSearchToggled = true)}>
+			<div class="flex w-full justify-between">
+				<button aria-label="Search" class="text-white" onclick={() => (isSearchToggled = true)}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
