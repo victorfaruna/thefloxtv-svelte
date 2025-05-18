@@ -48,7 +48,7 @@
 						>
 							<p class="text-color-3 text-[1.2rem] max-sm:text-[0.9rem]">#{index + 1} Spotlight</p>
 							<p
-								class="mr-2 w-full overflow-hidden text-[2.7rem] font-semibold overflow-ellipsis whitespace-nowrap text-white max-sm:text-[1.5rem]"
+								class="w-full overflow-hidden text-[2.7rem] font-semibold overflow-ellipsis whitespace-nowrap text-white max-sm:px-[2rem] max-sm:text-[1.5rem]"
 							>
 								{result.name ? result.name : result.title}
 							</p>

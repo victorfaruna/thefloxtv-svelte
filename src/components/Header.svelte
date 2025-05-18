@@ -93,7 +93,7 @@
 	</nav>
 </div>
 <header
-	class={`flex h-[80px] w-full items-center justify-between px-8 max-sm:h-[70px] max-sm:px-5 ${
+	class={`flex h-[80px] w-full items-center justify-between px-8 max-sm:h-[50px] max-sm:px-3 ${
 		page.url.pathname == '/' && 'absolute z-10'
 	} from-main  bg-gradient-to-b to-transparent`}
 >
@@ -307,7 +307,7 @@
 		</nav>
 	</div>  -->
 
-	<div class="right flex items-center gap-5">
+	<div class="right flex items-center gap-5 max-sm:gap-3">
 		<nav class="text-color-1 flex list-none items-center gap-3 text-white max-sm:hidden">
 			<li><a href="/">Home</a></li>
 			<li>&middot;</li>
@@ -359,7 +359,7 @@
 		</nav>
 		<button
 			onclick={async () => await handleConnect()}
-			class="connect-button border-color-1/20 bg-color-3/90 flex cursor-pointer items-center gap-1 rounded-full border-1 border-2 px-4 py-2 font-medium text-black max-sm:rounded-[0.5rem] max-sm:px-2"
+			class="connect-button border-color-1/20 bg-color-3/90 flex cursor-pointer items-center gap-1 rounded-full border-1 border-2 px-4 py-2 font-medium text-black max-sm:rounded-full max-sm:px-2"
 		>
 			{#if address}
 				<img src={connectionWallet.icon} alt="" class="size-4 object-cover" />
@@ -374,7 +374,7 @@
 					viewBox="0 0 24 24"
 					stroke-width="2.5"
 					stroke="currentColor"
-					class="size-3"
+					class="size-3 max-sm:size-4"
 				>
 					<path
 						stroke-linecap="round"
