@@ -57,55 +57,19 @@
 	};
 </script>
 
-<div
-	class={`bg-tet fixed top-0  left-0 z-30 h-screen w-[80vw] p-[10%] shadow-2xl ${
-		isNavToggled ? 'translate-x-0' : 'translate-x-[-100%]'
-	} transition-all duration-300`}
->
-	<!-- <button class="absolute right-[10%]" on:click={() => (isNavToggled = !isNavToggled)}>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-				class="size-5"
-			>
-				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-			</svg>
-		</button> -->
-
-	<nav class="flex h-full w-full items-center justify-center">
-		<ul class="flex flex-col gap-[30px] text-center text-[18px] text-[b8b8b8]">
-			<li class="">
-				<a href="/">Home</a>
-			</li>
-			<li class="">
-				<a href="/tvshows">TV Shows</a>
-			</li>
-			<li class="">
-				<a href="/movies">Movies</a>
-			</li>
-			<li class="">
-				<a href="/movies">Trending</a>
-			</li>
-		</ul>
-	</nav>
-</div>
 <header
-	class={`flex h-[80px] w-full items-center justify-between px-8 max-sm:h-[50px] max-sm:px-3 ${
+	class={`h flex w-full items-center justify-between px-8 py-[1rem] max-sm:px-3 ${
 		page.url.pathname == '/' && 'absolute z-10'
 	} from-main  bg-gradient-to-b to-transparent`}
 >
 	<div class="left-section flex items-center gap-0">
-		<div class="logo-cont center-div h-full w-auto">
+		<div class="logo-cont center-div">
 			<a data-sveltekit-preload-data aria-label="Home" href="/">
 				<svg
 					class="fill-color-3 w-[120px]"
 					xmlns="http://www.w3.org/2000/svg"
 					xml:space="preserve"
 					width="3.5in"
-					height="1in"
 					version="1.1"
 					style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
 					viewBox="0 0 3500 1000"
