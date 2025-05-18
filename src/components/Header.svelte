@@ -57,6 +57,38 @@
 	};
 </script>
 
+<div
+	class={`bg-tet fixed top-0  left-0 z-30 h-screen w-[80vw] p-[10%] shadow-2xl ${
+		isNavToggled ? 'translate-x-0' : 'translate-x-[-100%]'
+	} transition-all duration-300`}
+>
+	<!-- <button class="absolute right-[10%]" on:click={() => (isNavToggled = !isNavToggled)}>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="size-5"
+			>
+				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+			</svg>
+		</button> -->
+
+	<nav class="flex h-full w-full items-center justify-center">
+		<ul class="text-color-1 flex flex-col gap-5 text-center">
+			<li class="">
+				<a href="/">Home</a>
+			</li>
+			<li class="">
+				<a href="/about">About</a>
+			</li>
+			<li class="">
+				<a href="/pricing">Pricing</a>
+			</li>
+		</ul>
+	</nav>
+</div>
 <header
 	class={`h flex w-full items-center justify-between px-8 py-[1.2rem] max-sm:px-3 max-sm:py-[0.8rem] ${
 		page.url.pathname == '/' && 'absolute z-10'
@@ -271,7 +303,7 @@
 	</div>  -->
 
 	<div class="right flex items-center gap-5 max-sm:gap-5">
-		<nav class="text-color-1 flex list-none items-center gap-3 text-white max-sm:hidden">
+		<nav class="text-color-1 flex list-none items-center gap-3 font-normal max-sm:hidden">
 			<li><a href="/">Home</a></li>
 			<li>&middot;</li>
 			<li><a href="/about">About</a></li>
@@ -280,7 +312,7 @@
 		</nav>
 
 		<nav class="md-nav hidden max-lg:block">
-			<div class="flex w-full justify-between">
+			<div class="flex w-full justify-between gap-5">
 				<button aria-label="Search" class="text-white" onclick={() => (isSearchToggled = true)}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -297,7 +329,7 @@
 						/>
 					</svg>
 				</button>
-				<!-- 
+
 				<button aria-label="Menu" onclick={() => (isNavToggled = !isNavToggled)}
 					><svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -317,12 +349,12 @@
 							/>
 						{/if}
 					</svg>
-				</button> -->
+				</button>
 			</div>
 		</nav>
 		<button
 			onclick={async () => await handleConnect()}
-			class="connect-button border-color-1/20 bg-color-3/90 flex cursor-pointer items-center gap-1 rounded-full border-1 border-2 p-2 font-medium text-black max-sm:rounded-full max-sm:p-1"
+			class="connect-button border-color-1/20 bg-color-3/90 flex cursor-pointer items-center gap-1 rounded-full border-1 border-2 px-3 py-2 font-medium text-black max-sm:rounded-full max-sm:p-1"
 		>
 			{#if address}
 				<img src={connectionWallet.icon} alt="" class="size-4 object-cover" />

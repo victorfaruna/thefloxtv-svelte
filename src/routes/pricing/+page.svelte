@@ -1,7 +1,10 @@
 <script lang="ts">
+	import Header from '$components/Header.svelte';
+	import PricingCards from '$components/PricingCards.svelte';
 </script>
 
-<section class="py-[3rem]">
+<Header />
+<section class="flex flex-col gap-20 px-[1rem] py-[3rem]">
 	<div class="flex flex-col items-center gap-2">
 		<p class="border-color-1/20 flex items-center gap-1 rounded-full border px-3 py-1">
 			<svg
@@ -20,9 +23,11 @@
 			</svg>
 			<span>pricing</span>
 		</p>
-		<p class="text-[2rem] leading-none">Choose your plan</p>
-		<p class="text-color-1/60 leading-none">
+		<p class="text-center text-[2rem] leading-none">Choose your plan</p>
+		<p class="text-color-1/60 text-center leading-none">
 			Explore our flexible pricing designed for your streaming needs
 		</p>
 	</div>
+
+	<PricingCards />
 </section>
