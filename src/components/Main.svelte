@@ -97,7 +97,7 @@
 								</span>
 							</div>
 							<p
-								class="desc text-color-1 mr-8 mb-2 text-[1rem] leading-6 max-sm:mr-0 max-sm:hidden"
+								class="desc text-color-1/60 mr-8 mb-2 text-[1rem] leading-6 max-sm:mr-0 max-sm:hidden"
 								style="text-shadow: 0 1px 2px #000"
 							>
 								{result.overview.split(/\s+/).length > 45

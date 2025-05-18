@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import Header from '$components/Header.svelte';
 	import MovieScreen from '$components/MovieScreen.svelte';
 	import { getLetterRange, getWordRange } from '$src/lib';
 	let { data } = $props();
@@ -13,6 +14,7 @@
 	});
 </script>
 
+<Header />
 <main class="main-container w-full">
 	<MovieScreen {movieData} movieId={id} />
 	<section class="mt-4 h-auto w-full p-7 max-sm:p-4">

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import Header from '$components/Header.svelte';
 	import SeriesScreen from '$components/SeriesScreen.svelte';
 	import { getLetterRange, getWordRange } from '$src/lib';
 	let { data } = $props();
@@ -13,6 +14,7 @@
 	});
 </script>
 
+<Header />
 <main class="main-container w-full">
 	<SeriesScreen {seriesData} tvId={id} />
 

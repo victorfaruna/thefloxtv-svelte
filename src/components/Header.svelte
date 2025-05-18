@@ -274,9 +274,9 @@
 		<nav class="text-color-1 flex list-none items-center gap-3 text-white max-sm:hidden">
 			<li><a href="/">Home</a></li>
 			<li>&middot;</li>
-			<li><a href="/">About</a></li>
+			<li><a href="/about">About</a></li>
 			<li>&middot;</li>
-			<li><a href="/">Pricing</a></li>
+			<li><a href="/pricing">Pricing</a></li>
 		</nav>
 
 		<nav class="md-nav hidden max-lg:block">

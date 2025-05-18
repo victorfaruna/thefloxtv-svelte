@@ -21,9 +21,9 @@
 	/>
 </svelte:head>
 {#if $navigating}
-	<div class="loading-container absolute top-0 z-[200] w-[100%] h-[0.5px] bg-color-3"></div>
+	<div class="loading-container bg-color-3 absolute top-0 z-[200] h-[0.5px] w-[100%]"></div>
 {/if}
-<Header />
+
 <div>
 	<slot />
 </div>

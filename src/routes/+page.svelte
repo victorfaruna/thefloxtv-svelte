@@ -1,6 +1,7 @@
 <script>
 	import Footer from '$components/Footer.svelte';
 	import ForYou from '$components/ForYou.svelte';
+	import Header from '$components/Header.svelte';
 	import ListSectionItem from '$components/ListSectionItem.svelte';
 	import Main from '$components/Main.svelte';
 	import Netflix from '$components/Netflix.svelte';
@@ -10,6 +11,7 @@
 	const { mainData, forYouData, trendingMoviesData, trendingTvData, topTenData } = data;
 </script>
 
+<Header />
 <Main {mainData} />
 <div class="px-5 max-sm:px-3">
 	<ForYou {forYouData} />
