@@ -31,5 +31,5 @@
 	</div>
 	<Netflix />
 	<PrimeVideo />
-	<Footer />
+	<!-- <Footer /> -->
 </div>

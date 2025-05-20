@@ -354,7 +354,7 @@
 		</nav>
 		<button
 			onclick={async () => await handleConnect()}
-			class="connect-button border-color-1/20 bg-color-3/90 flex cursor-pointer items-center gap-1 rounded-full border-1 border-2 px-3 py-2 font-medium text-black max-sm:rounded-full max-sm:p-1"
+			class="connect-button border-color-1/20 bg-color-3/90 flex cursor-pointer items-center gap-1 rounded-full border-1 border-2 px-4 py-2 font-medium text-black max-sm:rounded-full max-sm:p-1"
 		>
 			{#if address}
 				<img src={connectionWallet.icon} alt="" class="size-4 object-cover" />
@@ -362,7 +362,7 @@
 			{#if address}
 				<span>{address.slice(0, 5) + '...' + address.slice(-5)}</span>
 			{:else}
-				<span class="max-sm:hidden">Connect Wallet</span>
+				<span class="max-sm:hidden">Connect</span>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
