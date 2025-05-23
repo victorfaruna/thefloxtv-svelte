@@ -1,42 +1,110 @@
 <script lang="ts">
-	import { onNavigate } from '$app/navigation';
+	import { goto, onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import LivesearchResult from '$components/LivesearchResult.svelte';
+	import { connect } from '@starknet-io/get-starknet';
+	import { Contract } from 'starknet';
+	import {
+		walletAccount,
+		walletAddress,
+		isConnected,
+		isConnecting,
+		isSubscribed
+	} from '$lib/stores/wallet';
 
-	//Wallet connect logic..............
-	import { connect, disconnect, type StarknetWindowObject } from 'starknetkit';
-	import { WebWalletConnector } from 'starknetkit/webwallet';
-	import { InjectedConnector } from 'starknetkit/injected';
+	$effect(() => {
+		if ($isSubscribed) {
+			goto('/');
+		}
+	});
 
-	let address: string = $state('');
-	let connectionWallet: StarknetWindowObject | any = $state();
+	// Contract addresses
+	const CONTRACT_ADDRESS = '0x0520588f2e74b510940c9e41f272b38652333d870eb43816b68732804076417c';
+	const STRK_TOKEN_ADDRESS = '0x04718f5a0Fc34cC1AF16A1cdee98fFB20C31f5cD61D6Ab07201858f4287c938D';
 
-	const handleConnect = async () => {
-		if (connectionWallet) {
-			await disconnect();
-			connectionWallet = undefined;
-			address = '';
+	// RPC URL
+	const RPC_URL = 'https://api.cartridge.gg/x/starknet/sepolia';
+
+	async function connectWallet() {
+		if ($isConnecting || $isConnected) {
 			return;
 		}
-		const { wallet, connectorData } = await connect({
-			modalMode: 'alwaysAsk',
-			modalTheme: 'dark',
-			connectors: [
-				new InjectedConnector({
-					options: { id: 'argentX', name: 'Argent X' }
-				}),
-				new InjectedConnector({
-					options: { id: 'braavos', name: 'Braavos' }
-				}),
-				new WebWalletConnector({ url: 'https://web.argent.xyz' })
-			]
-		});
 
-		if (wallet && connectorData) {
-			connectionWallet = wallet;
-			address = connectorData.account || '';
+		try {
+			$isConnecting = true;
+
+			// Import required modules
+			const { WalletAccount, RpcProvider } = await import('starknet');
+
+			// Open wallet selection modal
+			const selectedWalletSWO = await connect({
+				modalMode: 'alwaysAsk',
+				modalTheme: 'dark'
+			});
+
+			if (!selectedWalletSWO) {
+				console.log('No wallet selected');
+				return;
+			}
+
+			// Connect with the WalletAccount API
+			const provider = new RpcProvider({ nodeUrl: RPC_URL });
+			const myWalletAccount = await WalletAccount.connect(provider, selectedWalletSWO);
+
+			// Update stores
+			walletAccount.set(myWalletAccount);
+			walletAddress.set(myWalletAccount.address);
+			isConnected.set(true);
+
+			console.log('Wallet connected:', myWalletAccount.address);
+
+			// Fetch user data after connection
+			const userData = await fetchUserData();
+			if (userData && Date.now() >= userData.date) {
+				isSubscribed.set(false);
+			} else {
+				isSubscribed.set(true);
+			}
+
+			return myWalletAccount;
+		} catch (error) {
+			console.error('Error connecting wallet:', error);
+			alert(
+				'Failed to connect wallet: ' + (error instanceof Error ? error.message : String(error))
+			);
+			return null;
+		} finally {
+			$isConnecting = false;
 		}
-	};
+	}
+
+	// Fetch user data from contract
+	async function fetchUserData() {
+		if (!$walletAccount || !$walletAddress) return;
+
+		try {
+			// Import contract ABI
+			const contractAbiModule = await import('$lib/dev/contract-class.json');
+			const contractAbi = contractAbiModule.abi;
+
+			// Create contract instance
+			const contract = new Contract(contractAbi, CONTRACT_ADDRESS, $walletAccount);
+
+			// Call fetch_user function
+			const response = await contract.call('fetch_user', [$walletAddress]);
+
+			// Update user state
+			const result = response as unknown as { amount: bigint; date: bigint; user_address: bigint };
+			console.log('User state:', result);
+
+			return result;
+		} catch (error) {
+			console.error('Error fetching user data:', error);
+			alert(
+				'Failed to fetch user data: ' + (error instanceof Error ? error.message : String(error))
+			);
+		}
+	}
 
 	let isNavToggled = $state(false);
 	let isSearchToggled = $state(false);
@@ -303,13 +371,15 @@
 	</div>  -->
 
 	<div class="right flex items-center gap-5 max-sm:gap-5">
-		<nav class="text-color-1 flex list-none items-center gap-3 font-normal max-sm:hidden">
-			<li><a href="/">Home</a></li>
-			<li>&middot;</li>
-			<li><a href="/about">About</a></li>
-			<li>&middot;</li>
-			<li><a href="/pricing">Pricing</a></li>
-		</nav>
+		{#if !$isConnected}
+			<nav class="text-color-1 flex list-none items-center gap-3 font-normal max-sm:hidden">
+				<li><a href="/">Home</a></li>
+				<li>&middot;</li>
+				<li><a href="/about">About</a></li>
+				<li>&middot;</li>
+				<li><a href="/pricing">Pricing</a></li>
+			</nav>
+		{/if}
 
 		<nav class="md-nav hidden max-lg:block">
 			<div class="flex w-full justify-between gap-5">
@@ -352,17 +422,50 @@
 				</button>
 			</div>
 		</nav>
+		{#if $isConnected && $isSubscribed}
+			<div class="flex items-center gap-2 max-sm:hidden">
+				<p>premium user</p>
+				<img src="/images/badge.webp" alt="" class="size-6" />
+			</div>
+		{/if}
+		{#if $isConnected && !$isSubscribed}
+			<button
+				onclick={() => goto('/pricing')}
+				class="connect-button flex cursor-pointer items-center gap-2 rounded-full border border-1 border-[hotpink] bg-transparent px-4 py-2 font-medium text-[hotpink] max-sm:rounded-full max-sm:p-1"
+				>Get Pro <svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+					class="size-4"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"
+					/>
+				</svg>
+			</button>
+		{/if}
+
 		<button
-			onclick={async () => await handleConnect()}
-			class="connect-button border-color-1/20 bg-color-3/90 flex cursor-pointer items-center gap-1 rounded-full border-1 border-2 px-4 py-2 font-medium text-black max-sm:rounded-full max-sm:p-1"
+			onclick={async () => await connectWallet()}
+			class="connect-button border-color-1/20 bg-color-3/90 flex cursor-pointer items-center gap-2 rounded-full border-1 border-2 px-4 py-2 font-medium text-black max-sm:rounded-full max-sm:p-1"
 		>
-			{#if address}
-				<img src={connectionWallet.icon} alt="" class="size-4 object-cover" />
+			{#if $isConnected}
+				<img
+					src="/images/pfp.webp"
+					alt=""
+					class="border-main/60 size-4 rounded-full border object-cover object-cover p-[2px]"
+				/>
 			{/if}
-			{#if address}
-				<span>{address.slice(0, 5) + '...' + address.slice(-5)}</span>
+			{#if $isConnected}
+				<span class="leading-none max-sm:hidden"
+					>{$walletAddress.slice(0, 5) + ' · · · ' + $walletAddress.slice(-5)}</span
+				>
 			{:else}
-				<span class="max-sm:hidden">Connect</span>
+				<span class="max-sm:hidden">Connect Wallet</span>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
