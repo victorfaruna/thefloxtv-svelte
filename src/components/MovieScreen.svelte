@@ -52,8 +52,11 @@
 						title="Movie"
 						class="h-[85vh] w-full max-sm:h-[210px]"
 						id="playit"
-						src={`https://vidlink.pro/movie/${movieData.id}?primaryColor=ccccff&autoplay=false&iconColor=ccccff&icons=default`}
+						src={`https://vidlink.pro/movie/${movieId}?primaryColor=000&autoplay=false`}
 						allowFullScreen
+						sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+						referrerpolicy="no-referrer"
+						loading="lazy"
 					></iframe>
 				{:else}
 					<iframe
@@ -62,6 +65,9 @@
 						id="playit"
 						src={`https://vidsrc.cc/v2/embed/movie/${movieData.id}`}
 						allowFullScreen
+						sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+						referrerpolicy="no-referrer"
+						loading="lazy"
 					></iframe>
 				{/if}
 				<div

@@ -60,7 +60,8 @@
 
 			// Fetch user data after connection
 			const userData = await fetchUserData();
-			if (userData && Date.now() >= userData.date) {
+			console.log('date', userData?.date);
+			if (userData && Date.now() >= Number(userData.date) * 1000) {
 				isSubscribed.set(false);
 			} else {
 				isSubscribed.set(true);
@@ -96,7 +97,11 @@
 			// Update user state
 			const result = response as unknown as { amount: bigint; date: bigint; user_address: bigint };
 			console.log('User state:', result);
-
+			if (Date.now() >= Number(result.date) * 1000) {
+				isSubscribed.set(false);
+			} else {
+				isSubscribed.set(true);
+			}
 			return result;
 		} catch (error) {
 			console.error('Error fetching user data:', error);
