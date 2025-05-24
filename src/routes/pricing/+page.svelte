@@ -174,7 +174,7 @@
 			</div>
 			<p>Basic</p>
 			<p class="text-color-1/60">
-				<span class="text-color-1 text-[2rem] font-medium">$0</span> /month
+				<span class="text-color-1 text-[2rem] font-medium">0 $STRK</span> /month
 			</p>
 			<p class="text-color-1/90">Includes unlimited movie and tv show streaming (with ads)</p>
 			<hr class="text-color-1/20" />
@@ -291,7 +291,7 @@
 			</div>
 			<p>Premium</p>
 			<p class="text-color-1/60">
-				<span class="text-color-1 text-[2rem] font-medium">$2.99</span> /month
+				<span class="text-color-1 text-[2rem] font-medium">2 $STRK</span> /month
 			</p>
 			<p class="text-color-1/90">Includes unlimited movie and tv show streaming (with ads)</p>
 			<hr class="text-color-1/20" />
