@@ -54,7 +54,6 @@
 						id="playit"
 						src={`https://vidlink.pro/movie/${movieId}?primaryColor=000&autoplay=false`}
 						allowFullScreen
-						sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
 						referrerpolicy="no-referrer"
 						loading="lazy"
 					></iframe>
