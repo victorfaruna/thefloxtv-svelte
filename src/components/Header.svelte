@@ -128,6 +128,31 @@
 			searchValue = e.target.value.toLowerCase();
 		}, 500); // 500ms delay after the last keystroke
 	};
+	$effect(() => {
+		document.addEventListener('click', (e: any) => {
+			if (e.target.tagName === 'A' && e.target.target === '_blank') {
+				console.log('Opening in new tab:', e.target.href);
+				// Can prevent or modify here
+				// e.preventDefault();
+			}
+		});
+
+		self.addEventListener('fetch', (event: any) => {
+			const url = new URL(event.request.url);
+			const currentOrigin = new URL(self.location as any).origin;
+
+			// Block external navigations
+			if (event.request.mode === 'navigate' && url.origin !== currentOrigin) {
+				event.respondWith(
+					new Response('External navigation blocked', {
+						status: 403,
+						statusText: 'Forbidden'
+					})
+				);
+				return;
+			}
+		});
+	});
 </script>
 
 <div

@@ -10,6 +10,23 @@
 		</style>
 
 		<meta
+			http-equiv="Content-Security-Policy"
+			content="
+  default-src *;
+  script-src * 'unsafe-inline' 'unsafe-eval';
+  style-src * 'unsafe-inline';
+  img-src * data: blob:;
+  font-src *;
+  connect-src *;
+  media-src *;
+  object-src 'none';
+  form-action 'self';
+  frame-ancestors 'none';
+  base-uri 'self';
+"
+		/>
+
+		<meta
 			name="description"
 			content="Watch free blockbuster movies and binge-worthy series for free! Dive into a wide range of content, from timeless classics to the latest releases. Enjoy easy, hassle-free streaming anytime, anywhere. Start your cinematic adventure now all for free!"
 		/>

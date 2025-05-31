@@ -1,4 +1,7 @@
+<script>
+	let { data } = $props();
+</script>
+
 <div class="container">
-	<h1>Test</h1>
-	<button>Test</button>
+	<h1>{JSON.stringify(data)}</h1>
 </div>
