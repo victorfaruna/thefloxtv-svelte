@@ -36,13 +36,15 @@
 </script>
 
 <div class="carousel-cont w-full overflow-hidden">
-	<div bind:this={swiperComponent} class="swiper carousel h-[90vh] w-full max-sm:h-[400px]">
+	<div bind:this={swiperComponent} class="swiper carousel h-[400px] w-full lg:h-[900px]">
 		<div class="swiper-wrapper">
 			{#each mainData
 				.filter((item: any) => item.vote_average > 6)
 				.slice(0, 10) as result, index (result.id)}
 				<div class="swiper-slide carousel-item main-carousel relative bg-cover bg-no-repeat">
-					<div class="inner-container flex h-full w-full items-end pl-[3%] max-sm:pl-0">
+					<div
+						class="inner-container mx-auto flex h-full w-full max-w-[1900px] items-end px-3 max-sm:pl-0 lg:px-8"
+					>
 						<div
 							class="text absolute z-[2] mb-[4rem] flex h-auto w-[50%] flex-col gap-4 overflow-hidden max-sm:mb-[2rem] max-sm:w-full max-sm:gap-2 max-sm:text-center"
 						>

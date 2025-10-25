@@ -21,7 +21,7 @@
 	<Trending trendingType="tv" trendingData={trendingTvData} />
 
 	<div
-		class="list-section grid gap-3 max-sm:grid-cols-1 max-sm:gap-10"
+		class="list-section mx-auto grid w-full max-w-[1900px] gap-3 px-3 max-sm:grid-cols-1 max-sm:gap-10 lg:px-8"
 		style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));"
 	>
 		<ListSectionItem listType="top-airing" listTitle="Top Airing" listData={forYouData} />

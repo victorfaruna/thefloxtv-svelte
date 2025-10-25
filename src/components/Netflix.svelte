@@ -72,7 +72,7 @@
 		/>
 	</svg>
 {/snippet}
-<div class="cont my-10">
+<div class="cont mx-auto my-10 max-w-[1900px] px-3 lg:px-6">
 	<div class="mb-5 flex items-center justify-center gap-5 text-[12px] max-sm:flex-col max-sm:gap-3">
 		<div
 			class="flex items-center gap-1 text-[25px] font-bold text-white uppercase max-sm:text-[17px]"

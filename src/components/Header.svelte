@@ -2,114 +2,6 @@
 	import { goto, onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import LivesearchResult from '$components/LivesearchResult.svelte';
-	import { connect } from '@starknet-io/get-starknet';
-	import { Contract } from 'starknet';
-	import {
-		walletAccount,
-		walletAddress,
-		isConnected,
-		isConnecting,
-		isSubscribed
-	} from '$lib/stores/wallet';
-
-	$effect(() => {
-		if ($isSubscribed) {
-			goto('/');
-		}
-	});
-
-	// Contract addresses
-	const CONTRACT_ADDRESS = '0x0520588f2e74b510940c9e41f272b38652333d870eb43816b68732804076417c';
-	const STRK_TOKEN_ADDRESS = '0x04718f5a0Fc34cC1AF16A1cdee98fFB20C31f5cD61D6Ab07201858f4287c938D';
-
-	// RPC URL
-	const RPC_URL = 'https://api.cartridge.gg/x/starknet/sepolia';
-
-	async function connectWallet() {
-		if ($isConnecting || $isConnected) {
-			return;
-		}
-
-		try {
-			$isConnecting = true;
-
-			// Import required modules
-			const { WalletAccount, RpcProvider } = await import('starknet');
-
-			// Open wallet selection modal
-			const selectedWalletSWO = await connect({
-				modalMode: 'alwaysAsk',
-				modalTheme: 'dark'
-			});
-
-			if (!selectedWalletSWO) {
-				console.log('No wallet selected');
-				return;
-			}
-
-			// Connect with the WalletAccount API
-			const provider = new RpcProvider({ nodeUrl: RPC_URL });
-			const myWalletAccount = await WalletAccount.connect(provider, selectedWalletSWO);
-
-			// Update stores
-			walletAccount.set(myWalletAccount);
-			walletAddress.set(myWalletAccount.address);
-			isConnected.set(true);
-
-			console.log('Wallet connected:', myWalletAccount.address);
-
-			// Fetch user data after connection
-			const userData = await fetchUserData();
-			console.log('date', userData?.date);
-			if (userData && Date.now() >= Number(userData.date) * 1000) {
-				isSubscribed.set(false);
-			} else {
-				isSubscribed.set(true);
-			}
-
-			return myWalletAccount;
-		} catch (error) {
-			console.error('Error connecting wallet:', error);
-			alert(
-				'Failed to connect wallet: ' + (error instanceof Error ? error.message : String(error))
-			);
-			return null;
-		} finally {
-			$isConnecting = false;
-		}
-	}
-
-	// Fetch user data from contract
-	async function fetchUserData() {
-		if (!$walletAccount || !$walletAddress) return;
-
-		try {
-			// Import contract ABI
-			const contractAbiModule = await import('$lib/dev/contract-class.json');
-			const contractAbi = contractAbiModule.abi;
-
-			// Create contract instance
-			const contract = new Contract(contractAbi, CONTRACT_ADDRESS, $walletAccount);
-
-			// Call fetch_user function
-			const response = await contract.call('fetch_user', [$walletAddress]);
-
-			// Update user state
-			const result = response as unknown as { amount: bigint; date: bigint; user_address: bigint };
-			console.log('User state:', result);
-			if (Date.now() >= Number(result.date) * 1000) {
-				isSubscribed.set(false);
-			} else {
-				isSubscribed.set(true);
-			}
-			return result;
-		} catch (error) {
-			console.error('Error fetching user data:', error);
-			alert(
-				'Failed to fetch user data: ' + (error instanceof Error ? error.message : String(error))
-			);
-		}
-	}
 
 	let isNavToggled = $state(false);
 	let isSearchToggled = $state(false);
@@ -188,14 +80,17 @@
 	</nav>
 </div>
 <header
-	class={`h flex w-full items-center justify-between px-8 py-[1.2rem] max-sm:px-3 max-sm:py-[0.8rem] ${
+	class={`h flex w-full items-center justify-between  ${
 		page.url.pathname == '/' && 'absolute z-10'
 	} from-main via-main/80  bg-gradient-to-b to-transparent`}
 >
-	<div class="left-section flex items-center gap-0">
-		<div class="logo-cont center-div">
-			<a data-sveltekit-preload-data aria-label="Home" href="/">
-				<svg
+	<div
+		class="inner mx-auto flex w-full max-w-[1900px] items-center justify-between px-3 py-6 lg:px-8"
+	>
+		<div class="left-section flex items-center gap-0">
+			<div class="logo-cont center-div">
+				<a data-sveltekit-preload-data aria-label="Home" href="/" class="flex items-center gap-1">
+					<!-- <svg
 					class="fill-color-3 w-[120px]"
 					xmlns="http://www.w3.org/2000/svg"
 					xml:space="preserve"
@@ -250,158 +145,98 @@
 							/>
 						</g>
 					</g>
-				</svg>
-			</a>
-		</div>
-
-		<div
-			class={`focused search-bar dropdown relative z-[100] mx-[20px]   h-full w-[40vw] max-sm:fixed max-sm:top-0 max-sm:right-0 max-sm:mx-0 max-sm:w-full max-sm:items-start max-sm:bg-gray-700/20 max-sm:px-5 max-sm:py-[90px] max-sm:backdrop-blur-md ${
-				!isSearchToggled ? 'max-sm:hidden' : ''
-			}`}
-			id="searchBar"
-		>
-			<div class="absolute top-5 right-5 hidden text-[15px] text-white max-sm:block">
-				<button aria-label="Cancel" onclick={() => (isSearchToggled = !isSearchToggled)}>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="size-6"
-					>
-						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-					</svg>
-				</button>
+				</svg> -->
+					<img src="/logo.svg" alt="Watchlens" class="w-[40px] lg:w-[50px]" />
+					<p class="text-color-3 text-[1rem] lg:text-[1.3rem]">Watchlens</p>
+				</a>
 			</div>
-			<form
-				onsubmit={(e) => e.preventDefault()}
-				class="group center-div bg-tet flex h-[40px] w-full rounded-[1.5rem] p-2 shadow-2xl shadow-gray-950 max-sm:h-[50px] max-sm:bg-black"
-			>
-				<div
-					class="search-rep-ico flex items-center justify-center gap-1 rounded-[50rem] bg-[#353535] px-[0.8rem] py-[0.3rem] text-[0.6rem] font-[300] text-gray-400 max-sm:bg-transparent"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="size-[15px]"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z"
-						/>
-					</svg>
-					<span class="max-sm:hidden">Filter</span>
-				</div>
-				<input
-					tabIndex={0}
-					autoComplete="off"
-					id="searchInput"
-					type="text"
-					value={searchValue}
-					name="q"
-					placeholder="Search Movies and Tv Shows"
-					oninput={search}
-					class="h-full w-[92%] border-none bg-transparent pl-[10px] text-center text-[12px] font-[300] text-white outline-none"
-				/>
-				<div
-					class="search-rep-ico text-color-3 flex items-center justify-center rounded-[50rem] px-[0.8rem] py-[0.3rem] text-[0.6rem] font-[300]"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="size-[15px]"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-						/>
-					</svg>
-				</div>
-			</form>
+
 			<div
-				id="searchresult"
-				tabIndex={0}
-				class="dropdown-content bg-tet absolute top-[43px] left-0 z-[-1] max-h-[50vh] w-full overflow-x-hidden overflow-y-auto rounded-2xl px-[5%] py-4 shadow-2xl shadow-black/80 backdrop-blur-[60px] max-sm:top-[150px] max-sm:left-[5vw] max-sm:max-h-[70vh] max-sm:w-[90%] max-sm:rounded-2xl max-sm:bg-black"
+				class={`focused search-bar dropdown relative z-[100] mx-[20px]   h-full w-[40vw] max-sm:fixed max-sm:top-0 max-sm:right-0 max-sm:mx-0 max-sm:w-full max-sm:items-start max-sm:bg-gray-700/20 max-sm:px-5 max-sm:py-[90px] max-sm:backdrop-blur-md ${
+					!isSearchToggled ? 'max-sm:hidden' : ''
+				}`}
+				id="searchBar"
 			>
-				{#key searchValue}
-					<LivesearchResult query={searchValue} />
-				{/key}
-			</div>
-		</div>
-	</div>
-
-	<!-- <div class="right-section">
-		<nav class="nav w-full hidden">
-			<ul class="flex w-full justify-between gap-[25px] max-lg:hidden">
-				<li class="text-[12px] text-[#f3f3f3]" style="text-shadow: 0.5px 0.5px 0.5px black">
-					<a href="/">Home</a>
-				</li>
-				<li class="text-[12px] text-[#f3f3f3]" style="text-shadow: 0.5px 0.5px 0.5px black">
-					<a href="/tvshows">TV Shows</a>
-				</li>
-				<li class="text-[12px] text-[#f3f3f3]" style="text-shadow: 0.5px 0.5px 0.5px black">
-					<a href="/movies">Movies</a>
-				</li>
-				<li class="text-[12px] text-[#f3f3f3]" style="text-shadow: 0.5px 0.5px 0.5px black">
-					<a href="/movies">Trending</a>
-				</li>
-			</ul>
-		</nav>
-
-		<nav class="md-nav hidden pr-[3vw] max-lg:block">
-			<div class="flex w-full justify-between gap-[25px]">
-				<button aria-label="Search" onclick={() => (isSearchToggled = true)}>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="size-6 text-white"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-						/>
-					</svg>
-				</button>
-
-				<button aria-label="Menu" onclick={() => (isNavToggled = !isNavToggled)}
-					><svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="size-6 text-white"
-					>
-						{#if isNavToggled}
+				<div class="absolute top-5 right-5 hidden text-[15px] text-white max-sm:block">
+					<button aria-label="Cancel" onclick={() => (isSearchToggled = !isSearchToggled)}>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="size-6"
+						>
 							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-						{:else}
+						</svg>
+					</button>
+				</div>
+				<form
+					onsubmit={(e) => e.preventDefault()}
+					class="group center-div bg-tet flex h-[40px] w-full rounded-[1.5rem] p-2 shadow-2xl shadow-gray-950 max-sm:h-[50px] max-sm:bg-black"
+				>
+					<div
+						class="search-rep-ico flex items-center justify-center gap-1 rounded-[50rem] bg-[#353535] px-[0.8rem] py-[0.3rem] text-[0.6rem] font-[300] text-gray-400 max-sm:bg-transparent"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="size-[15px]"
+						>
 							<path
 								stroke-linecap="round"
 								stroke-linejoin="round"
-								d="M3.75 9h16.5m-16.5 6.75h16.5"
+								d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z"
 							/>
-						{/if}
-					</svg>
-				</button>
+						</svg>
+						<span class="max-sm:hidden">Filter</span>
+					</div>
+					<input
+						tabIndex={0}
+						autoComplete="off"
+						id="searchInput"
+						type="text"
+						value={searchValue}
+						name="q"
+						placeholder="Search Movies and Tv Shows"
+						oninput={search}
+						class="h-full w-[92%] border-none bg-transparent pl-[10px] text-center text-[12px] font-[300] text-white outline-none"
+					/>
+					<div
+						class="search-rep-ico text-color-3 flex items-center justify-center rounded-[50rem] px-[0.8rem] py-[0.3rem] text-[0.6rem] font-[300]"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="size-[15px]"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+							/>
+						</svg>
+					</div>
+				</form>
+				<div
+					id="searchresult"
+					tabIndex={0}
+					class="dropdown-content bg-tet absolute top-[43px] left-0 z-[-1] max-h-[50vh] w-full overflow-x-hidden overflow-y-auto rounded-2xl px-[5%] py-4 shadow-2xl shadow-black/80 backdrop-blur-[60px] max-sm:top-[150px] max-sm:left-[5vw] max-sm:max-h-[70vh] max-sm:w-[90%] max-sm:rounded-2xl max-sm:bg-black"
+				>
+					{#key searchValue}
+						<LivesearchResult query={searchValue} />
+					{/key}
+				</div>
 			</div>
-		</nav>
-	</div>  -->
+		</div>
 
-	<div class="right flex items-center gap-5 max-sm:gap-5">
-		{#if !$isConnected}
+		<div class="right flex items-center gap-5 max-sm:gap-5">
 			<nav class="text-color-1 flex list-none items-center gap-3 font-normal max-sm:hidden">
 				<li><a href="/">Home</a></li>
 				<li>&middot;</li>
@@ -409,108 +244,48 @@
 				<li>&middot;</li>
 				<li><a href="/pricing">Pricing</a></li>
 			</nav>
-		{/if}
 
-		<nav class="md-nav hidden max-lg:block">
-			<div class="flex w-full justify-between gap-5">
-				<button aria-label="Search" class="text-white" onclick={() => (isSearchToggled = true)}>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="size-5 text-white"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-						/>
-					</svg>
-				</button>
-
-				<button aria-label="Menu" onclick={() => (isNavToggled = !isNavToggled)}
-					><svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="size-6 text-white"
-					>
-						{#if isNavToggled}
-							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-						{:else}
+			<nav class="md-nav hidden max-lg:block">
+				<div class="flex w-full justify-between gap-5">
+					<button aria-label="Search" class="text-white" onclick={() => (isSearchToggled = true)}>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="size-5 text-white"
+						>
 							<path
 								stroke-linecap="round"
 								stroke-linejoin="round"
-								d="M3.75 9h16.5m-16.5 6.75h16.5"
+								d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
 							/>
-						{/if}
-					</svg>
-				</button>
-			</div>
-		</nav>
-		{#if $isConnected && $isSubscribed}
-			<div class="flex items-center gap-2 max-sm:hidden">
-				<p>premium user</p>
-				<img src="/images/badge.webp" alt="" class="size-6" />
-			</div>
-		{/if}
-		{#if $isConnected && !$isSubscribed}
-			<button
-				onclick={() => goto('/pricing')}
-				class="connect-button flex cursor-pointer items-center gap-2 rounded-full border border-1 border-[hotpink] bg-transparent px-4 py-2 font-medium text-[hotpink] max-sm:rounded-full max-sm:p-1"
-				>Get Pro <svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke-width="1.5"
-					stroke="currentColor"
-					class="size-4"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"
-					/>
-				</svg>
-			</button>
-		{/if}
+						</svg>
+					</button>
 
-		<button
-			onclick={async () => await connectWallet()}
-			class="connect-button border-color-1/20 bg-color-3/90 flex cursor-pointer items-center gap-2 rounded-full border-1 border-2 px-4 py-2 font-medium text-black max-sm:rounded-full max-sm:p-1"
-		>
-			{#if $isConnected}
-				<img
-					src="/images/pfp.webp"
-					alt=""
-					class="border-main/60 size-4 rounded-full border object-cover object-cover p-[2px]"
-				/>
-			{/if}
-			{#if $isConnected}
-				<span class="leading-none max-sm:hidden"
-					>{$walletAddress.slice(0, 5) + ' · · · ' + $walletAddress.slice(-5)}</span
-				>
-			{:else}
-				<span class="max-sm:hidden">Connect Wallet</span>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke-width="2.5"
-					stroke="currentColor"
-					class="size-4"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M21 12a2.25 2.25 0 0 0-2.25-2.25H15a3 3 0 1 1-6 0H5.25A2.25 2.25 0 0 0 3 12m18 0v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 9m18 0V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v3"
-					/>
-				</svg>
-			{/if}
-		</button>
+					<button aria-label="Menu" onclick={() => (isNavToggled = !isNavToggled)}
+						><svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="size-6 text-white"
+						>
+							{#if isNavToggled}
+								<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+							{:else}
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M3.75 9h16.5m-16.5 6.75h16.5"
+								/>
+							{/if}
+						</svg>
+					</button>
+				</div>
+			</nav>
+		</div>
 	</div>
 </header>
