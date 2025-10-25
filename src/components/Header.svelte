@@ -85,7 +85,7 @@
 	} from-main via-main/80  bg-gradient-to-b to-transparent`}
 >
 	<div
-		class="inner mx-auto flex w-full max-w-[1900px] items-center justify-between px-3 py-6 lg:px-8"
+		class="inner mx-auto flex w-full max-w-[1900px] items-center justify-between px-3 py-4 lg:px-8 lg:py-6"
 	>
 		<div class="left-section flex items-center gap-0">
 			<div class="logo-cont center-div">

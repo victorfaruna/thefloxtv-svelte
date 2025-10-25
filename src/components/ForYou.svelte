@@ -54,7 +54,7 @@
 </script>
 
 <div class="wrapper relative z-[3] mt-0">
-	<div class="inner mx-auto w-full max-w-[1900px] px-3 lg:px-8">
+	<div class="inner mx-auto w-full max-w-[1900px] px-2 lg:px-8">
 		<div class="mb-3 flex items-center justify-center gap-2 text-center text-[13px]">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
