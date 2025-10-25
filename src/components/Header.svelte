@@ -242,7 +242,7 @@
 				<li>&middot;</li>
 				<li><a href="/about">About</a></li>
 				<li>&middot;</li>
-				<li><a href="/pricing">Pricing</a></li>
+				<li><a href="/support">Support</a></li>
 			</nav>
 
 			<nav class="md-nav hidden max-lg:block">

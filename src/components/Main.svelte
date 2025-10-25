@@ -43,7 +43,7 @@
 				.slice(0, 10) as result, index (result.id)}
 				<div class="swiper-slide carousel-item main-carousel relative bg-cover bg-no-repeat">
 					<div
-						class="inner-container mx-auto flex h-full w-full max-w-[1900px] items-end px-3 max-sm:pl-0 lg:px-8"
+						class="inner-container mx-auto flex h-full w-full max-w-[1900px] items-end px-2 lg:px-10"
 					>
 						<div
 							class="text absolute z-[2] mb-[4rem] flex h-auto w-[50%] flex-col gap-4 overflow-hidden max-sm:mb-[2rem] max-sm:w-full max-sm:gap-2 max-sm:text-center"

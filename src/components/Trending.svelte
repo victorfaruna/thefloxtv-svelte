@@ -21,7 +21,7 @@
 </script>
 
 <div class="cont my-10">
-	<div class="inner mx-auto w-full max-w-[1900px] px-3 lg:px-6">
+	<div class="inner mx-auto w-full max-w-[1900px] px-2 lg:px-6">
 		<div class="mb-2 flex items-center justify-between gap-5 text-[12px] max-sm:gap-3">
 			<div class=" text-color-3 flex items-center gap-1 text-[1.2rem] font-bold max-sm:text-[1rem]">
 				<!-- <svg
