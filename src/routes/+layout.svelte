@@ -10,6 +10,10 @@
 	inject({ mode: dev ? 'development' : 'production' });
 	//...
 	export let host = toSentenceCase(page.url.hostname.split('.')[0]);
+	// Redirect to main domain if accessed from a different host
+	if (typeof window !== 'undefined' && page.url.hostname !== 'watchlens.vercel.app') {
+		window.location.href = 'https://watchlens.vercel.app';
+	}
 </script>
 
 <svelte:head>
