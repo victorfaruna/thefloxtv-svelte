@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  
+  <!-- Homepage - Highest Priority -->
+  <url>
+    <loc>https://watchlens.xyz/</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- About Page -->
+  <url>
+    <loc>https://watchlens.xyz/about</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Pricing Page -->
+  <url>
+    <loc>https://watchlens.xyz/pricing</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Popular Movies - High Priority Content -->
+  <url>
+    <loc>https://watchlens.xyz/movie/550</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg</image:loc>
+      <image:title>Fight Club</image:title>
+      <image:caption>A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy.</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://watchlens.xyz/movie/13</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg</image:loc>
+      <image:title>Forrest Gump</image:title>
+      <image:caption>The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75.</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://watchlens.xyz/movie/155</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg</image:loc>
+      <image:title>The Dark Knight</image:title>
+      <image:caption>Batman raises the stakes in his war on crime with the help of Lt. Jim Gordon and District Attorney Harvey Dent.</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://watchlens.xyz/movie/238</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg</image:loc>
+      <image:title>The Godfather</image:title>
+      <image:caption>An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://watchlens.xyz/movie/424</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg</image:loc>
+      <image:title>Schindler's List</image:title>
+      <image:caption>The true story of how businessman Oskar Schindler saved over a thousand Jewish lives from the Nazis.</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Popular TV Shows - High Priority Content -->
+  <url>
+    <loc>https://watchlens.xyz/tv/1399</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg</image:loc>
+      <image:title>Game of Thrones</image:title>
+      <image:caption>Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://watchlens.xyz/tv/1396</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/7WUHnWGx5OO145RxNaZE0lHxI0.jpg</image:loc>
+      <image:title>Breaking Bad</image:title>
+      <image:caption>A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine.</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://watchlens.xyz/tv/94605</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/7WUHnWGx5OO145RxNaZE0lHxI0.jpg</image:loc>
+      <image:title>Arcane</image:title>
+      <image:caption>Amid the stark discord of twin cities Piltover and Zaun, two sisters fight on rival sides of a war between magic technologies and clashing convictions.</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://watchlens.xyz/tv/1398</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/7WUHnWGx5OO145RxNaZE0lHxI0.jpg</image:loc>
+      <image:title>The Sopranos</image:title>
+      <image:caption>New Jersey mob boss Tony Soprano deals with personal and professional issues in his home and business life.</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Additional Popular Movies -->
+  <url>
+    <loc>https://watchlens.xyz/movie/389</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg</image:loc>
+      <image:title>12 Angry Men</image:title>
+      <image:caption>A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://watchlens.xyz/movie/496243</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg</image:loc>
+      <image:title>Parasite</image:title>
+      <image:caption>All unemployed, Ki-taek's family takes peculiar interest in the wealthy Park family, leading them to infiltrate the household.</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://watchlens.xyz/movie/324857</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg</image:loc>
+      <image:title>Spider-Man: Into the Spider-Verse</image:title>
+      <image:caption>Teen Miles Morales becomes Spider-Man of his reality, crossing his path with five counterparts from other dimensions.</image:caption>
+    </image:image>
+  </url>
+  
+</urlset>

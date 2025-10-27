@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://watchlens.xyz/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /api/
+Disallow: /test/
+
+# Allow all movie and TV show pages
+Allow: /movie/
+Allow: /tv/
+
+# Crawl delay (optional)
+Crawl-delay: 1
