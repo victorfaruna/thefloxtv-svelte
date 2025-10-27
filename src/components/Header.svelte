@@ -76,20 +76,23 @@
 			<li class="">
 				<a href="/pricing">Pricing</a>
 			</li>
+			<li class="">
+				<a href="/support">Support</a>
+			</li>
 		</ul>
 	</nav>
 </div>
 <header
 	class={`h flex w-full items-center justify-between  ${
 		page.url.pathname == '/' && 'absolute z-10'
-	} from-main via-main/80  bg-gradient-to-b to-transparent`}
+	} from-main via-main/80 bg-gradient-to-b to-transparent`}
 >
 	<div
 		class="inner mx-auto flex w-full max-w-[1900px] items-center justify-between px-3 py-4 lg:px-8 lg:py-6"
 	>
 		<div class="left-section flex items-center gap-0">
 			<div class="logo-cont center-div">
-				<a data-sveltekit-preload-data aria-label="Home" href="/" class="flex items-center gap-1">
+				<a data-sveltekit-preload-data aria-label="Home" href="/" class="flex items-center">
 					<!-- <svg
 					class="fill-color-3 w-[120px]"
 					xmlns="http://www.w3.org/2000/svg"
@@ -147,12 +150,12 @@
 					</g>
 				</svg> -->
 					<img src="/logo.svg" alt="Watchlens" class="w-[40px] lg:w-[50px]" />
-					<p class="text-color-3 text-[1rem] lg:text-[1.3rem]">Watchlens</p>
+					<p class="text-color-3 text-[1rem] tracking-wider lg:text-[1.3rem]">Watchlens</p>
 				</a>
 			</div>
 
 			<div
-				class={`focused search-bar dropdown relative z-[100] mx-[20px]   h-full w-[40vw] max-sm:fixed max-sm:top-0 max-sm:right-0 max-sm:mx-0 max-sm:w-full max-sm:items-start max-sm:bg-gray-700/20 max-sm:px-5 max-sm:py-[90px] max-sm:backdrop-blur-md ${
+				class={`focused search-bar dropdown relative z-[100] mx-[40px]   h-full w-[40vw] max-sm:fixed max-sm:top-0 max-sm:right-0 max-sm:mx-0 max-sm:w-full max-sm:items-start max-sm:bg-gray-700/20 max-sm:px-5 max-sm:py-[90px] max-sm:backdrop-blur-md ${
 					!isSearchToggled ? 'max-sm:hidden' : ''
 				}`}
 				id="searchBar"
@@ -241,6 +244,8 @@
 				<li><a href="/">Home</a></li>
 				<li>&middot;</li>
 				<li><a href="/about">About</a></li>
+				<li>&middot;</li>
+				<li><a href="/pricing">Pricing</a></li>
 				<li>&middot;</li>
 				<li><a href="/support">Support</a></li>
 			</nav>
